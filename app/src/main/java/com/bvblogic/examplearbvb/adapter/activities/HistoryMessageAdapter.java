@@ -10,11 +10,13 @@ import android.widget.TextView;
 import com.bvblogic.examplearbvb.R;
 import com.bvblogic.examplearbvb.db.domain.MyMessage;
 
+import org.androidannotations.annotations.EBean;
 import org.androidannotations.annotations.ViewById;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@EBean
 public class HistoryMessageAdapter extends
         RecyclerView.Adapter<HistoryMessageAdapter.ViewHolder> {
 

@@ -7,14 +7,16 @@ import android.arch.persistence.room.RoomDatabase;
 import android.arch.persistence.room.migration.Migration;
 import android.content.Context;
 
+import com.bvblogic.examplearbvb.db.dao.MyMessageDao;
 import com.bvblogic.examplearbvb.db.dao.UserDao;
+import com.bvblogic.examplearbvb.db.domain.MyMessage;
 import com.bvblogic.examplearbvb.db.domain.User;
 
 /**
  * Created by hanz on 08.05.2018.
  */
 
-@Database(entities = {User.class}, version = 1, exportSchema = false)
+@Database(entities = {User.class, MyMessage.class}, version = 1, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
     public static final String DB_NAME = "imc.db";
 
@@ -22,6 +24,7 @@ public abstract class AppDatabase extends RoomDatabase {
 
     public abstract UserDao userDao();
 
+    public abstract MyMessageDao myMessageDao();
 
     public static AppDatabase getAppDatabase(Context context) {
         if (INSTANCE == null) {
