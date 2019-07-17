@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">exampleArBvb</string>
+    <string name="sms_instrument_name">SMS</string>
+    <string name="phone_name">Phone</string>
+    <string name="name_name">Name</string>
+    <string name="email_name">Email</string>
+    <string name="email_instrument_name">Email</string>
 </resources>

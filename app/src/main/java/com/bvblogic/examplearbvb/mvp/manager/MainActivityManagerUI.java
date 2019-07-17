@@ -5,7 +5,8 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 
 import com.bvblogic.examplearbvb.R;
-import com.bvblogic.examplearbvb.fragment.SplashFragment_;
+import com.bvblogic.examplearbvb.fragment.instruments.ChatAdditionFragment;
+import com.bvblogic.examplearbvb.fragment.instruments.ChatAdditionFragment_;
 import com.bvblogic.examplearbvb.mvp.core.FragmentData;
 import com.bvblogic.examplearbvb.mvp.manager.core.BaseMainActivityManagerUI;
 
@@ -35,21 +36,16 @@ public class MainActivityManagerUI extends BaseMainActivityManagerUI {
     @Override
     public void changeFragmentTo(FragmentData fragment) {
         switch (fragment.getFragmentById()) {
-            case SPLASH_FRAGMENT: {
-                addFragmentToContainer(SplashFragment_.builder().build(), false,
+            case CHAT_ADDITION: {
+                addFragmentToContainer(ChatAdditionFragment_.builder().build(), false,
                         this.getActivity().getSupportFragmentManager().beginTransaction()
                                 .setCustomAnimations(0, android.R.anim.fade_out));
                 break;
             }
             
-            case NEW_FRAGMENT:{
-                // TODO: 15.07.2019 add fragment 
-            }
 
-            case NEW_NEW:
-            {
 
-            }
+
         }
     }
 
