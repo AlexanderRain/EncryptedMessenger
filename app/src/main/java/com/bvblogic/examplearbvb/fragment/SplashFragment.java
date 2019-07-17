@@ -5,9 +5,6 @@ import android.support.v7.widget.RecyclerView;
 
 import com.bvblogic.examplearbvb.R;
 import com.bvblogic.examplearbvb.bean.login.LoginBeanView;
-import com.bvblogic.examplearbvb.bean.login.LoginBeanView_;
-import com.bvblogic.examplearbvb.bean.user.ProviderBeanUser;
-import com.bvblogic.examplearbvb.bean.user.ProviderBeanUser_;
 import com.bvblogic.examplearbvb.db.domain.User;
 import com.bvblogic.examplearbvb.db.presenter.UserPresenter;
 import com.bvblogic.examplearbvb.fragment.core.BaseFragment;
