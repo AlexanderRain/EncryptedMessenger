@@ -7,6 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import com.bvblogic.examplearbvb.R;
 import com.bvblogic.examplearbvb.fragment.AuthFragment;
 import com.bvblogic.examplearbvb.fragment.AuthFragment_;
+import com.bvblogic.examplearbvb.fragment.HistoryMessageFragment;
+import com.bvblogic.examplearbvb.fragment.HistoryMessageFragment_;
 import com.bvblogic.examplearbvb.fragment.SplashFragment_;
 import com.bvblogic.examplearbvb.mvp.core.FragmentData;
 import com.bvblogic.examplearbvb.mvp.manager.core.BaseMainActivityManagerUI;
@@ -51,9 +53,11 @@ public class MainActivityManagerUI extends BaseMainActivityManagerUI {
                 break;
             }
 
-            case NEW_NEW:
-            {
-
+            case HISTORY_MESSAGE_FRAGMENT: {
+                addFragmentToContainer(HistoryMessageFragment_.builder().build(), false,
+                        this.getActivity().getSupportFragmentManager().beginTransaction()
+                                .setCustomAnimations(0, android.R.anim.fade_out));
+                break;
             }
         }
     }
