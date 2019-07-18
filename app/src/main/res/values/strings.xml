@@ -5,4 +5,11 @@
     <string name="name_name">Name</string>
     <string name="email_name">Email</string>
     <string name="email_instrument_name">Email</string>
+    <string name="enter_message_hint">Enter message…</string>
+    <string name="btn_journal">Journal</string>
+    <string name="btn_back">Back</string>
+    <string name="btn_send">Send</string>
+    <string name="login">Login</string>
+    <string name="password">Password</string>
+    <string name="signUp">Sign up</string>
 </resources>
