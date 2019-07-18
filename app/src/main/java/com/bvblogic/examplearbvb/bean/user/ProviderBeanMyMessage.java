@@ -5,7 +5,7 @@ import android.support.v7.widget.RecyclerView;
 
 import com.bvblogic.examplearbvb.adapter.activities.HistoryMessageAdapter;
 import com.bvblogic.examplearbvb.bean.core.Bean;
-import com.bvblogic.examplearbvb.db.domain.MyMessage;
+import com.bvblogic.examplearbvb.db.domain.Message;
 
 import org.androidannotations.annotations.EBean;
 
@@ -24,7 +24,7 @@ public class ProviderBeanMyMessage extends Bean {
         rv.setAdapter(adapter);
     }
 
-    public void initAdapter(List<MyMessage> users) {
+    public void initAdapter(List<Message> users) {
         adapter.setItems(users);
 
     }

@@ -1,4 +1,4 @@
-package com.bvblogic.examplearbvb.fragment.instruments;
+package com.bvblogic.examplearbvb.fragment;
 
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
@@ -37,7 +37,6 @@ public class ChatAdditionFragment extends BaseFragment{
 
     @Bean
     InstrumentsPresenter presenter;
-
     @AfterViews
     public void init() {
         initToolBar(ToolBarById.CLOSE);

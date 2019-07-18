@@ -3,20 +3,14 @@ package com.bvblogic.examplearbvb.mvp.manager;
 import android.annotation.SuppressLint;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 
 import com.bvblogic.examplearbvb.R;
-import com.bvblogic.examplearbvb.fragment.instruments.ChatAdditionFragment;
-import com.bvblogic.examplearbvb.fragment.instruments.ChatAdditionFragment_;
 import com.bvblogic.examplearbvb.fragment.AuthFragment_;
-import com.bvblogic.examplearbvb.fragment.HistoryMessageFragment;
+import com.bvblogic.examplearbvb.fragment.ChatAdditionFragment_;
 import com.bvblogic.examplearbvb.fragment.HistoryMessageFragment_;
 import com.bvblogic.examplearbvb.fragment.NewMessageFragment_;
 import com.bvblogic.examplearbvb.mvp.core.FragmentData;
 import com.bvblogic.examplearbvb.mvp.manager.core.BaseMainActivityManagerUI;
-
-import java.util.ArrayList;
-
 
 
 /**

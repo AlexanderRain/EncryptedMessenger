@@ -1,19 +1,19 @@
 package com.bvblogic.examplearbvb.fragment;
 
-import android.util.Log;
 import android.widget.EditText;
 
 import com.bvblogic.examplearbvb.R;
+import com.bvblogic.examplearbvb.db.domain.Chat;
+import com.bvblogic.examplearbvb.db.domain.Message;
 import com.bvblogic.examplearbvb.fragment.core.BaseFragment;
-import com.bvblogic.examplearbvb.mvp.core.FragmentById;
-import com.bvblogic.examplearbvb.mvp.core.FragmentData;
 import com.bvblogic.examplearbvb.mvp.core.ToolBarById;
 
 import org.androidannotations.annotations.AfterViews;
-import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.ViewById;
+
+import java.util.Random;
 
 @EFragment(R.layout.fragment_auth)
 public class AuthFragment extends BaseFragment {
@@ -28,13 +28,6 @@ public class AuthFragment extends BaseFragment {
     void loginUser(){
         String login = etLogin.getText().toString();
         String pass = etPassword.getText().toString();
-        if(pass != "" && login != ""){
-            // todo enter to system
-            // changeFragmentTo(new FragmentData(FragmentById.NEXT_FRAGMENT));
-        }
-
-        //changeFragmentTo(new FragmentData(FragmentById.SPLASH_FRAGMENT));
-        Log.d("Data", login + " " + pass);
     }
 
     @Click(R.id.btnSignUp)
@@ -44,7 +37,18 @@ public class AuthFragment extends BaseFragment {
 
     @AfterViews
     public void init() {
-       // BaseFragment.changeColorBar(getActivity(), BaseFragment.ColorBar.BLUE);
-       // initToolBar(ToolBarById.CLOSE);
+        initToolBar(ToolBarById.CLOSE);
+        BaseFragment.changeColorBar(getActivity(), BaseFragment.ColorBar.BLUE);
+        initToolBar(ToolBarById.CLOSE);
+
+        //testing data
+        Message message = new Message();
+        message.setId(new Random().nextInt());
+        message.setText("let's smoke bamboo ;D");
+        message.setTime("11:50");
+
+        Chat chat = new Chat();
+        chat.setId(1);
+        chat.setChatName("lalala");
     }
 }

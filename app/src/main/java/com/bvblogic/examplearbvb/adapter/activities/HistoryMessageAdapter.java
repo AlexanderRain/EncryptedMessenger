@@ -1,6 +1,5 @@
 package com.bvblogic.examplearbvb.adapter.activities;
 
-import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,10 +7,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.bvblogic.examplearbvb.R;
-import com.bvblogic.examplearbvb.db.domain.MyMessage;
+import com.bvblogic.examplearbvb.db.domain.Message;
 
 import org.androidannotations.annotations.EBean;
-import org.androidannotations.annotations.ViewById;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +18,7 @@ import java.util.List;
 public class HistoryMessageAdapter extends
         RecyclerView.Adapter<HistoryMessageAdapter.ViewHolder> {
 
-    private List<MyMessage> messageList = new ArrayList<>();
+    private List<Message> messageList = new ArrayList<>();
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -39,7 +37,7 @@ public class HistoryMessageAdapter extends
         return messageList.size();
     }
 
-    public void setItems(List<MyMessage> messageList){
+    public void setItems(List<Message> messageList){
         this.messageList = messageList;
         notifyDataSetChanged();
     }
@@ -55,12 +53,12 @@ public class HistoryMessageAdapter extends
             tvMessageTime = itemView.findViewById(R.id.tvMessageTime);
         }
 
-        public void bind(MyMessage message){
-            tvBodyMessage.setText(message.getMessage());
-            tvMessageTime.setText(message.getDate());
-            if(message.isReceived())
+        public void bind(Message message){
+            tvBodyMessage.setText(message.getText());
+            tvMessageTime.setText(message.getTime());
+            /*if(message.isReceived())
                 tvTypeMessage.setText("received");
-            else tvTypeMessage.setText("sent");
+            else tvTypeMessage.setText("sent");*/
         }
     }
 }

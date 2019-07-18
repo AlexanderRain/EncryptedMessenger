@@ -23,7 +23,6 @@ import io.reactivex.schedulers.Schedulers;
 
 public class UserDataManager {
 
-
     public void getAllUsers(AppDatabase appDatabase, DBView<List<User>> listDBView) {
         listDBView.showWait();
         appDatabase.userDao().getAll()
@@ -43,7 +42,6 @@ public class UserDataManager {
                     }
                 });
     }
-
 
     public void saveUser(User user, AppDatabase appDatabase, DBView<Long> listDBView) {
         listDBView.showWait();

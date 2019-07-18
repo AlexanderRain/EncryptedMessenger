@@ -17,7 +17,7 @@ public class Message {
     private String text;
 
     @ColumnInfo(name = "time")
-    private long time;
+    private String time;
 
     @ColumnInfo(name = "chat_id")
     private int chatId;
@@ -41,11 +41,11 @@ public class Message {
         this.text = text;
     }
 
-    public long getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(long time) {
+    public void setTime(String time) {
         this.time = time;
     }
 
