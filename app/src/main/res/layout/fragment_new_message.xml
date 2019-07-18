@@ -57,11 +57,11 @@
         />
 
     <TextView
-        android:id="@+id/userName"
+        android:id="@+id/tvUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:text="TextView"
+        android:text="username"
         app:layout_constraintStart_toStartOf="@+id/messageField"
         app:layout_constraintTop_toTopOf="@+id/btnJournal" />
 </android.support.constraint.ConstraintLayout>

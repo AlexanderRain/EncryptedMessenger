@@ -16,7 +16,8 @@ public class MainActivity extends BaseActivity {
 
     @AfterViews
     public void init() {
-        changeFragmentTo(new FragmentData(FragmentById.NEW_MESSAGE_FRAGMENT));
+        changeFragmentTo(new FragmentData(FragmentById.NEW_MESSAGE_FRAGMENT, "Darina"));
+//        changeFragmentTo(new FragmentData(FragmentById.AUTH_FRAGMENT));
     }
 
 

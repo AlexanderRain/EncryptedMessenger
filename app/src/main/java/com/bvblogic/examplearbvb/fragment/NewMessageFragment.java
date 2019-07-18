@@ -1,32 +1,33 @@
 package com.bvblogic.examplearbvb.fragment;
 
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.bvblogic.examplearbvb.R;
+import com.bvblogic.examplearbvb.bean.newMessage.NewMessageView;
 import com.bvblogic.examplearbvb.fragment.core.BaseFragment;
-import com.rengwuxian.materialedittext.MaterialEditText;
 
-import org.androidannotations.annotations.Click;
+import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EFragment;
+import org.androidannotations.annotations.FragmentArg;
 import org.androidannotations.annotations.ViewById;
 
 @EFragment(R.layout.fragment_new_message)
 public class NewMessageFragment extends BaseFragment {
+
+    // This arg is injected when this fragment is created. It will be set in TextView
+    @FragmentArg("username")
+    public String username;
+
+    // TextView for username
     @ViewById
-    public Button btnJournal;
+    TextView tvUsername;
 
-    @ViewById
-    public Button btnSend;
+    @Bean
+    public NewMessageView view;
 
-    @ViewById
-    public MaterialEditText messageField;
-
-    @ViewById
-    public TextView userName;
-
-    @Click(R.id.btnBack)
-    public void back() {
-
+    @AfterViews
+    public void init(){
+        tvUsername.setText(username);
     }
 }
