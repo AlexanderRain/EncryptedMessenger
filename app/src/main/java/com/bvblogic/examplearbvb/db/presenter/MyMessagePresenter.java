@@ -9,7 +9,6 @@ import com.bvblogic.examplearbvb.bean.user.ProviderBeanUser;
 import com.bvblogic.examplearbvb.db.datamanager.MyMessageDataManager;
 import com.bvblogic.examplearbvb.db.datamanager.UserDataManager;
 import com.bvblogic.examplearbvb.db.domain.MyMessage;
-import com.bvblogic.examplearbvb.db.domain.User;
 import com.bvblogic.examplearbvb.db.presenter.core.Presenter;
 
 import org.androidannotations.annotations.Bean;

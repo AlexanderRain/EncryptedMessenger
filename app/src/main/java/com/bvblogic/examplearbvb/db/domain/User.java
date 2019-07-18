@@ -15,61 +15,66 @@ import io.reactivex.annotations.NonNull;
 @Entity(tableName = "user")
 public class User {
 
+
     @PrimaryKey()
     @ColumnInfo(name = "user_id")
     @NonNull
     private int uid;
 
-    @ColumnInfo(name = "first_name")
-    private String firstName;
-
-    @ColumnInfo(name = "last_name")
-    private String lastName;
-
-    @ColumnInfo(name = "username")
-    private String username;
+    @ColumnInfo(name = "name")
+    private String name;
 
     @ColumnInfo(name = "email")
     private String email;
 
-    @ColumnInfo(name = "telegram")
-    private String telegram;
+    @ColumnInfo(name = "mobile")
+    private String mobile;
 
-    @ColumnInfo(name = "phone")
-    private String phone;
+    @ColumnInfo(name = "dolznost")
+    private String post;
 
-    @ColumnInfo(name = "photo")
-    private String photo;
+    @ColumnInfo(name = "company")
+    private String company;
+
+    @ColumnInfo(name = "home")
+    private String home;
+
+    @ColumnInfo(name = "logo")
+    private String logo;
+
+    @ColumnInfo(name = "department")
+    private String department;
+
+
+    @ColumnInfo(name = "username")
+    private String username;
+
+    @ColumnInfo(name = "token")
+    private String token;
+
+
+    public String getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(String department) {
+        this.department = department;
+    }
 
     public int getUid() {
         return uid;
     }
+
     public void setUid(int uid) {
         this.uid = uid;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getName() {
+        return name;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getEmail() {
@@ -80,27 +85,64 @@ public class User {
         this.email = email;
     }
 
-    public String getTelegram() {
-        return telegram;
+    public String getMobile() {
+        return mobile;
     }
 
-    public void setTelegram(String telegram) {
-        this.telegram = telegram;
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
     }
 
-    public String getPhone() {
-        return phone;
+    public String getPost() {
+        return post;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setPost(String post) {
+        this.post = post;
     }
 
-    public String getPhoto() {
-        return photo;
+    public String getCompany() {
+        return company;
     }
 
-    public void setPhoto(String photo) {
-        this.photo = photo;
+    public void setCompany(String company) {
+        this.company = company;
+    }
+
+    public String getHome() {
+        return home;
+    }
+
+    public void setHome(String home) {
+        this.home = home;
+    }
+
+    public String getLogo() {
+        return logo;
+    }
+
+    public void setLogo(String logo) {
+        this.logo = logo;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    @Override
+    public String toString() {
+        return name;
     }
 }

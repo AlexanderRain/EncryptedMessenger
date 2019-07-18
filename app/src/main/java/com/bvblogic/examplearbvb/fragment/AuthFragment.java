@@ -33,7 +33,7 @@ public class AuthFragment extends BaseFragment {
             // changeFragmentTo(new FragmentData(FragmentById.NEXT_FRAGMENT));
         }
 
-        changeFragmentTo(new FragmentData(FragmentById.SPLASH_FRAGMENT));
+        //changeFragmentTo(new FragmentData(FragmentById.SPLASH_FRAGMENT));
         Log.d("Data", login + " " + pass);
     }
 

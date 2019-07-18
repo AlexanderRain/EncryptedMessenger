@@ -1,10 +1,8 @@
 package com.bvblogic.examplearbvb.db.core;
 
-import android.arch.persistence.db.SupportSQLiteDatabase;
 import android.arch.persistence.room.Database;
 import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
-import android.arch.persistence.room.migration.Migration;
 import android.content.Context;
 
 import com.bvblogic.examplearbvb.db.dao.MyMessageDao;

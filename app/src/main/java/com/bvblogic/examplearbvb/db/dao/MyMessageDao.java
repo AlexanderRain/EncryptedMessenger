@@ -7,7 +7,6 @@ import android.arch.persistence.room.OnConflictStrategy;
 import android.arch.persistence.room.Query;
 
 import com.bvblogic.examplearbvb.db.domain.MyMessage;
-import com.bvblogic.examplearbvb.db.domain.User;
 
 import java.util.List;
 
@@ -28,4 +27,3 @@ public interface MyMessageDao {
     @Delete
     void delete(MyMessage message);
 }
-

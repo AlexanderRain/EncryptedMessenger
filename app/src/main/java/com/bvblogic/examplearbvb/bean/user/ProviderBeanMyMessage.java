@@ -4,10 +4,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.bvblogic.examplearbvb.adapter.activities.HistoryMessageAdapter;
-import com.bvblogic.examplearbvb.adapter.activities.UserAdapter;
 import com.bvblogic.examplearbvb.bean.core.Bean;
 import com.bvblogic.examplearbvb.db.domain.MyMessage;
-import com.bvblogic.examplearbvb.db.domain.User;
 
 import org.androidannotations.annotations.EBean;
 

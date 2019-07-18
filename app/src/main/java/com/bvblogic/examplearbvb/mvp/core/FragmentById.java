@@ -1,10 +1,8 @@
 package com.bvblogic.examplearbvb.mvp.core;
 
 public enum FragmentById {
-    SPLASH_FRAGMENT,
+    CHAT_ADDITION,
     NEW_MESSAGE_FRAGMENT,
     AUTH_FRAGMENT,
-    HISTORY_MESSAGE_FRAGMENT,
-    NEW_FRAGMENT,
-    NEW_NEW
+    HISTORY_MESSAGE_FRAGMENT;
 }

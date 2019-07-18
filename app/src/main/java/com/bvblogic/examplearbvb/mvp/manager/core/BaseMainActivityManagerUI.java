@@ -31,7 +31,7 @@ public abstract class BaseMainActivityManagerUI extends BaseManagerUI {
                 break;
             }
         }
-        updateToolbar(baseFragment, inflate);
+        //updateToolbar(baseFragment, inflate);
     }
 
     private void updateToolbar(BaseFragment baseFragment, View inflate) {

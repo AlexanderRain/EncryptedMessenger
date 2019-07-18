@@ -6,11 +6,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import com.bvblogic.examplearbvb.R;
+import com.bvblogic.examplearbvb.fragment.instruments.ChatAdditionFragment;
+import com.bvblogic.examplearbvb.fragment.instruments.ChatAdditionFragment_;
 import com.bvblogic.examplearbvb.fragment.AuthFragment_;
 import com.bvblogic.examplearbvb.fragment.HistoryMessageFragment;
 import com.bvblogic.examplearbvb.fragment.HistoryMessageFragment_;
 import com.bvblogic.examplearbvb.fragment.NewMessageFragment_;
-import com.bvblogic.examplearbvb.fragment.SplashFragment_;
 import com.bvblogic.examplearbvb.mvp.core.FragmentData;
 import com.bvblogic.examplearbvb.mvp.manager.core.BaseMainActivityManagerUI;
 
@@ -40,13 +41,12 @@ public class MainActivityManagerUI extends BaseMainActivityManagerUI {
     @Override
     public void changeFragmentTo(FragmentData fragment) {
         switch (fragment.getFragmentById()) {
-            case SPLASH_FRAGMENT: {
-                addFragmentToContainer(SplashFragment_.builder().build(), false,
+            case CHAT_ADDITION: {
+                addFragmentToContainer(ChatAdditionFragment_.builder().build(), false,
                         this.getActivity().getSupportFragmentManager().beginTransaction()
                                 .setCustomAnimations(0, android.R.anim.fade_out));
                 break;
             }
-            
             case NEW_MESSAGE_FRAGMENT: {
                 // check if fragment has data to insert and it's length is 1 (One name)
                 if(fragment.getObject() != null && fragment.getObject().length == 1){
