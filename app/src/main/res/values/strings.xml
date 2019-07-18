@@ -1,9 +1,5 @@
 <resources>
-    <string name="app_name">exampleArBvb</string>
-    <string name="enter_message_hint">Enter message...</string>
-    <string name="btn_journal">Journal</string>
-    <string name="btn_back">Back</string>
-    <string name="btn_send">Send</string>
+    <string name="app_name">EncryptedMessenger</string>
     <string name="login">Login</string>
     <string name="password">Password</string>
     <string name="signUp">Sign up</string>
