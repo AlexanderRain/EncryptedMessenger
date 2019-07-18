@@ -16,8 +16,7 @@ public class SMSInstrument implements Instrument {
     @RootContext
     Context context;
 
-    @Bean
-    SMSInstrumentFragment fragment;
+    SMSInstrumentFragment fragment = SMSInstrumentFragment_.builder().build();
 
     @Override
     public SMSInstrumentFragment getFragment() {

@@ -32,7 +32,7 @@
 
     <fragment
         android:id="@+id/data_fragment"
-        android:name="android.support.v4.app.Fragment"
+        android:name="com.bvblogic.examplearbvb.fragment.EmptyFragment_"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"

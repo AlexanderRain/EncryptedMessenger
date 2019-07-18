@@ -1,18 +1,19 @@
 package com.bvblogic.examplearbvb.adapter.instruments;
 
 import android.content.Context;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
-import android.view.PointerIcon;
+import android.util.Log;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.bvblogic.examplearbvb.adapter.core.ViewWrapper;
 import com.bvblogic.examplearbvb.bean.instruments.Instrument;
-import com.bvblogic.examplearbvb.fragment.instruments.ChatAdditionInstrumentView;
+import com.bvblogic.examplearbvb.bean.instruments.Instruments;
+import com.bvblogic.examplearbvb.fragment.instruments.ChatAdditionFragment;
 
+import org.androidannotations.annotations.AfterInject;
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EBean;
 import org.androidannotations.annotations.RootContext;
@@ -24,11 +25,19 @@ public class Adapter extends RecyclerView.Adapter {
     @RootContext
     Context context;
 
-    @Bean
-    List<Instrument> instruments;
+    ChatAdditionFragment fragment;
 
     @Bean
-    ChatAdditionInstrumentView instrumentView;
+    Instruments availableInstruments;
+
+    List<Instrument> instruments;
+
+    private int current = -1;
+
+    @AfterInject
+    void init() {
+        instruments = availableInstruments.getInstruments();
+    }
 
     @NonNull
     @Override
@@ -50,13 +59,23 @@ public class Adapter extends RecyclerView.Adapter {
         view.refreshDrawableState();
 
         view.setOnClickListener(v -> {
-            instrumentView.setFragment(instrument.getFragment());
-            instrumentView.setName(instrument.getName());
+            fragment.setFragment(instrument.getFragment());
+            fragment.setName(instrument.getName());
+
+            current = i;
         });
     }
 
     @Override
     public int getItemCount() {
         return instruments.size();
+    }
+
+    public void setFragment(ChatAdditionFragment fragment) {
+        this.fragment = fragment;
+    }
+
+    public Instrument getInstrument() {
+        return instruments.get(current);
     }
 }

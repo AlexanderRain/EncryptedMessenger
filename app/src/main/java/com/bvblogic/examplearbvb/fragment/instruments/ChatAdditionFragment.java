@@ -1,8 +1,10 @@
 package com.bvblogic.examplearbvb.fragment.instruments;
 
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.TextView;
 
 import com.bvblogic.examplearbvb.R;
 import com.bvblogic.examplearbvb.adapter.instruments.Adapter;
@@ -17,22 +19,21 @@ import org.androidannotations.annotations.ViewById;
 
 import java.util.Objects;
 
-import carbon.widget.FloatingActionButton;
-import carbon.widget.TextView;
+
 
 @EFragment(R.layout.fragment_chat_addition)
-public class ChatAdditionFragment extends BaseFragment implements ChatAdditionInstrumentView{
+public class ChatAdditionFragment extends BaseFragment{
     @ViewById(R.id.instruments_list)
-    private RecyclerView recyclerView;
+    RecyclerView recyclerView;
 
     @ViewById(R.id.add_chat_FAB)
-    private FloatingActionButton button;
+    FloatingActionButton button;
 
     @ViewById(R.id.name_view)
-    private TextView nameView;
+    TextView nameView;
 
     @Bean
-    private Adapter adapter;
+    Adapter adapter;
 
     @Bean
     InstrumentsPresenter presenter;
@@ -40,25 +41,24 @@ public class ChatAdditionFragment extends BaseFragment implements ChatAdditionIn
     @AfterViews
     public void init() {
         initToolBar(ToolBarById.CLOSE);
-        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 4, GridLayoutManager.HORIZONTAL, false));
+        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 4, GridLayoutManager.VERTICAL, false));
         // TODO: resolve spanCount.
 
+        adapter.setFragment(this);
         recyclerView.setAdapter(adapter);
 
         button.setOnClickListener(v -> {
-
+            presenter.saveUser(adapter.getInstrument());
         });
     }
 
-    @Override
     public void setFragment(Fragment fragment) {
         Objects.requireNonNull(getActivity()).getSupportFragmentManager().beginTransaction()
-                .add(R.id.data_fragment, fragment)
+                .replace(R.id.data_fragment, fragment)
                 .commit();
 
     }
 
-    @Override
     public void setName(String name) {
         nameView.setText(name);
     }

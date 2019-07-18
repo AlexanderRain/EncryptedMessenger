@@ -9,6 +9,7 @@ import com.bvblogic.examplearbvb.bean.instruments.BaseInstrumentFragment;
 import com.bvblogic.examplearbvb.mvp.core.ToolBarById;
 
 import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.EBean;
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.ViewById;
 

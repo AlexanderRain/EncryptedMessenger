@@ -15,8 +15,7 @@ public class EmailInstrument implements Instrument {
     @RootContext
     Context context;
 
-    @Bean
-    EmailInstrumentFragment fragment;
+    EmailInstrumentFragment fragment = EmailInstrumentFragment_.builder().build();
 
     @Override
     public EmailInstrumentFragment getFragment() {
