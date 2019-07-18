@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">exampleArBvb</string>
+    <string name="app_name">EncryptedMessenger</string>
     <string name="login">Login</string>
     <string name="password">Password</string>
     <string name="signUp">Sign up</string>
