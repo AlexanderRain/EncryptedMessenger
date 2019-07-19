@@ -9,8 +9,8 @@
         android:id="@+id/tvLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/etPassword"
-        android:layout_marginStart="-81dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="111dp"
         android:gravity="center"
         android:text="@string/login" />
@@ -32,16 +32,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvLogin"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32sp"
         android:layout_marginTop="65dp"
-        android:text="@string/password"
-        android:layout_marginLeft="32sp"/>
+        android:text="@string/password" />
 
     <com.rengwuxian.materialedittext.MaterialEditText
         android:id="@+id/etPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/etLogin"
-        android:layout_marginLeft="18dp"
+        android:layout_alignStart="@+id/etLogin"
+        android:layout_marginStart="0dp"
+        android:layout_marginLeft="19dp"
         android:layout_marginTop="37dp"
         android:layout_toRightOf="@id/tvPass"
         android:ems="10"
