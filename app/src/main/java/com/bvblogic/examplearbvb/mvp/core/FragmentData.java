@@ -11,8 +11,7 @@ public class FragmentData extends BaseFragmentData {
         this.fragmentByID = fragmentById;
     }
 
-
-    public FragmentData(FragmentById fragmentById, Object ... object) {
+    public FragmentData(FragmentById fragmentById, Object... object) {
         this.fragmentByID = fragmentById;
         this.object = object;
     }

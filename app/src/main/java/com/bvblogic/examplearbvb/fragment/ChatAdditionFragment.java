@@ -37,6 +37,7 @@ public class ChatAdditionFragment extends BaseFragment{
 
     @Bean
     InstrumentsPresenter presenter;
+
     @AfterViews
     public void init() {
         initToolBar(ToolBarById.CLOSE);

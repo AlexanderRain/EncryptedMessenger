@@ -3,20 +3,20 @@ package com.bvblogic.examplearbvb.bean.user;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
-import com.bvblogic.examplearbvb.adapter.activities.HistoryMessageAdapter;
+import com.bvblogic.examplearbvb.adapter.chats.ChatsAdapter;
 import com.bvblogic.examplearbvb.bean.core.Bean;
-import com.bvblogic.examplearbvb.db.domain.Message;
+import com.bvblogic.examplearbvb.db.domain.Chat;
 
 import org.androidannotations.annotations.EBean;
 
 import java.util.List;
 
+
 @EBean
-public class ProviderBeanMyMessage extends Bean {
+public class ProviderBeanChat extends Bean {
 
     @org.androidannotations.annotations.Bean
-    public HistoryMessageAdapter adapter;
-
+    ChatsAdapter adapter;
 
     public void initAdapter(RecyclerView rv) {
         rv.setHasFixedSize(true);
@@ -24,9 +24,8 @@ public class ProviderBeanMyMessage extends Bean {
         rv.setAdapter(adapter);
     }
 
-    public void initAdapter(List<Message> users) {
-        adapter.setItems(users);
-
+    public void setItems(List<Chat> chats) {
+        adapter.setItems(chats);
     }
 
 }

@@ -21,45 +21,29 @@ public class User {
     @NonNull
     private int uid;
 
-    @ColumnInfo(name = "name")
-    private String name;
+    @ColumnInfo(name = "chat_id")
+    private int chat_Id;
 
-    @ColumnInfo(name = "email")
-    private String email;
+    @ColumnInfo(name = "first_name")
+    private String firstName;
 
-    @ColumnInfo(name = "mobile")
-    private String mobile;
-
-    @ColumnInfo(name = "dolznost")
-    private String post;
-
-    @ColumnInfo(name = "company")
-    private String company;
-
-    @ColumnInfo(name = "home")
-    private String home;
-
-    @ColumnInfo(name = "logo")
-    private String logo;
-
-    @ColumnInfo(name = "department")
-    private String department;
-
+    @ColumnInfo(name = "last_name")
+    private String lastName;
 
     @ColumnInfo(name = "username")
     private String username;
 
-    @ColumnInfo(name = "token")
-    private String token;
+    @ColumnInfo(name = "email")
+    private String email;
 
+    @ColumnInfo(name = "telegramm")
+    private String telegramm;
 
-    public String getDepartment() {
-        return department;
-    }
+    @ColumnInfo(name = "mobile")
+    private String mobile;
 
-    public void setDepartment(String department) {
-        this.department = department;
-    }
+    @ColumnInfo(name = "logo")
+    private String logo;
 
     public int getUid() {
         return uid;
@@ -69,60 +53,28 @@ public class User {
         this.uid = uid;
     }
 
-    public String getName() {
-        return name;
+    public int getChat_Id() {
+        return chat_Id;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setChat_Id(int chat_Id) {
+        this.chat_Id = chat_Id;
     }
 
-    public String getEmail() {
-        return email;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getMobile() {
-        return mobile;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setMobile(String mobile) {
-        this.mobile = mobile;
-    }
-
-    public String getPost() {
-        return post;
-    }
-
-    public void setPost(String post) {
-        this.post = post;
-    }
-
-    public String getCompany() {
-        return company;
-    }
-
-    public void setCompany(String company) {
-        this.company = company;
-    }
-
-    public String getHome() {
-        return home;
-    }
-
-    public void setHome(String home) {
-        this.home = home;
-    }
-
-    public String getLogo() {
-        return logo;
-    }
-
-    public void setLogo(String logo) {
-        this.logo = logo;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getUsername() {
@@ -133,16 +85,35 @@ public class User {
         this.username = username;
     }
 
-    public String getToken() {
-        return token;
+    public String getEmail() {
+        return email;
     }
 
-    public void setToken(String token) {
-        this.token = token;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    @Override
-    public String toString() {
-        return name;
+    public String getTelegramm() {
+        return telegramm;
+    }
+
+    public void setTelegramm(String telegramm) {
+        this.telegramm = telegramm;
+    }
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
+
+    public String getLogo() {
+        return logo;
+    }
+
+    public void setLogo(String logo) {
+        this.logo = logo;
     }
 }

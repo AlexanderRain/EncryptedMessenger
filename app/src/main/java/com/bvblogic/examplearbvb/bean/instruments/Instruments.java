@@ -1,14 +1,11 @@
 package com.bvblogic.examplearbvb.bean.instruments;
 
-import com.bvblogic.examplearbvb.bean.instruments.Instrument;
 import com.bvblogic.examplearbvb.bean.instruments.email.EmailInstrument;
-import com.bvblogic.examplearbvb.bean.instruments.email.EmailInstrument_;
 import com.bvblogic.examplearbvb.bean.instruments.sms.SMSInstrument;
 
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EBean;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.List;
 

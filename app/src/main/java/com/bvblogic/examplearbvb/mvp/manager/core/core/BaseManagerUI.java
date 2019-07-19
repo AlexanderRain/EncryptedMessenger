@@ -26,7 +26,7 @@ public abstract class BaseManagerUI implements ManagerUI {
 
     protected void addFragmentToContainer(BaseFragment baseFragment, boolean toBackStack, FragmentTransaction transaction) {
         if (toBackStack) {
-            transaction.addToBackStack(baseFragment.getClass().getSimpleName()).add(this.getIdFragmentsContainer(), baseFragment, baseFragment.getClass().getSimpleName());
+            transaction.addToBackStack(baseFragment.getClass().getSimpleName()).replace(this.getIdFragmentsContainer(), baseFragment, baseFragment.getClass().getSimpleName());
         } else {
             transaction.replace(this.getIdFragmentsContainer(), baseFragment,
                     baseFragment.getClass().getSimpleName());

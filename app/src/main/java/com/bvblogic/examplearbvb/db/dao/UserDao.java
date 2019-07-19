@@ -19,17 +19,17 @@ import io.reactivex.Single;
  */
 
 @Dao
-public interface UserDao {
+public abstract class UserDao implements BaseDao<User> {
 
     @Query("SELECT * FROM user")
-    Single<List<User>> getAll();
+    public abstract Single<List<User>> getAll();
 
-    @Query("SELECT COUNT(*) from user")
-    int countUsers();
+    @Query("SELECT * FROM user WHERE chat_id=:id")
+    public abstract Single<User> getUserById(int id);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    List<Long> insertAll(User... users);
+    public abstract void insertAll(List<User> users);
 
     @Delete
-    void delete(User user);
+    public abstract void delete(User user);
 }

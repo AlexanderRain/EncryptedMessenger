@@ -104,4 +104,10 @@ public abstract class BaseFragment extends Fragment {
         }
     }
 
+    public void popBackStack() {
+        if(getActivity() != null) {
+            getActivity().onBackPressed();
+        }
+    }
+
 }

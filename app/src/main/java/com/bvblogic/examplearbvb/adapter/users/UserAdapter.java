@@ -1,4 +1,4 @@
-package com.bvblogic.examplearbvb.adapter.activities;
+package com.bvblogic.examplearbvb.adapter.users;
 
 import android.support.annotation.NonNull;
 import android.view.ViewGroup;
@@ -10,7 +10,6 @@ import com.bvblogic.examplearbvb.db.domain.User;
 
 import org.androidannotations.annotations.EBean;
 import org.androidannotations.annotations.RootContext;
-
 
 @EBean
 public class UserAdapter extends RecyclerViewAdapterBase<User, UserItemView> {
@@ -26,8 +25,7 @@ public class UserAdapter extends RecyclerViewAdapterBase<User, UserItemView> {
     @Override
     public void onBindViewHolder(@NonNull ViewWrapper<UserItemView> activitiesItemViewViewWrapper, int i) {
         UserItemView view = activitiesItemViewViewWrapper.getView();
-        User user = items.get(i);
         view.setTag(i);
-        view.bind(user, i);
+        view.bind(items.get(i), i);
     }
 }
