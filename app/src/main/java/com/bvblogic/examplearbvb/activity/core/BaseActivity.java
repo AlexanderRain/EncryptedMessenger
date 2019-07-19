@@ -39,6 +39,9 @@ public abstract class BaseActivity extends AppCompatActivity implements Fragment
         this.managerUI.initToolbar(baseFragment, toolBarById, label);
     }
 
+    public void popBackStack() {
+        super.onBackPressed();
+    }
 
     @Override
     public void onBackPressed() {

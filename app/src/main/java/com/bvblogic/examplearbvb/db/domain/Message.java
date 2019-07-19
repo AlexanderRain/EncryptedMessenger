@@ -6,7 +6,7 @@ import android.arch.persistence.room.PrimaryKey;
 
 import io.reactivex.annotations.NonNull;
 
-@Entity(tableName = "мessage")
+@Entity(tableName = "message")
 public class Message {
     @PrimaryKey()
     @ColumnInfo(name = "id")
@@ -16,14 +16,25 @@ public class Message {
     @ColumnInfo(name = "text")
     private String text;
 
+    @ColumnInfo(name = "type")
+    private String type;
+
     @ColumnInfo(name = "time")
-    private long time;
+    private String time;
 
     @ColumnInfo(name = "chat_id")
     private int chatId;
 
     @ColumnInfo(name = "user")
     private String userName;
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 
     public int getId() {
         return id;
@@ -41,11 +52,11 @@ public class Message {
         this.text = text;
     }
 
-    public long getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(long time) {
+    public void setTime(String time) {
         this.time = time;
     }
 

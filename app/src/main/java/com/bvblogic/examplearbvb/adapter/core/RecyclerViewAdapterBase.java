@@ -1,5 +1,6 @@
 package com.bvblogic.examplearbvb.adapter.core;
 
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,7 +35,7 @@ public abstract class RecyclerViewAdapterBase<T, V extends View> extends Recycle
     }
 
     @Override
-    public final ViewWrapper<V> onCreateViewHolder(ViewGroup parent, int viewType) {
+    public final ViewWrapper<V> onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return new ViewWrapper<V>(onCreateItemView(parent, viewType));
     }
 

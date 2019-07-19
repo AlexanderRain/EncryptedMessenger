@@ -12,11 +12,12 @@ import java.util.List;
 import io.reactivex.Single;
 
 @Dao
-public interface ChatDao {
+public abstract class ChatDao implements BaseDao<Chat> {
 
     @Query("SELECT * FROM chat")
-    Single<List<Chat>> getAll();
+    public abstract Single<List<Chat>> getAll();
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    List<Long> insertAll(Chat... chats);
+    public abstract void insertAll(List<Chat> chats);
+
 }

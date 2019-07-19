@@ -1,7 +1,7 @@
-package com.bvblogic.examplearbvb.adapter.activities;
+package com.bvblogic.examplearbvb.adapter.users;
 
 import android.annotation.SuppressLint;
-import android.text.Html;
+import android.content.Context;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -16,13 +16,12 @@ import org.androidannotations.annotations.ViewById;
 @EViewGroup(R.layout.item_user)
 public class UserItemView extends LinearLayout {
 
-    @ViewById(R.id.name)
-    TextView name;
-
-
-    public UserItemView(BaseActivity context) {
+    public UserItemView(Context context) {
         super(context);
     }
+
+    @ViewById(R.id.name)
+    TextView name;
 
     @SuppressLint("CheckResult")
     public void bind(User user, int i) {

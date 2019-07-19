@@ -2,18 +2,10 @@ package com.bvblogic.examplearbvb.db.datamanager;
 
 import com.bvblogic.examplearbvb.db.core.AppDatabase;
 import com.bvblogic.examplearbvb.db.datamanager.core.DBView;
+import com.bvblogic.examplearbvb.db.datamanager.core.DataManager;
 import com.bvblogic.examplearbvb.db.domain.User;
-import com.bvblogic.examplearbvb.fragment.core.BaseFragment;
 
-import java.util.List;
-
-import io.reactivex.Completable;
-import io.reactivex.Observable;
-import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Action;
-import io.reactivex.functions.Consumer;
 import io.reactivex.observers.DisposableSingleObserver;
 import io.reactivex.schedulers.Schedulers;
 
@@ -21,18 +13,17 @@ import io.reactivex.schedulers.Schedulers;
  * Created by hanz on 08.05.2018.
  */
 
-public class UserDataManager {
+public class UserDataManager extends DataManager {
 
-
-    public void getAllUsers(AppDatabase appDatabase, DBView<List<User>> listDBView) {
+    public void getSingleUser(AppDatabase appDatabase, DBView<User> listDBView, int id) {
         listDBView.showWait();
-        appDatabase.userDao().getAll()
+        appDatabase.userDao().getUserById(id)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new DisposableSingleObserver<List<User>>() {
+                .subscribe(new DisposableSingleObserver<User>() {
                     @Override
-                    public void onSuccess(List<User> users) {
-                        listDBView.onSuccess(users);
+                    public void onSuccess(User user) {
+                        listDBView.onSuccess(user);
                         listDBView.hideWait();
                     }
 
@@ -42,11 +33,5 @@ public class UserDataManager {
                         listDBView.hideWait();
                     }
                 });
-    }
-
-
-    public void saveUser(User user, AppDatabase appDatabase, DBView<Long> listDBView) {
-        listDBView.showWait();
-        appDatabase.userDao().insertAll(user);
     }
 }

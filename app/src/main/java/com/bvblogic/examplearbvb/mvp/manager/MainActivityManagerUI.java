@@ -3,20 +3,15 @@ package com.bvblogic.examplearbvb.mvp.manager;
 import android.annotation.SuppressLint;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 
 import com.bvblogic.examplearbvb.R;
-import com.bvblogic.examplearbvb.fragment.instruments.ChatAdditionFragment;
-import com.bvblogic.examplearbvb.fragment.instruments.ChatAdditionFragment_;
 import com.bvblogic.examplearbvb.fragment.AuthFragment_;
-import com.bvblogic.examplearbvb.fragment.HistoryMessageFragment;
+import com.bvblogic.examplearbvb.fragment.ChatAdditionFragment_;
+import com.bvblogic.examplearbvb.fragment.ChatsFragment_;
 import com.bvblogic.examplearbvb.fragment.HistoryMessageFragment_;
 import com.bvblogic.examplearbvb.fragment.NewMessageFragment_;
 import com.bvblogic.examplearbvb.mvp.core.FragmentData;
 import com.bvblogic.examplearbvb.mvp.manager.core.BaseMainActivityManagerUI;
-
-import java.util.ArrayList;
-
 
 
 /**
@@ -42,8 +37,10 @@ public class MainActivityManagerUI extends BaseMainActivityManagerUI {
     public void changeFragmentTo(FragmentData fragment) {
         switch (fragment.getFragmentById()) {
             case CHAT_ADDITION: {
-                addFragmentToContainer(ChatAdditionFragment_.builder().build(), false,
-                        this.getActivity().getSupportFragmentManager().beginTransaction()
+                addFragmentToContainer(ChatAdditionFragment_.builder().build(), true,
+                        this.getActivity()
+                                .getSupportFragmentManager()
+                                .beginTransaction()
                                 .setCustomAnimations(0, android.R.anim.fade_out));
                 break;
             }
@@ -52,23 +49,41 @@ public class MainActivityManagerUI extends BaseMainActivityManagerUI {
                 if(fragment.getObject() != null && fragment.getObject().length == 1){
                     // set args for fragment after before building
                     addFragmentToContainer(NewMessageFragment_.builder()
-                                    .username((String)fragment.getObject()[0]).build(), false,
-                            this.getActivity().getSupportFragmentManager().beginTransaction()
+                                    .chatId((Integer)fragment.getObject()[0]).build(), true,
+                            this.getActivity()
+                                    .getSupportFragmentManager()
+                                    .beginTransaction()
                                     .setCustomAnimations(0, android.R.anim.fade_out));
                 }
                 break;
             }
             case AUTH_FRAGMENT:{
                 addFragmentToContainer(AuthFragment_.builder().build(), false,
-                        this.getActivity().getSupportFragmentManager().beginTransaction()
+                        this.getActivity()
+                                .getSupportFragmentManager()
+                                .beginTransaction()
                                 .setCustomAnimations(0, android.R.anim.fade_out));
                 break;
             }
 
             case HISTORY_MESSAGE_FRAGMENT: {
-                addFragmentToContainer(HistoryMessageFragment_.builder().build(), false,
-                        this.getActivity().getSupportFragmentManager().beginTransaction()
-                                .setCustomAnimations(0, android.R.anim.fade_out));
+                if(fragment.getObject() != null && fragment.getObject().length == 1){
+                    addFragmentToContainer(HistoryMessageFragment_.builder()
+                                    .chatId((Integer)fragment.getObject()[0]).build(), true,
+                            this.getActivity()
+                                    .getSupportFragmentManager()
+                                    .beginTransaction()
+                                    .setCustomAnimations(0, android.R.anim.fade_out));
+                }
+                break;
+            }
+
+            case CHATS_FRAGMENT: {
+                addFragmentToContainer(ChatsFragment_.builder().build(), false,
+                        this.getActivity()
+                                .getSupportFragmentManager()
+                                .beginTransaction()
+                                .setCustomAnimations(0,  android.R.anim.fade_out));
                 break;
             }
         }
