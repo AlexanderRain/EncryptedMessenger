@@ -17,6 +17,16 @@ public class Chat {
     @ColumnInfo(name = "chat_name")
     private String chatName;
 
+    // type = email/sms etc
+    @ColumnInfo(name = "type")
+    private String type;
+
+    @ColumnInfo(name = "file_password")
+    private String filePassword;
+
+    @ColumnInfo(name = "user_name")
+    private String userName;
+
     @ColumnInfo(name = "photo")
     private String photo;
 

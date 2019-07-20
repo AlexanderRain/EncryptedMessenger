@@ -10,6 +10,8 @@ import io.reactivex.annotations.NonNull;
 
 /**
  * Created by hanz on 08.05.2018.
+ *
+ *      Not to use it !!!
  */
 
 @Entity(tableName = "user")
