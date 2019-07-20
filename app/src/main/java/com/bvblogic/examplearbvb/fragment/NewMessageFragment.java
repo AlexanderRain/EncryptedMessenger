@@ -4,6 +4,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.bvblogic.examplearbvb.R;
+import com.bvblogic.examplearbvb.bean.instruments.email.SenderBean;
+import com.bvblogic.examplearbvb.db.core.AppDatabase;
+import com.bvblogic.examplearbvb.db.datamanager.UserDataManager;
+import com.bvblogic.examplearbvb.db.domain.User;
 import com.bvblogic.examplearbvb.db.presenter.UserPresenter;
 import com.bvblogic.examplearbvb.fragment.core.BaseFragment;
 import com.bvblogic.examplearbvb.mvp.core.FragmentById;
@@ -26,6 +30,9 @@ public class NewMessageFragment extends BaseFragment {
     @Bean
     UserPresenter userPresenter;
 
+    @Bean
+    SenderBean senderBean;
+
     @ViewById(R.id.messageField)
     EditText messageField;
 
@@ -38,7 +45,11 @@ public class NewMessageFragment extends BaseFragment {
     public void sendMessage(){
         String message = messageField.getText().toString();
 
+        User user = userPresenter.user;
+
+        senderBean.showSenderDialog(user, message);
     }
+
 
     @Click(R.id.btnJournal)
     public void goToJournal(){

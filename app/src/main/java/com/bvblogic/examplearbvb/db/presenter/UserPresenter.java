@@ -19,6 +19,8 @@ public class UserPresenter extends Presenter<User> {
     @Bean
     ProviderBeanUser view;
 
+    public static User user;
+
     public void getUser(int id) {
         new UserDataManager().getSingleUser(appDatabase, this, id);
     }
@@ -26,5 +28,7 @@ public class UserPresenter extends Presenter<User> {
     @Override
     public void onSuccess(User user) {
         view.setUserName(user.getUsername());
+
+        this.user = user;
     }
 }

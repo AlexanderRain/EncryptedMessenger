@@ -30,6 +30,30 @@ public class Chat {
     @ColumnInfo(name = "photo")
     private String photo;
 
+    public void setFilePassword(String filePassword) {
+        this.filePassword = filePassword;
+    }
+
+    public String getFilePassword() {
+        return filePassword;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getType() {
+        return type;
+    }
+
     public int getId() {
         return id;
     }
