@@ -53,4 +53,28 @@ public class Chat {
     public void setPhoto(String photo) {
         this.photo = photo;
     }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getFilePassword() {
+        return filePassword;
+    }
+
+    public void setFilePassword(String filePassword) {
+        this.filePassword = filePassword;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
 }
