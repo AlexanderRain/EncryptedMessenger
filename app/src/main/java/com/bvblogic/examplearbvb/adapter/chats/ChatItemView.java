@@ -18,6 +18,12 @@ public class ChatItemView extends LinearLayout {
         super(context);
     }
 
+    @ViewById(R.id.chat_userName)
+    TextView userName;
+
+    @ViewById(R.id.chat_type)
+    TextView chatType;
+
     @ViewById(R.id.chat_name)
     TextView chatName;
 
@@ -30,6 +36,8 @@ public class ChatItemView extends LinearLayout {
 
     public void bind(Chat chat, int i) {
         chatName.setText(String.valueOf(chat.getChatName()));
+        chatType.setText(String.valueOf(chat.getChatType()));
+        userName.setText(String.valueOf(chat.getUserName()));
         //chatImage
     }
 

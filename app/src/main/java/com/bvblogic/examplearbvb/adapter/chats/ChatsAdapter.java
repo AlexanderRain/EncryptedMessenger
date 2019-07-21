@@ -1,6 +1,7 @@
 package com.bvblogic.examplearbvb.adapter.chats;
 
 import android.support.annotation.NonNull;
+import android.view.View;
 import android.view.ViewGroup;
 
 import com.bvblogic.examplearbvb.activity.core.BaseActivity;
@@ -31,6 +32,7 @@ public class ChatsAdapter extends RecyclerViewAdapterBase<Chat, ChatItemView> {
         view.setTag(i);
         view.bind(chat, i);
         view.setOnClickListener(v ->
-                activity.changeFragmentTo(new FragmentData(FragmentById.NEW_MESSAGE_FRAGMENT, chat.getId())));;
+                activity.changeFragmentTo(new FragmentData(FragmentById.NEW_MESSAGE_FRAGMENT, chat.getId())));
+
     }
 }

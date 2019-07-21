@@ -19,6 +19,7 @@ public class InitialBean extends Bean {
 
     public void saveMessage(List<Message> message) {
         new DataManager().saveData(message, AppDatabase.getAppDatabase(activity).messageDao());
+
     }
 
     public void saveChat(List<Chat> chat) {

@@ -93,16 +93,22 @@ public class AuthFragment extends BaseFragment {
         Chat chat = new Chat();
         chat.setId(0);
         chat.setChatName("lalala");
+        chat.setUserName("Alex");
+        chat.setChatType("email");
         chats.add(chat);
 
         Chat chat1 = new Chat();
         chat1.setId(1);
         chat1.setChatName("Ann");
+        chat1.setUserName("Serg");
+        chat1.setChatType("sms");
         chats.add(chat1);
 
         Chat chat2 = new Chat();
         chat2.setId(2);
         chat2.setChatName("chat");
+        chat2.setUserName("Max");
+        chat2.setChatType("email");
         chats.add(chat2);
 
         User user = new User();

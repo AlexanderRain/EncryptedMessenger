@@ -17,9 +17,9 @@ public class Chat {
     @ColumnInfo(name = "chat_name")
     private String chatName;
 
-    // type = email/sms etc
-    @ColumnInfo(name = "type")
-    private String type;
+    // chatType = email/sms etc
+    @ColumnInfo(name = "chatType")
+    private String chatType;
 
     @ColumnInfo(name = "file_password")
     private String filePassword;
@@ -44,6 +44,28 @@ public class Chat {
 
     public void setChatName(String chatName) {
         this.chatName = chatName;
+    }
+
+    public String getChatType() {
+        return chatType;
+    }
+
+    public void setChatType(String chatType) {
+        this.chatType = chatType;
+    }
+
+    public String getFilePassword() { return filePassword; }
+
+    public void setFilePassword(String userName) {
+        this.userName = userName;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getPhoto() {
