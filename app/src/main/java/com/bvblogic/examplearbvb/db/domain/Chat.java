@@ -3,6 +3,9 @@ package com.bvblogic.examplearbvb.db.domain;
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
+import android.arch.persistence.room.TypeConverters;
+
+import com.bvblogic.examplearbvb.db.converter.SendActionConverter;
 
 import io.reactivex.annotations.NonNull;
 
@@ -17,18 +20,26 @@ public class Chat {
     @ColumnInfo(name = "chat_name")
     private String chatName;
 
-    // chatType = email/sms etc
-    @ColumnInfo(name = "chatType")
-    private String chatType;
+    // type = email/sms etc
+    @ColumnInfo(name = "type")
+    @TypeConverters({SendActionConverter.class})
+    private SendAction type;
+
+    // recipient address (email/phone)
+    @ColumnInfo(name = "address")
+    private String address;
 
     @ColumnInfo(name = "file_password")
     private String filePassword;
 
     @ColumnInfo(name = "user_name")
-    private String userName;
+    private String recipient;
 
     @ColumnInfo(name = "photo")
     private String photo;
+
+    public Chat() {
+    }
 
     public int getId() {
         return id;
@@ -46,26 +57,36 @@ public class Chat {
         this.chatName = chatName;
     }
 
-    public String getChatType() {
-        return chatType;
+    public SendAction getType() {
+        return type;
     }
 
-    public void setChatType(String chatType) {
-        this.chatType = chatType;
+    public void setType(SendAction type) {
+        this.type = type;
     }
 
-    public String getFilePassword() { return filePassword; }
-
-    public void setFilePassword(String userName) {
-        this.userName = userName;
+    public String getAddress() {
+        return address;
     }
 
-    public String getUserName() {
-        return userName;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public String getFilePassword() {
+        return filePassword;
+    }
+
+    public void setFilePassword(String filePassword) {
+        this.filePassword = filePassword;
+    }
+
+    public String getRecipient() {
+        return recipient;
+    }
+
+    public void setRecipient(String recipient) {
+        this.recipient = recipient;
     }
 
     public String getPhoto() {

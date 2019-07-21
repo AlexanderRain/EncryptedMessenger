@@ -1,10 +1,21 @@
 package com.bvblogic.examplearbvb.bean.instruments;
 
+import com.bvblogic.examplearbvb.db.domain.Chat;
+import com.bvblogic.examplearbvb.db.presenter.ChatsPresenter;
+
+import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EBean;
 
 @EBean
 public class InstrumentsPresenter {
-    public void saveUser(Instrument instrument) {
-        // TODO: user creation
+    @Bean
+    ChatsPresenter chatsPresenter;
+
+    public void saveUser(Instrument instrument, String username, String chatName) {
+        Chat chat = new Chat();
+        chat.setRecipient(username);
+        chat.setChatName(chatName);
+        chat.setType(instrument.getAction());
+        chatsPresenter.addChat(chat);
     }
 }

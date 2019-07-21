@@ -31,6 +31,14 @@ public class ChatsPresenter extends Presenter<List<Chat>> {
         new ChatDataManager().getAllChats(appDatabase, this);
     }
 
+    public void addChat(Chat chat) {
+        new ChatDataManager().addChat(appDatabase, chat);
+    }
+
+    public void updateChat(Chat chat) {
+        new ChatDataManager().updateChat(appDatabase, chat);
+    }
+
     @Override
     public void onSuccess(List<Chat> chats) {
         providerBeanChat.initAdapter(recyclerView);

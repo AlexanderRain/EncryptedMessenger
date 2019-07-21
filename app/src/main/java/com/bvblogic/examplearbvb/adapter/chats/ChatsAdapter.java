@@ -31,8 +31,5 @@ public class ChatsAdapter extends RecyclerViewAdapterBase<Chat, ChatItemView> {
         Chat chat = items.get(i);
         view.setTag(i);
         view.bind(chat, i);
-        view.setOnClickListener(v ->
-                activity.changeFragmentTo(new FragmentData(FragmentById.NEW_MESSAGE_FRAGMENT, chat.getId())));
-
     }
 }

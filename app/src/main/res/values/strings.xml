@@ -2,7 +2,7 @@
     <string name="app_name">EncryptedMessenger</string>
     <string name="sms_instrument_name">SMS</string>
     <string name="phone_name">Phone</string>
-    <string name="name_name">Name</string>
+    <string name="username_name">Username</string>
     <string name="email_name">Email</string>
     <string name="email_instrument_name">Email</string>
     <string name="enter_message_hint">Enter message…</string>
@@ -12,4 +12,7 @@
     <string name="login">Login</string>
     <string name="password">Password</string>
     <string name="signUp">Sign up</string>
+    <string name="chat_name">Chat Name</string>
+    <string name="mail">MAIL</string>
+    <string name="or">OR</string>
 </resources>
