@@ -30,6 +30,15 @@ public class Chat {
     @ColumnInfo(name = "photo")
     private String photo;
 
+    public Chat(String chatName, String type, String userName) {
+        this.chatName = chatName;
+        this.type = type;
+        this.userName = userName;
+    }
+
+    public Chat() {
+    }
+
     public int getId() {
         return id;
     }

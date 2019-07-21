@@ -32,4 +32,12 @@ public class ChatDataManager extends DataManager {
                     }
                 });
     }
+
+    public void addChat(AppDatabase appDatabase, Chat chat) {
+        appDatabase.chatDao().add(chat);
+    }
+
+    public void updateChat(AppDatabase appDatabase, Chat chat) {
+        appDatabase.chatDao().update(chat);
+    }
 }
