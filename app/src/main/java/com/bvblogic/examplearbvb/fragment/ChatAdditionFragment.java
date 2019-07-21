@@ -4,6 +4,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.bvblogic.examplearbvb.R;
@@ -14,6 +15,7 @@ import com.bvblogic.examplearbvb.mvp.core.ToolBarById;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Bean;
+import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.ViewById;
 
@@ -29,8 +31,14 @@ public class ChatAdditionFragment extends BaseFragment{
     @ViewById(R.id.add_chat_FAB)
     FloatingActionButton button;
 
-    @ViewById(R.id.name_view)
-    TextView nameView;
+    @ViewById(R.id.instrument_name_view)
+    TextView instrumentNameView;
+
+    @ViewById(R.id.chat_name)
+    EditText chatNameView;
+
+    @ViewById(R.id.username)
+    EditText usernameView;
 
     @Bean
     Adapter adapter;
@@ -46,10 +54,11 @@ public class ChatAdditionFragment extends BaseFragment{
 
         adapter.setFragment(this);
         recyclerView.setAdapter(adapter);
+    }
 
-        button.setOnClickListener(v -> {
-            presenter.saveUser(adapter.getInstrument());
-        });
+    @Click(R.id.add_chat_FAB)
+    void FABClick() {
+        presenter.saveUser(adapter.getInstrument(), usernameView.getText().toString(), chatNameView.getText().toString());
     }
 
     public void setFragment(Fragment fragment) {
@@ -60,6 +69,6 @@ public class ChatAdditionFragment extends BaseFragment{
     }
 
     public void setName(String name) {
-        nameView.setText(name);
+        instrumentNameView.setText(name);
     }
 }

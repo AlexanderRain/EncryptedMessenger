@@ -4,6 +4,7 @@ import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.OnConflictStrategy;
 import android.arch.persistence.room.Query;
+import android.arch.persistence.room.Update;
 
 import com.bvblogic.examplearbvb.db.domain.Chat;
 
@@ -23,4 +24,9 @@ public abstract class ChatDao implements BaseDao<Chat> {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     public abstract void insertAll(List<Chat> chats);
 
+    @Insert(onConflict = OnConflictStrategy.FAIL)
+    public abstract void add(Chat chat);
+
+    @Update(onConflict = OnConflictStrategy.REPLACE)
+    public abstract void update(Chat chat);
 }

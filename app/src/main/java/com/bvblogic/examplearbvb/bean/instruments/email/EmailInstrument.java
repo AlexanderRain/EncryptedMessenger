@@ -6,7 +6,6 @@ import com.bvblogic.examplearbvb.R;
 import com.bvblogic.examplearbvb.bean.instruments.ChatMechanism;
 import com.bvblogic.examplearbvb.bean.instruments.Instrument;
 
-import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EBean;
 import org.androidannotations.annotations.RootContext;
 
@@ -30,11 +29,6 @@ public class EmailInstrument implements Instrument {
     @Override
     public String getName() {
         return context.getString(R.string.email_instrument_name);
-    }
-
-    @Override
-    public String getUserName() {
-        return fragment.getName();
     }
 
     @Override
