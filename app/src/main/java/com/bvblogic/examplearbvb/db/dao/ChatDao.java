@@ -18,6 +18,9 @@ public abstract class ChatDao implements BaseDao<Chat> {
     @Query("SELECT * FROM chat")
     public abstract Single<List<Chat>> getAll();
 
+    @Query("SELECT * FROM chat WHERE id=:id")
+    public abstract Single<Chat> getById(int id);
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     public abstract void insertAll(List<Chat> chats);
 

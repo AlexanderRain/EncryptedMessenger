@@ -39,5 +39,24 @@ public class ChatDataManager extends DataManager {
 
     public void updateChat(AppDatabase appDatabase, Chat chat) {
         appDatabase.chatDao().update(chat);
+      
+     public void getById(int id, AppDatabase database, DBView<Chat> listDBView) {
+        listDBView.showWait();
+         database.chatDao().getById(id)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new DisposableSingleObserver<Chat>() {
+                    @Override
+                    public void onSuccess(Chat data) {
+                        listDBView.onSuccess(data);
+                        listDBView.hideWait();
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        listDBView.onError(e);
+                        listDBView.hideWait();
+                    }
+                });
     }
 }

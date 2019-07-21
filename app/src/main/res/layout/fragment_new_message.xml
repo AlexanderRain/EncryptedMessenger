@@ -47,21 +47,29 @@
         android:layout_marginTop="176dp"
         android:layout_marginEnd="24dp"
         android:ems="10"
-        android:autoSizeTextType="uniform"
         android:hint="@string/enter_message_hint"
+        app:autoSizeTextType="uniform"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:autoSizeTextType="uniform"
 
         />
 
     <TextView
-        android:id="@+id/tvUsername"
+        android:id="@+id/user_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:text="username"
-        app:layout_constraintStart_toStartOf="@+id/messageField"
-        app:layout_constraintTop_toTopOf="@+id/btnJournal" />
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/messageField"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/chat_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="80dp"
+        app:layout_constraintBottom_toTopOf="@+id/messageField"
+        app:layout_constraintStart_toStartOf="parent" />
 </android.support.constraint.ConstraintLayout>
