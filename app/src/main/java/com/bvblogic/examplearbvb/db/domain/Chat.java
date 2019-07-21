@@ -3,6 +3,9 @@ package com.bvblogic.examplearbvb.db.domain;
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
+import android.arch.persistence.room.TypeConverters;
+
+import com.bvblogic.examplearbvb.db.converter.SendActionConverter;
 
 import io.reactivex.annotations.NonNull;
 
@@ -19,13 +22,18 @@ public class Chat {
 
     // type = email/sms etc
     @ColumnInfo(name = "type")
-    private String type;
+    @TypeConverters({SendActionConverter.class})
+    private SendAction type;
+
+    // recipient address (email/phone)
+    @ColumnInfo(name = "address")
+    private String address;
 
     @ColumnInfo(name = "file_password")
     private String filePassword;
 
     @ColumnInfo(name = "user_name")
-    private String userName;
+    private String recipient;
 
     @ColumnInfo(name = "photo")
     private String photo;
@@ -38,20 +46,36 @@ public class Chat {
         return filePassword;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUserName(String recipient) {
+        this.recipient = recipient;
     }
 
     public String getUserName() {
-        return userName;
+        return recipient;
     }
 
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public String getType() {
+    public SendAction getType() {
         return type;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getRecipient() {
+        return recipient;
+    }
+
+    public void setRecipient(String recipient) {
+        this.recipient = recipient;
+    }
+
+    public void setType(SendAction type) {
+        this.type = type;
     }
 
     public int getId() {

@@ -5,7 +5,6 @@ import com.bvblogic.examplearbvb.db.core.AppDatabase;
 import com.bvblogic.examplearbvb.db.datamanager.core.DataManager;
 import com.bvblogic.examplearbvb.db.domain.Chat;
 import com.bvblogic.examplearbvb.db.domain.Message;
-import com.bvblogic.examplearbvb.db.domain.User;
 
 import org.androidannotations.annotations.EBean;
 
@@ -23,9 +22,5 @@ public class InitialBean extends Bean {
 
     public void saveChat(List<Chat> chat) {
         new DataManager().saveData(chat, AppDatabase.getAppDatabase(activity).chatDao());
-    }
-
-    public void saveUser(List<User> user) {
-        new DataManager().saveData(user, AppDatabase.getAppDatabase(activity).userDao());
     }
 }

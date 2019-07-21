@@ -6,8 +6,7 @@ import com.bvblogic.examplearbvb.R;
 import com.bvblogic.examplearbvb.bean.InitialBean;
 import com.bvblogic.examplearbvb.db.domain.Chat;
 import com.bvblogic.examplearbvb.db.domain.Message;
-import com.bvblogic.examplearbvb.db.domain.User;
-import com.bvblogic.examplearbvb.db.presenter.AuthPresenter;
+import com.bvblogic.examplearbvb.db.domain.SendAction;
 import com.bvblogic.examplearbvb.fragment.core.BaseFragment;
 import com.bvblogic.examplearbvb.mvp.core.FragmentById;
 import com.bvblogic.examplearbvb.mvp.core.FragmentData;
@@ -21,7 +20,6 @@ import org.androidannotations.annotations.ViewById;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 @EFragment(R.layout.fragment_auth)
 public class AuthFragment extends BaseFragment {
@@ -61,7 +59,6 @@ public class AuthFragment extends BaseFragment {
         //testing data
         List<Message> messages = new ArrayList<>();
         List<Chat> chats = new ArrayList<>();
-        List<User> users = new ArrayList<>();
 
         Message message = new Message();
         message.setId(0);
@@ -93,39 +90,29 @@ public class AuthFragment extends BaseFragment {
         Chat chat = new Chat();
         chat.setId(0);
         chat.setChatName("lalala");
+        chat.setType(SendAction.SMS);
+        chat.setUserName("Ann");
+        chat.setAddress("0955566366");
         chats.add(chat);
 
         Chat chat1 = new Chat();
         chat1.setId(1);
         chat1.setChatName("Ann");
+        chat1.setUserName("Ann");
+        chat1.setType(SendAction.SMS);
+        chat1.setAddress("0955566366");
         chats.add(chat1);
 
         Chat chat2 = new Chat();
         chat2.setId(2);
         chat2.setChatName("chat");
+        chat2.setUserName("Ann");
+        chat2.setType(SendAction.SMS);
+        chat2.setAddress("0955566366");
         chats.add(chat2);
-
-        User user = new User();
-        user.setUsername("UName");
-        user.setUid(0);
-        user.setChat_Id(0);
-        users.add(user);
-
-        User user1 = new User();
-        user1.setUsername("Ann");
-        user1.setUid(1);
-        user1.setChat_Id(1);
-        users.add(user1);
-
-        User user2 = new User();
-        user2.setUsername("Name");
-        user2.setUid(2);
-        user2.setChat_Id(2);
-        users.add(user2);
 
         initialBean.saveMessage(messages);
         initialBean.saveChat(chats);
-        initialBean.saveUser(users);
 
     }
 }
