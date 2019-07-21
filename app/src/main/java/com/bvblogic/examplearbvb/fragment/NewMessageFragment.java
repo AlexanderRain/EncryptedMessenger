@@ -5,6 +5,7 @@ import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -51,6 +52,10 @@ public class NewMessageFragment extends BaseFragment {
     public void init(){
         userPresenter.getUser(chatId);
         // request permissions
+        requestPermission();
+    }
+
+    private void requestPermission() {
         if (ContextCompat.checkSelfPermission
                 (getActivity(), Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
 
@@ -60,14 +65,4 @@ public class NewMessageFragment extends BaseFragment {
         }
     }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        if (requestCode == PERMISSION_REQUEST_SMS) {
-            if (grantResults.length > 0
-                    && grantResults[0] != PackageManager.PERMISSION_GRANTED) {
-                //permission is not granted
-                popBackStack();
-            }
-        }
-    }
 }

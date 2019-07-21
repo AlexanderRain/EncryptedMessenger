@@ -12,7 +12,7 @@ import io.reactivex.annotations.NonNull;
 @Entity(tableName = "chat")
 public class Chat {
 
-    @PrimaryKey()
+    @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
     @NonNull
     private int id;

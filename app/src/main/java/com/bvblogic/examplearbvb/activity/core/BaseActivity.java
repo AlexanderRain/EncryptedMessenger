@@ -2,7 +2,9 @@ package com.bvblogic.examplearbvb.activity.core;
 
 import android.content.Context;
 import android.net.ConnectivityManager;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 
 import com.bvblogic.examplearbvb.fragment.core.BaseFragment;
 import com.bvblogic.examplearbvb.mvp.core.FragmentData;
@@ -49,5 +51,10 @@ public abstract class BaseActivity extends AppCompatActivity implements Fragment
         if (!managerUI.removeFragment()) {
             super.onBackPressed();
         }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        onBackPressed();
     }
 }
