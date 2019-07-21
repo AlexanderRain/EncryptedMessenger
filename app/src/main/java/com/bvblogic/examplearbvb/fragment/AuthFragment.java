@@ -91,14 +91,14 @@ public class AuthFragment extends BaseFragment {
         chat.setId(0);
         chat.setChatName("lalala");
         chat.setType(SendAction.SMS);
-        chat.setUserName("Ann");
+        chat.setRecipient("Ann");
         chat.setAddress("0955566366");
         chats.add(chat);
 
         Chat chat1 = new Chat();
         chat1.setId(1);
         chat1.setChatName("Ann");
-        chat1.setUserName("Ann");
+        chat1.setRecipient("Ann");
         chat1.setType(SendAction.SMS);
         chat1.setAddress("0955566366");
         chats.add(chat1);
@@ -106,7 +106,7 @@ public class AuthFragment extends BaseFragment {
         Chat chat2 = new Chat();
         chat2.setId(2);
         chat2.setChatName("chat");
-        chat2.setUserName("Ann");
+        chat2.setRecipient("Ann");
         chat2.setType(SendAction.SMS);
         chat2.setAddress("0955566366");
         chats.add(chat2);

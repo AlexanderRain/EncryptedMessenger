@@ -38,50 +38,7 @@ public class Chat {
     @ColumnInfo(name = "photo")
     private String photo;
 
-    public Chat(String chatName, String type, String userName) {
-        this.chatName = chatName;
-        this.type = type;
-        this.userName = userName;
-    }
-
-    public void setFilePassword(String filePassword) {
-        this.filePassword = filePassword;
-    }
-
-    public String getFilePassword() {
-        return filePassword;
-    }
-
-    public void setUserName(String recipient) {
-        this.recipient = recipient;
-    }
-
-    public String getUserName() {
-        return recipient;
-    }
-
-    public SendAction getType() {
-        return type;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getRecipient() {
-        return recipient;
-    }
-
-    public void setRecipient(String recipient) {
-        this.recipient = recipient;
-    }
-
-    public void setType(SendAction type) {
-        this.type = type;
+    public Chat() {
     }
 
     public int getId() {
@@ -100,20 +57,20 @@ public class Chat {
         this.chatName = chatName;
     }
 
-    public String getPhoto() {
-        return photo;
-    }
-
-    public void setPhoto(String photo) {
-        this.photo = photo;
-    }
-
-    public String getType() {
+    public SendAction getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(SendAction type) {
         this.type = type;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getFilePassword() {
@@ -124,11 +81,19 @@ public class Chat {
         this.filePassword = filePassword;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getRecipient() {
+        return recipient;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setRecipient(String recipient) {
+        this.recipient = recipient;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 }

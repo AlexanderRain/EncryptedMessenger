@@ -26,7 +26,7 @@ public class UserChatPresenter extends Presenter<Chat> {
 
     @Override
     public void onSuccess(Chat chat) {
-        view.setUserName(chat.getUserName());
+        view.setUserName(chat.getRecipient());
         view.setChatType(chat.getType().getActionName());
         view.initSendBean(chat);
     }

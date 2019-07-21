@@ -58,7 +58,7 @@ public class Adapter extends RecyclerView.Adapter {
 
         view.setOnClickListener(v -> {
             fragment.setFragment(instrument.getFragment());
-            fragment.setName(instrument.getName());
+            fragment.setName(instrument.getAction().getActionName());
 
             current = i;
         });

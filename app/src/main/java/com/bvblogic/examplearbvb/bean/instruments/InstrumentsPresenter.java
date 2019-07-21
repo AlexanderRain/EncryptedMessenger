@@ -12,6 +12,10 @@ public class InstrumentsPresenter {
     ChatsPresenter chatsPresenter;
 
     public void saveUser(Instrument instrument, String username, String chatName) {
-        chatsPresenter.addChat(new Chat(chatName, instrument.getName(), username));
+        Chat chat = new Chat();
+        chat.setRecipient(username);
+        chat.setChatName(chatName);
+        chat.setType(instrument.getAction());
+        chatsPresenter.addChat(chat);
     }
 }
