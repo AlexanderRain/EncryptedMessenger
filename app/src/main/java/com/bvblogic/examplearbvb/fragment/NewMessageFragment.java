@@ -48,6 +48,14 @@ public class NewMessageFragment extends BaseFragment {
         changeFragmentTo(new FragmentData(FragmentById.HISTORY_MESSAGE_FRAGMENT, chatId));
     }
 
+    @ViewById(R.id.btnEnter)
+    Button btnEnter;
+    @Click(R.id.btnEnter)
+    public void enter(){
+        btnEnter.setVisibility(View.INVISIBLE);
+    }
+
+
     @AfterViews
     public void init(){
         userPresenter.getUser(chatId);
