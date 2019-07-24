@@ -17,9 +17,7 @@ import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.FragmentArg;
 
-import static com.bvblogic.examplearbvb.utils.Constants.PERMISSION_REQUEST_READ_FILE;
-import static com.bvblogic.examplearbvb.utils.Constants.PERMISSION_REQUEST_SMS;
-import static com.bvblogic.examplearbvb.utils.Constants.PERMISSION_REQUEST_WRITE_FILE;
+import static com.bvblogic.examplearbvb.utils.Constants.REQUEST_PERMISSION;
 
 @EFragment(R.layout.fragment_new_message)
 public class NewMessageFragment extends BaseFragment {
@@ -49,28 +47,22 @@ public class NewMessageFragment extends BaseFragment {
     }
 
     private void requestPermission() {
-        if (ContextCompat.checkSelfPermission
-                (getActivity(), Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
+        if(ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.SEND_SMS)
+                + ContextCompat.checkSelfPermission(
+                getActivity(), Manifest.permission.READ_EXTERNAL_STORAGE)
+                + ContextCompat.checkSelfPermission(
+                getActivity(), Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
 
-            ActivityCompat.requestPermissions(getActivity(),
-                    new String[]{Manifest.permission.SEND_SMS},
-                    PERMISSION_REQUEST_SMS);
-        }
-
-        if (ContextCompat.checkSelfPermission
-                (getActivity(), Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-
-            ActivityCompat.requestPermissions(getActivity(),
-                    new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
-                    PERMISSION_REQUEST_READ_FILE);
-        }
-
-        if (ContextCompat.checkSelfPermission
-                (getActivity(), Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-
-            ActivityCompat.requestPermissions(getActivity(),
-                    new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
-                    PERMISSION_REQUEST_WRITE_FILE);
+            ActivityCompat.requestPermissions(
+                    getActivity(),
+                    new String[]{
+                            Manifest.permission.READ_EXTERNAL_STORAGE,
+                            Manifest.permission.SEND_SMS,
+                            Manifest.permission.WRITE_EXTERNAL_STORAGE
+                    },
+                    REQUEST_PERMISSION
+            );
         }
     }
 

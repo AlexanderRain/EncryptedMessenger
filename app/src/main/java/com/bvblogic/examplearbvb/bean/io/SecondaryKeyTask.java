@@ -38,6 +38,7 @@ public class SecondaryKeyTask extends AsyncTask<String, Integer, Integer>  {
             writeKeysFile(keys);
         } catch (IOException e) {
             e.printStackTrace();
+            return null;
         }
         return keys.getNumber();
     }
