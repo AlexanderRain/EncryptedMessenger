@@ -1,6 +1,8 @@
 package com.bvblogic.examplearbvb.activity.core;
 
+import android.Manifest;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -55,5 +57,10 @@ public abstract class BaseActivity extends AppCompatActivity implements Fragment
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if (permissions[0].equals(Manifest.permission.SEND_SMS)) {
+            if (grantResults[0] != PackageManager.PERMISSION_GRANTED) {
+                onBackPressed();
+            }
+        }
     }
 }

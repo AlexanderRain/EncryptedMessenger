@@ -1,11 +1,15 @@
 package com.bvblogic.examplearbvb.db.presenter;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.widget.Toast;
 
 import com.bvblogic.examplearbvb.R;
 import com.bvblogic.examplearbvb.bean.user.ProviderBeanChat;
+import com.bvblogic.examplearbvb.db.core.AppDatabase;
 import com.bvblogic.examplearbvb.db.datamanager.ChatDataManager;
 import com.bvblogic.examplearbvb.db.domain.Chat;
+import com.bvblogic.examplearbvb.db.domain.SendAction;
 import com.bvblogic.examplearbvb.db.presenter.core.Presenter;
 
 import org.androidannotations.annotations.Bean;
@@ -33,6 +37,14 @@ public class ChatsPresenter extends Presenter<List<Chat>> {
 
     public void addChat(Chat chat) {
         new ChatDataManager().addChat(appDatabase, chat);
+    }
+
+    public void getChatByRecipientAndType(String recipient, SendAction type, String message){
+        new ChatDataManager().getByTypeAndRecipient(appDatabase, recipient, type, message);
+    }
+
+    public void getChatByRecipientAndType(Context context, String recipient, SendAction type, String message){
+        new ChatDataManager().getByTypeAndRecipient(getAppDatabaseWithCustomContext(context), recipient, type, message);
     }
 
     public void updateChat(Chat chat) {
