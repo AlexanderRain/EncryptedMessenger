@@ -6,6 +6,7 @@
     <string name="email_name">Email</string>
     <string name="email_instrument_name">Email</string>
     <string name="enter_message_hint">Enter message…</string>
+    <string name="enter_password">Enter password…</string>
     <string name="btn_journal">Journal</string>
     <string name="btn_back">Back</string>
     <string name="btn_enter">Enter</string>
