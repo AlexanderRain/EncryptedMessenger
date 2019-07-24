@@ -5,6 +5,7 @@ import android.telephony.SmsManager;
 import android.widget.Toast;
 
 import com.bvblogic.examplearbvb.bean.core.Bean;
+import com.bvblogic.examplearbvb.bean.io.SecondaryKeyTask;
 import com.bvblogic.examplearbvb.db.domain.Chat;
 import com.bvblogic.examplearbvb.db.domain.SendAction;
 
@@ -15,10 +16,15 @@ public class SenderBean extends Bean {
 
     private SendAction sendAction;
     private String address;
-
     public void init(Chat chat) {
         this.sendAction = chat.getType();
         this.address = chat.getAddress();
+    }
+
+    public void encryptMessage(String message) {
+        SecondaryKeyTask task = new SecondaryKeyTask();
+        task.execute();
+        send(message);
     }
 
     public void send(String message) {
