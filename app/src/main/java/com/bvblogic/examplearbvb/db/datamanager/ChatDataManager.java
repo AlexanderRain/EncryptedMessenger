@@ -1,10 +1,17 @@
 package com.bvblogic.examplearbvb.db.datamanager;
 
+import android.annotation.SuppressLint;
+import android.util.Log;
+
 import com.bvblogic.examplearbvb.db.core.AppDatabase;
 import com.bvblogic.examplearbvb.db.datamanager.core.DBView;
 import com.bvblogic.examplearbvb.db.datamanager.core.DataManager;
 import com.bvblogic.examplearbvb.db.domain.Chat;
+import com.bvblogic.examplearbvb.db.domain.Message;
+import com.bvblogic.examplearbvb.db.domain.SendAction;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -29,6 +36,32 @@ public class ChatDataManager extends DataManager {
                     public void onError(Throwable e) {
                         listDBView.onError(e);
                         listDBView.hideWait();
+                    }
+                });
+    }
+
+    @SuppressLint("CheckResult")
+    public void getByTypeAndRecipient(AppDatabase appDatabase, String recipient, SendAction action, String text){
+        appDatabase.chatDao().getByTypeAndRecipient(recipient, action.toString())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(new DisposableSingleObserver<Chat>() {
+                    @Override
+                    public void onSuccess(Chat chat) {
+                        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+
+                        Message temp = new Message();
+                        temp.setText(text);
+                        temp.setTime(formatter.format(new Date()));
+                        temp.setChatId(chat.getId());
+                        temp.setType("received");
+                        temp.setUserName(recipient);
+                        appDatabase.messageDao().insert(temp);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
                     }
                 });
     }

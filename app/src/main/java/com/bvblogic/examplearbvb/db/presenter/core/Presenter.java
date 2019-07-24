@@ -2,6 +2,7 @@ package com.bvblogic.examplearbvb.db.presenter.core;
 
 
 import android.app.Activity;
+import android.content.Context;
 
 import com.bvblogic.examplearbvb.activity.MainActivity;
 import com.bvblogic.examplearbvb.db.core.AppDatabase;
@@ -9,6 +10,7 @@ import com.bvblogic.examplearbvb.db.datamanager.core.DBView;
 import com.bvblogic.examplearbvb.fragment.core.BaseFragment;
 
 import org.androidannotations.annotations.AfterInject;
+import org.androidannotations.annotations.App;
 import org.androidannotations.annotations.EBean;
 import org.androidannotations.annotations.RootContext;
 
@@ -25,9 +27,18 @@ public abstract class Presenter<T> implements DBView<T> {
 
     @AfterInject
     public void init() {
-        appDatabase = AppDatabase.getAppDatabase(activity);
+        if(isActivityAlive()){
+            appDatabase = AppDatabase.getAppDatabase(activity);
+        }
     }
 
+    public boolean isActivityAlive(){
+        return activity != null;
+    }
+
+    public AppDatabase getAppDatabaseWithCustomContext(Context context){
+        return AppDatabase.getAppDatabase(context);
+    }
     @Override
     public void showWait() {
         // ((MainActivity) baseFragment.getActivity()).showProgressBar();
