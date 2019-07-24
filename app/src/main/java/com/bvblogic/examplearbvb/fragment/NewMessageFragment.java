@@ -26,7 +26,9 @@ import org.androidannotations.annotations.FragmentArg;
 import org.androidannotations.annotations.RootContext;
 import org.androidannotations.annotations.ViewById;
 
+import static com.bvblogic.examplearbvb.utils.Constants.PERMISSION_REQUEST_READ_FILE;
 import static com.bvblogic.examplearbvb.utils.Constants.PERMISSION_REQUEST_SMS;
+import static com.bvblogic.examplearbvb.utils.Constants.PERMISSION_REQUEST_WRITE_FILE;
 
 @EFragment(R.layout.fragment_new_message)
 public class NewMessageFragment extends BaseFragment {
@@ -62,6 +64,22 @@ public class NewMessageFragment extends BaseFragment {
             ActivityCompat.requestPermissions(getActivity(),
                     new String[]{Manifest.permission.SEND_SMS},
                     PERMISSION_REQUEST_SMS);
+        }
+
+        if (ContextCompat.checkSelfPermission
+                (getActivity(), Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+
+            ActivityCompat.requestPermissions(getActivity(),
+                    new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                    PERMISSION_REQUEST_READ_FILE);
+        }
+
+        if (ContextCompat.checkSelfPermission
+                (getActivity(), Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+
+            ActivityCompat.requestPermissions(getActivity(),
+                    new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                    PERMISSION_REQUEST_WRITE_FILE);
         }
     }
 

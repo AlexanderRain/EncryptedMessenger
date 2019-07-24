@@ -29,7 +29,7 @@ public class ProviderBeanUserChat extends Bean {
 
     @Click(R.id.btnSend)
     public void sendMessage(){
-        senderBean.send(messageField.getText().toString());
+        senderBean.encryptMessage(messageField.getText().toString());
     }
 
     public void initSendBean(Chat chat) {
