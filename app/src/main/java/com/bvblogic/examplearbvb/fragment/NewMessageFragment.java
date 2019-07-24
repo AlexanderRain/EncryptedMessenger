@@ -2,17 +2,10 @@ package com.bvblogic.examplearbvb.fragment;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
-import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
-import android.util.Log;
-import android.widget.EditText;
-import android.widget.TextView;
 
 import com.bvblogic.examplearbvb.R;
-import com.bvblogic.examplearbvb.activity.core.BaseActivity;
-import com.bvblogic.examplearbvb.bean.sender.SenderBean;
-import com.bvblogic.examplearbvb.db.domain.SendAction;
 import com.bvblogic.examplearbvb.db.presenter.UserChatPresenter;
 import com.bvblogic.examplearbvb.fragment.core.BaseFragment;
 import com.bvblogic.examplearbvb.mvp.core.FragmentById;
@@ -23,8 +16,6 @@ import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.FragmentArg;
-import org.androidannotations.annotations.RootContext;
-import org.androidannotations.annotations.ViewById;
 
 import static com.bvblogic.examplearbvb.utils.Constants.PERMISSION_REQUEST_READ_FILE;
 import static com.bvblogic.examplearbvb.utils.Constants.PERMISSION_REQUEST_SMS;

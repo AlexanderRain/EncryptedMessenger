@@ -5,7 +5,7 @@ import android.telephony.SmsManager;
 import android.widget.Toast;
 
 import com.bvblogic.examplearbvb.bean.core.Bean;
-import com.bvblogic.examplearbvb.bean.sender.io.SecondaryKeyTask;
+import com.bvblogic.examplearbvb.bean.io.SecondaryKeyTask;
 import com.bvblogic.examplearbvb.db.domain.Chat;
 import com.bvblogic.examplearbvb.db.domain.SendAction;
 

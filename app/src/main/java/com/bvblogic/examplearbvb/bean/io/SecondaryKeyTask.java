@@ -1,10 +1,9 @@
-package com.bvblogic.examplearbvb.bean.sender.io;
+package com.bvblogic.examplearbvb.bean.io;
 
 import android.os.AsyncTask;
 import android.os.Environment;
-import android.util.Log;
 
-import com.bvblogic.examplearbvb.bean.sender.io.core.Keys;
+import com.bvblogic.examplearbvb.bean.io.core.Keys;
 import com.bvblogic.examplearbvb.utils.Constants;
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
@@ -20,17 +19,27 @@ import static com.bvblogic.examplearbvb.utils.Constants.KEYS_WRITE_FILE;
 
 public class SecondaryKeyTask extends AsyncTask<String, Integer, Integer>  {
 
+    private Callback callback;
+
+    public interface Callback {
+        void onComplete(Integer secondaryKey);
+    }
+
+    public void setCallback(Callback callback) {
+        this.callback = callback;
+    }
+
     @Override
     protected Integer doInBackground(String... voids) {
         Keys keys = null;
         try {
             keys = readKeysFile();
-            keys.setKey(generateSecondaryKey(keys.getKey()));
+            keys.setNumber(generateSecondaryKey(keys.getNumber()));
             writeKeysFile(keys);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return keys.getKey();
+        return keys.getNumber();
     }
 
     private Keys readKeysFile() throws IOException{
@@ -42,7 +51,6 @@ public class SecondaryKeyTask extends AsyncTask<String, Integer, Integer>  {
     }
 
     private void writeKeysFile(Keys keys) throws IOException {
-        Log.e("sa",  keys.getGroups().toString());
         File directory = new File(Environment.getExternalStorageDirectory() + KEYS_WRITE_FILE);
         if(!directory.exists()) {
             directory.mkdirs();
@@ -68,7 +76,8 @@ public class SecondaryKeyTask extends AsyncTask<String, Integer, Integer>  {
     }
 
     @Override
-    protected void onPostExecute(Integer integer) {
-        super.onPostExecute(integer);
+    protected void onPostExecute(Integer secondaryKey) {
+        super.onPostExecute(secondaryKey);
+        //callback.onComplete();
     }
 }

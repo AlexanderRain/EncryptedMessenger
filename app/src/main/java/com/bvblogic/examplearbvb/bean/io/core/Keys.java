@@ -1,22 +1,22 @@
-package com.bvblogic.examplearbvb.bean.sender.io.core;
+package com.bvblogic.examplearbvb.bean.io.core;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Keys {
-    private int key;
+    private int number;
     private List<Group> groups = new ArrayList<>();
 
     @Override
     public String toString() {
-        return key + groups.toString();
+        return number + groups.toString();
     }
 
-    public int getKey() {
-        return key;
+    public int getNumber() {
+        return number;
     }
 
-    public void setKey(int key) {
-        this.key = key;
+    public void setNumber(int number) {
+        this.number = number;
     }
 
     public List<Group> getGroups() {
