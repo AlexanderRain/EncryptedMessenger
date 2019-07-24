@@ -10,6 +10,8 @@ import com.bvblogic.examplearbvb.fragment.ChatAdditionFragment_;
 import com.bvblogic.examplearbvb.fragment.ChatsFragment_;
 import com.bvblogic.examplearbvb.fragment.HistoryMessageFragment_;
 import com.bvblogic.examplearbvb.fragment.NewMessageFragment_;
+import com.bvblogic.examplearbvb.fragment.RegistrationFragment;
+import com.bvblogic.examplearbvb.fragment.RegistrationFragment_;
 import com.bvblogic.examplearbvb.mvp.core.FragmentData;
 import com.bvblogic.examplearbvb.mvp.manager.core.BaseMainActivityManagerUI;
 
@@ -41,7 +43,7 @@ public class MainActivityManagerUI extends BaseMainActivityManagerUI {
                         this.getActivity()
                                 .getSupportFragmentManager()
                                 .beginTransaction()
-                                .setCustomAnimations(0, android.R.anim.fade_out));
+                                .setCustomAnimations(0, android.R.anim.fade_in));
                 break;
             }
             case NEW_MESSAGE_FRAGMENT: {
@@ -53,7 +55,7 @@ public class MainActivityManagerUI extends BaseMainActivityManagerUI {
                             this.getActivity()
                                     .getSupportFragmentManager()
                                     .beginTransaction()
-                                    .setCustomAnimations(0, android.R.anim.fade_out));
+                                    .setCustomAnimations(0, android.R.anim.fade_in));
                 }
                 break;
             }
@@ -62,7 +64,7 @@ public class MainActivityManagerUI extends BaseMainActivityManagerUI {
                         this.getActivity()
                                 .getSupportFragmentManager()
                                 .beginTransaction()
-                                .setCustomAnimations(0, android.R.anim.fade_out));
+                                .setCustomAnimations(0, android.R.anim.fade_in));
                 break;
             }
 
@@ -73,7 +75,7 @@ public class MainActivityManagerUI extends BaseMainActivityManagerUI {
                             this.getActivity()
                                     .getSupportFragmentManager()
                                     .beginTransaction()
-                                    .setCustomAnimations(0, android.R.anim.fade_out));
+                                    .setCustomAnimations(0, android.R.anim.fade_in));
                 }
                 break;
             }
@@ -83,7 +85,16 @@ public class MainActivityManagerUI extends BaseMainActivityManagerUI {
                         this.getActivity()
                                 .getSupportFragmentManager()
                                 .beginTransaction()
-                                .setCustomAnimations(0,  android.R.anim.fade_out));
+                                .setCustomAnimations(0,  android.R.anim.fade_in));
+                break;
+            }
+
+            case REGISTRATION_FRAGMENT: {
+                addFragmentToContainer(RegistrationFragment_.builder().build(), false,
+                        this.getActivity()
+                                .getSupportFragmentManager()
+                                .beginTransaction()
+                                .setCustomAnimations(0,  android.R.anim.fade_in));
                 break;
             }
         }

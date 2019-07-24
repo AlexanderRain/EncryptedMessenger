@@ -49,7 +49,7 @@ public class AuthFragment extends BaseFragment {
 
     @Click(R.id.btnSignUp)
     void singUp(){
-        changeFragmentTo(new FragmentData(FragmentById.CHATS_FRAGMENT));
+        changeFragmentTo(new FragmentData(FragmentById.REGISTRATION_FRAGMENT));
     }
 
     @AfterViews
