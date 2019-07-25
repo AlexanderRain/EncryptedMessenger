@@ -11,6 +11,8 @@ import com.bvblogic.examplearbvb.R;
 import com.bvblogic.examplearbvb.adapter.instruments.Adapter;
 import com.bvblogic.examplearbvb.bean.instruments.InstrumentsPresenter;
 import com.bvblogic.examplearbvb.fragment.core.BaseFragment;
+import com.bvblogic.examplearbvb.mvp.core.FragmentById;
+import com.bvblogic.examplearbvb.mvp.core.FragmentData;
 import com.bvblogic.examplearbvb.mvp.core.ToolBarById;
 
 import org.androidannotations.annotations.AfterViews;
@@ -59,6 +61,7 @@ public class ChatAdditionFragment extends BaseFragment{
     @Click(R.id.add_chat_FAB)
     void FABClick() {
         presenter.saveUser(adapter.getInstrument(), usernameView.getText().toString(), chatNameView.getText().toString());
+        changeFragmentTo(new FragmentData(FragmentById.CHATS_FRAGMENT));
     }
 
     public void setFragment(Fragment fragment) {

@@ -17,4 +17,9 @@
     <string name="chat_name">Chat Name</string>
     <string name="mail">MAIL</string>
     <string name="or">OR</string>
+
+    <string name="dialog_msg">Enter file password</string>
+    <string name="positive_button">Confirm</string>
+    <string name="cancel">Cancel</string>
+
 </resources>

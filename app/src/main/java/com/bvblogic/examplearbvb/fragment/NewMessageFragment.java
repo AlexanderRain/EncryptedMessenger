@@ -4,9 +4,8 @@ import android.Manifest;
 import android.content.pm.PackageManager;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
-import android.view.View;
+
 import android.widget.Button;
-import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.bvblogic.examplearbvb.R;
@@ -23,7 +22,7 @@ import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.FragmentArg;
 import org.androidannotations.annotations.ViewById;
 
-import static com.bvblogic.examplearbvb.utils.Constants.PERMISSION_REQUEST_SMS;
+import static com.bvblogic.examplearbvb.utils.Constants.REQUEST_PERMISSION;
 
 @EFragment(R.layout.fragment_new_message)
 public class NewMessageFragment extends BaseFragment {
@@ -35,14 +34,8 @@ public class NewMessageFragment extends BaseFragment {
     @Bean
     UserChatPresenter userPresenter;
 
-    @ViewById(R.id.btnEnter)
-    Button btnEnter;
-
     @ViewById(R.id.enter_file_password)
     MaterialEditText enter_pass;
-
-    @ViewById(R.id.btnSend)
-    Button btnSend;
 
     @Click(R.id.btnBack)
     public void back(){
@@ -54,30 +47,30 @@ public class NewMessageFragment extends BaseFragment {
         changeFragmentTo(new FragmentData(FragmentById.HISTORY_MESSAGE_FRAGMENT, chatId));
     }
 
-    @Click(R.id.btnEnter)
-    public void onPasswordEntered(){
-        if (enter_pass.getText().toString().equals("") || enter_pass.getText().toString().length() < 6) {
-            Toast.makeText(getActivity(), "Too short password!", Toast.LENGTH_SHORT).show();
-            enter_pass.setError("Too short password!");
-        } else {
-            btnSend.setEnabled(true);
-        }
-    }
-
     @AfterViews
     public void init(){
-        userPresenter.getUser(chatId);
+        userPresenter.getChat(chatId);
         // request permissions
         requestPermission();
     }
 
     private void requestPermission() {
-        if (ContextCompat.checkSelfPermission
-                (getActivity(), Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
+        if(ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.SEND_SMS)
+                + ContextCompat.checkSelfPermission(
+                getActivity(), Manifest.permission.READ_EXTERNAL_STORAGE)
+                + ContextCompat.checkSelfPermission(
+                getActivity(), Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
 
-            ActivityCompat.requestPermissions(getActivity(),
-                    new String[]{Manifest.permission.SEND_SMS},
-                    PERMISSION_REQUEST_SMS);
+            ActivityCompat.requestPermissions(
+                    getActivity(),
+                    new String[]{
+                            Manifest.permission.READ_EXTERNAL_STORAGE,
+                            Manifest.permission.SEND_SMS,
+                            Manifest.permission.WRITE_EXTERNAL_STORAGE
+                    },
+                    REQUEST_PERMISSION
+            );
         }
     }
 

@@ -1,5 +1,7 @@
 package com.bvblogic.examplearbvb.fragment;
 
+import android.util.Log;
+
 import com.bvblogic.examplearbvb.R;
 import com.bvblogic.examplearbvb.db.presenter.MessagePresenter;
 import com.bvblogic.examplearbvb.fragment.core.BaseFragment;

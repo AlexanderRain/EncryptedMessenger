@@ -27,6 +27,7 @@ public class MessagePresenter extends Presenter<List<Message>> {
         new MessageDataManager().getManages(appDatabase, this, chatId);
     }
 
+
     @Override
     public void onSuccess(List<Message> messages) {
         providerBeanMessage.initAdapter(messagesRecycler);
