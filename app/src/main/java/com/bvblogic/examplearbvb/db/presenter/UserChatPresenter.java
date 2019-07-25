@@ -10,6 +10,11 @@ import com.bvblogic.examplearbvb.db.presenter.core.Presenter;
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EBean;
 
+import io.reactivex.CompletableObserver;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.observers.DisposableCompletableObserver;
+import io.reactivex.schedulers.Schedulers;
+
 /**
  * Created by hanz on 08.05.2018.
  */
@@ -20,7 +25,7 @@ public class UserChatPresenter extends Presenter<Chat> {
     @Bean
     ProviderBeanUserChat view;
 
-    public void getUser(int id) {
+    public void getChat(int id) {
         new ChatDataManager().getById(id, appDatabase, this);
     }
 

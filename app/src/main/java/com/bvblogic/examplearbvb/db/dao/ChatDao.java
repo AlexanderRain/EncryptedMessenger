@@ -32,4 +32,7 @@ public abstract class ChatDao implements BaseDao<Chat> {
 
     @Update(onConflict = OnConflictStrategy.REPLACE)
     public abstract void update(Chat chat);
+
+    @Query("UPDATE chat SET file_password = :password WHERE id = :id")
+    public abstract void update(String password, int id);
 }

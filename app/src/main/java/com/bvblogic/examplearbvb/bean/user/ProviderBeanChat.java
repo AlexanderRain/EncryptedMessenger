@@ -11,7 +11,6 @@ import org.androidannotations.annotations.EBean;
 
 import java.util.List;
 
-
 @EBean
 public class ProviderBeanChat extends Bean {
 

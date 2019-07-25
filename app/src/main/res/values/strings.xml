@@ -6,8 +6,10 @@
     <string name="email_name">Email</string>
     <string name="email_instrument_name">Email</string>
     <string name="enter_message_hint">Enter message…</string>
+    <string name="enter_password">Enter password…</string>
     <string name="btn_journal">Journal</string>
     <string name="btn_back">Back</string>
+    <string name="btn_enter">Enter</string>
     <string name="btn_send">Send</string>
     <string name="login">Login</string>
     <string name="password">Password</string>
@@ -20,4 +22,9 @@
     <string name="password_input">Password</string>
     <string name="email_input">Email</string>
     <string name="phone_input">Phone</string>
+
+    <string name="dialog_msg">Enter file password</string>
+    <string name="positive_button">Confirm</string>
+    <string name="cancel">Cancel</string>
+
 </resources>

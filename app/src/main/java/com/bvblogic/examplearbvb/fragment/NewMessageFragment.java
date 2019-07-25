@@ -2,31 +2,27 @@ package com.bvblogic.examplearbvb.fragment;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
-import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
-import android.util.Log;
-import android.widget.EditText;
-import android.widget.TextView;
+
+import android.widget.Button;
+import android.widget.Toast;
 
 import com.bvblogic.examplearbvb.R;
-import com.bvblogic.examplearbvb.activity.core.BaseActivity;
-import com.bvblogic.examplearbvb.bean.sender.SenderBean;
-import com.bvblogic.examplearbvb.db.domain.SendAction;
 import com.bvblogic.examplearbvb.db.presenter.UserChatPresenter;
 import com.bvblogic.examplearbvb.fragment.core.BaseFragment;
 import com.bvblogic.examplearbvb.mvp.core.FragmentById;
 import com.bvblogic.examplearbvb.mvp.core.FragmentData;
+import com.rengwuxian.materialedittext.MaterialEditText;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.FragmentArg;
-import org.androidannotations.annotations.RootContext;
 import org.androidannotations.annotations.ViewById;
 
-import static com.bvblogic.examplearbvb.utils.Constants.PERMISSION_REQUEST_SMS;
+import static com.bvblogic.examplearbvb.utils.Constants.REQUEST_PERMISSION;
 
 @EFragment(R.layout.fragment_new_message)
 public class NewMessageFragment extends BaseFragment {
@@ -37,6 +33,9 @@ public class NewMessageFragment extends BaseFragment {
 
     @Bean
     UserChatPresenter userPresenter;
+
+    @ViewById(R.id.enter_file_password)
+    MaterialEditText enter_pass;
 
     @Click(R.id.btnBack)
     public void back(){
@@ -50,18 +49,28 @@ public class NewMessageFragment extends BaseFragment {
 
     @AfterViews
     public void init(){
-        userPresenter.getUser(chatId);
+        userPresenter.getChat(chatId);
         // request permissions
         requestPermission();
     }
 
     private void requestPermission() {
-        if (ContextCompat.checkSelfPermission
-                (getActivity(), Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
+        if(ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.SEND_SMS)
+                + ContextCompat.checkSelfPermission(
+                getActivity(), Manifest.permission.READ_EXTERNAL_STORAGE)
+                + ContextCompat.checkSelfPermission(
+                getActivity(), Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
 
-            ActivityCompat.requestPermissions(getActivity(),
-                    new String[]{Manifest.permission.SEND_SMS},
-                    PERMISSION_REQUEST_SMS);
+            ActivityCompat.requestPermissions(
+                    getActivity(),
+                    new String[]{
+                            Manifest.permission.READ_EXTERNAL_STORAGE,
+                            Manifest.permission.SEND_SMS,
+                            Manifest.permission.WRITE_EXTERNAL_STORAGE
+                    },
+                    REQUEST_PERMISSION
+            );
         }
     }
 

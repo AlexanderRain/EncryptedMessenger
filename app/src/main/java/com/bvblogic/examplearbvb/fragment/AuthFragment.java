@@ -27,8 +27,6 @@ import org.androidannotations.annotations.ViewById;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.bvblogic.examplearbvb.utils.Constants.PERMISSION_REQUEST_SMS;
-
 @EFragment(R.layout.fragment_auth)
 public class AuthFragment extends BaseFragment {
 
@@ -72,14 +70,6 @@ public class AuthFragment extends BaseFragment {
         initToolBar(ToolBarById.CLOSE);
 
         createData();
-
-        if (ContextCompat.checkSelfPermission
-                (getActivity(), Manifest.permission.RECEIVE_SMS) != PackageManager.PERMISSION_GRANTED) {
-
-            ActivityCompat.requestPermissions(getActivity(),
-                    new String[]{Manifest.permission.RECEIVE_SMS},
-                    PERMISSION_REQUEST_SMS);
-        }
     }
 
     public void createData() {
