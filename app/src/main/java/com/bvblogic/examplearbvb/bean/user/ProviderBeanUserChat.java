@@ -1,5 +1,6 @@
 package com.bvblogic.examplearbvb.bean.user;
 
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -7,6 +8,7 @@ import com.bvblogic.examplearbvb.R;
 import com.bvblogic.examplearbvb.bean.core.Bean;
 import com.bvblogic.examplearbvb.bean.sender.SenderBean;
 import com.bvblogic.examplearbvb.db.domain.Chat;
+import com.rengwuxian.materialedittext.MaterialEditText;
 
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EBean;
@@ -21,11 +23,17 @@ public class ProviderBeanUserChat extends Bean {
     @ViewById(R.id.messageField)
     EditText messageField;
 
+    @ViewById(R.id.enter_file_password)
+    MaterialEditText enter_pass;
+
     @ViewById(R.id.user_name)
     TextView chatName;
 
     @ViewById(R.id.chat_type)
     TextView chatType;
+
+    @ViewById(R.id.btnSend)
+    Button btnSend;
 
     @Click(R.id.btnSend)
     public void sendMessage(){

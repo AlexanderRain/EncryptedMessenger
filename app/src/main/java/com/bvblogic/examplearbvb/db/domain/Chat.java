@@ -30,7 +30,7 @@ public class Chat {
     private String address;
 
     @ColumnInfo(name = "file_password")
-    private boolean filePassword;
+    private String filePassword;
 
     @ColumnInfo(name = "user_name")
     private String recipient;
@@ -73,12 +73,12 @@ public class Chat {
         this.address = address;
     }
 
-    public boolean getFilePassword() {
-        return filePassword;
+    public void setFilePassword(String filePassword) {
+        this.filePassword = filePassword;
     }
 
-    public void setFilePassword(boolean filePassword) {
-        this.filePassword = filePassword;
+    public String getFilePassword() {
+        return filePassword;
     }
 
     public String getRecipient() {

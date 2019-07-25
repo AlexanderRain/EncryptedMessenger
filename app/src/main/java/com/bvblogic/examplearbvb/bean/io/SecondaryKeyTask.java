@@ -34,7 +34,7 @@ public class SecondaryKeyTask extends AsyncTask<String, Integer, Integer>  {
         Keys keys = null;
         try {
             keys = readKeysFile();
-            keys.setNumber(generateSecondaryKey(keys.getNumber()));
+            keys.setNumber(generateSecondaryKey(keys.getNumber(), voids[0]));
             writeKeysFile(keys);
         } catch (IOException e) {
             e.printStackTrace();
@@ -63,12 +63,10 @@ public class SecondaryKeyTask extends AsyncTask<String, Integer, Integer>  {
         fileWriter.close();
     }
 
-    private int generateSecondaryKey(int primaryKey){
-        String sPrimaryKey = String.valueOf(primaryKey);
+    private int generateSecondaryKey(int primaryKey, String filePass){
         int key = 1;
-
-        for(int i = 0; i < sPrimaryKey.length(); i++){
-            key *= sPrimaryKey.charAt(i);
+        for(int i = 0; i < filePass.length(); i++){
+            key *= filePass.charAt(i);
         }
 
         key *= primaryKey;
@@ -79,6 +77,6 @@ public class SecondaryKeyTask extends AsyncTask<String, Integer, Integer>  {
     @Override
     protected void onPostExecute(Integer secondaryKey) {
         super.onPostExecute(secondaryKey);
-        //callback.onComplete();
+//        callback.onComplete(secondaryKey);
     }
 }

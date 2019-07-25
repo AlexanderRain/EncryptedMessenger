@@ -14,6 +14,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import io.reactivex.Completable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.observers.DisposableSingleObserver;
 import io.reactivex.schedulers.Schedulers;
@@ -73,7 +74,8 @@ public class ChatDataManager extends DataManager {
     public void updateChat(AppDatabase appDatabase, Chat chat) {
         appDatabase.chatDao().update(chat);
     }
-     public void getById(int id, AppDatabase database, DBView<Chat> listDBView) {
+
+    public void getById(int id, AppDatabase database, DBView<Chat> listDBView) {
         listDBView.showWait();
          database.chatDao().getById(id)
                 .subscribeOn(Schedulers.io())
@@ -91,5 +93,11 @@ public class ChatDataManager extends DataManager {
                         listDBView.hideWait();
                     }
                 });
+    }
+
+    public Completable updatePassword(int id, String password, AppDatabase database) {
+        return Completable.fromAction(
+                () -> database.chatDao().update(password, id)
+        );
     }
 }

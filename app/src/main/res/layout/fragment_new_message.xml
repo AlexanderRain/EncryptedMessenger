@@ -72,4 +72,5 @@
         android:layout_marginBottom="80dp"
         app:layout_constraintBottom_toTopOf="@+id/messageField"
         app:layout_constraintStart_toStartOf="parent" />
+
 </android.support.constraint.ConstraintLayout>

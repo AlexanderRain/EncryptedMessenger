@@ -5,17 +5,22 @@ import android.content.pm.PackageManager;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 
+import android.widget.Button;
+import android.widget.Toast;
+
 import com.bvblogic.examplearbvb.R;
 import com.bvblogic.examplearbvb.db.presenter.UserChatPresenter;
 import com.bvblogic.examplearbvb.fragment.core.BaseFragment;
 import com.bvblogic.examplearbvb.mvp.core.FragmentById;
 import com.bvblogic.examplearbvb.mvp.core.FragmentData;
+import com.rengwuxian.materialedittext.MaterialEditText;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.FragmentArg;
+import org.androidannotations.annotations.ViewById;
 
 import static com.bvblogic.examplearbvb.utils.Constants.REQUEST_PERMISSION;
 
@@ -29,6 +34,9 @@ public class NewMessageFragment extends BaseFragment {
     @Bean
     UserChatPresenter userPresenter;
 
+    @ViewById(R.id.enter_file_password)
+    MaterialEditText enter_pass;
+
     @Click(R.id.btnBack)
     public void back(){
         popBackStack();
@@ -41,7 +49,7 @@ public class NewMessageFragment extends BaseFragment {
 
     @AfterViews
     public void init(){
-        userPresenter.getUser(chatId);
+        userPresenter.getChat(chatId);
         // request permissions
         requestPermission();
     }
