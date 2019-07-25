@@ -35,6 +35,15 @@ public class NewMessageFragment extends BaseFragment {
     @Bean
     UserChatPresenter userPresenter;
 
+    @ViewById(R.id.btnEnter)
+    Button btnEnter;
+
+    @ViewById(R.id.enter_file_password)
+    MaterialEditText enter_pass;
+
+    @ViewById(R.id.btnSend)
+    Button btnSend;
+
     @Click(R.id.btnBack)
     public void back(){
         popBackStack();
@@ -45,42 +54,18 @@ public class NewMessageFragment extends BaseFragment {
         changeFragmentTo(new FragmentData(FragmentById.HISTORY_MESSAGE_FRAGMENT, chatId));
     }
 
-    @ViewById(R.id.btnEnter)
-    Button btnEnter;
-
-    @ViewById(R.id.btnSend)
-    Button btnSend;
-
-    @ViewById(R.id.fragment_container)
-    RelativeLayout layout;
-
-    @ViewById(R.id.enter_filePasword)
-    MaterialEditText enter_pass;
-
     @Click(R.id.btnEnter)
-    public void enter(){
-        if(!enter_pass.getText().toString().equals("")){
-            btnEnter.setVisibility(View.INVISIBLE);
-            enter_pass.setVisibility(View.INVISIBLE);
+    public void onPasswordEntered(){
+        if (enter_pass.getText().toString().equals("") || enter_pass.getText().toString().length() < 6) {
+            Toast.makeText(getActivity(), "Too short password!", Toast.LENGTH_SHORT).show();
+            enter_pass.setError("Too short password!");
+        } else {
             btnSend.setEnabled(true);
         }
     }
 
-
     @AfterViews
     public void init(){
-        btnEnter.setVisibility(View.INVISIBLE);
-        enter_pass.setVisibility(View.INVISIBLE);
-        if (enter_pass.getText().toString().equals(""))
-        {
-            Toast toast = Toast.makeText(getContext(),"Пароль не введён.", Toast.LENGTH_SHORT);
-            toast.show();
-            enter_pass.setError("Это поле не может быть пустым.");
-            btnEnter.setVisibility(View.VISIBLE);
-            enter_pass.setVisibility(View.VISIBLE);
-        }else{
-            btnSend.setEnabled(true);
-        }
         userPresenter.getUser(chatId);
         // request permissions
         requestPermission();

@@ -29,5 +29,6 @@ public class UserChatPresenter extends Presenter<Chat> {
         view.setUserName(chat.getRecipient());
         view.setChatType(chat.getType().getActionName());
         view.initSendBean(chat);
+        view.enterFilePassword();
     }
 }
