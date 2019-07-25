@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/sign_up"
+        android:layout_width="151dp"
+        android:layout_height="47dp"
+        android:layout_marginBottom="48dp"
+        android:text="@string/sign_up"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:id="@+id/email"
+        android:layout_width="287dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="24dp"
+        android:hint="@string/email_input"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/password"
+        app:met_floatingLabel="highlight"
+        app:met_primaryColor="@color/carbon_deepPurple_800" />
+
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:id="@+id/phone"
+        android:layout_width="287dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="24dp"
+        android:hint="@string/phone_input"
+        android:inputType="phone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/email"
+        app:met_floatingLabel="highlight"
+        app:met_primaryColor="@color/carbon_deepPurple_800" />
+
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:id="@+id/password"
+        android:layout_width="287dp"
+        android:layout_height="87dp"
+        android:layout_marginTop="24dp"
+        android:hint="@string/password_input"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/user_name"
+        app:met_autoValidate="true"
+        app:met_minCharacters="6"
+        app:met_floatingLabel="highlight"
+        app:met_primaryColor="@color/carbon_deepPurple_800" />
+
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:id="@+id/user_name"
+        android:layout_width="287dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="80dp"
+        android:hint="@string/user_name_input"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:met_floatingLabel="highlight"
+        app:met_autoValidate="true"
+        app:met_minCharacters="5"
+        app:met_primaryColor="@color/carbon_deepPurple_800" />
+
+</android.support.constraint.ConstraintLayout>

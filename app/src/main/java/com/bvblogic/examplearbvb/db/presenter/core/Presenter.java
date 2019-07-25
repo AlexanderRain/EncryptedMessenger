@@ -4,13 +4,10 @@ package com.bvblogic.examplearbvb.db.presenter.core;
 import android.app.Activity;
 import android.content.Context;
 
-import com.bvblogic.examplearbvb.activity.MainActivity;
 import com.bvblogic.examplearbvb.db.core.AppDatabase;
 import com.bvblogic.examplearbvb.db.datamanager.core.DBView;
-import com.bvblogic.examplearbvb.fragment.core.BaseFragment;
 
 import org.androidannotations.annotations.AfterInject;
-import org.androidannotations.annotations.App;
 import org.androidannotations.annotations.EBean;
 import org.androidannotations.annotations.RootContext;
 
