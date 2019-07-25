@@ -4,11 +4,15 @@ import android.Manifest;
 import android.content.pm.PackageManager;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.widget.EditText;
+
+import com.bvblogic.examplearbvb.R;
+import com.bvblogic.examplearbvb.bean.coding.CodingPresenter;
+import com.bvblogic.examplearbvb.db.domain.Message;
 
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.bvblogic.examplearbvb.R;
 import com.bvblogic.examplearbvb.db.presenter.UserChatPresenter;
 import com.bvblogic.examplearbvb.fragment.core.BaseFragment;
 import com.bvblogic.examplearbvb.mvp.core.FragmentById;
@@ -34,6 +38,12 @@ public class NewMessageFragment extends BaseFragment {
     @Bean
     UserChatPresenter userPresenter;
 
+    @Bean
+    CodingPresenter codingPresenter;
+
+    @ViewById(R.id.messageField)
+    EditText editText;
+
     @ViewById(R.id.enter_file_password)
     MaterialEditText enter_pass;
 
@@ -45,6 +55,11 @@ public class NewMessageFragment extends BaseFragment {
     @Click(R.id.btnJournal)
     public void goToJournal(){
         changeFragmentTo(new FragmentData(FragmentById.HISTORY_MESSAGE_FRAGMENT, chatId));
+    }
+
+    @Click(R.id.btnSend)
+    public void send() {
+        codingPresenter.send(new Message(editText.getText().toString()));
     }
 
     @AfterViews

@@ -28,7 +28,13 @@ public class Message {
     @ColumnInfo(name = "user")
     private String userName;
 
-    public Message(){}
+    public Message(String text) {
+        this.text = text;
+    }
+
+    public Message() {
+
+    }
 
     public String getType() {
         return type;
@@ -76,5 +82,10 @@ public class Message {
 
     public void setUserName(String userName) {
         this.userName = userName;
+    }
+
+    public Chat getChat() {
+        // TODO: getting chat
+        return null;
     }
 }
