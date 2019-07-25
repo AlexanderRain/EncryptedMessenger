@@ -28,7 +28,6 @@ public class RegisterPresenter extends Presenter<UserNetworking, ResponseBody> {
                 yBaseView.hideWait();
                 yBaseView.onSuccess(responseBody);
                 ((RegisterBeanView) yBaseView).saveUsernameToPrefs(user.getUsername());
-                // TODO: add username to shared prefs
                 stop();
             }
 

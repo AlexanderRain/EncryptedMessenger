@@ -1,4 +1,4 @@
-package com.bvblogic.examplearbvb.bean.instruments.messageReceiver;
+package com.bvblogic.examplearbvb.bean.messageReceiver;
 
 
 import android.content.BroadcastReceiver;
@@ -7,15 +7,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.telephony.SmsMessage;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.bvblogic.examplearbvb.db.core.AppDatabase;
+import com.bvblogic.examplearbvb.db.datamanager.ChatDataManager;
 import com.bvblogic.examplearbvb.db.domain.SendAction;
 import com.bvblogic.examplearbvb.db.presenter.ChatsPresenter;
 
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EReceiver;
-import org.androidannotations.annotations.ReceiverAction;
+
+import static com.bvblogic.examplearbvb.utils.Constants.SMS_ACTION;
 
 @EReceiver
 public class SMSListener extends BroadcastReceiver {
@@ -23,10 +24,9 @@ public class SMSListener extends BroadcastReceiver {
     @Bean
     ChatsPresenter chatsPresenter;
 
-    private static final String ACTION = "android.provider.Telephony.SMS_RECEIVED";
     @Override
     public void onReceive(Context context, Intent intent) {
-        if(intent.getAction().equals(ACTION)){
+        if(intent.getAction().equals(SMS_ACTION)){
             Bundle bundle = intent.getExtras();
             SmsMessage[] smsMessages = null;
             String msgFrom;
@@ -43,7 +43,7 @@ public class SMSListener extends BroadcastReceiver {
                     Log.d("CONTEXT_ALLLL", context.getApplicationContext().toString());
                     if(msgBody.length() > 1) {
                         String[] words = msgBody.split(" ", 2);
-                        chatsPresenter.getChatByRecipientAndType(context, words[0], SendAction.SMS, words[1]);
+                        new ChatDataManager().insertMessageByTypeAndRecipient(AppDatabase.getAppDatabase(context), words[0], SendAction.SMS, words[1]);
                     }
                 } catch (Exception e) {
                 }

@@ -42,11 +42,11 @@ public class ChatDataManager extends DataManager {
     }
 
     @SuppressLint("CheckResult")
-    public void getByTypeAndRecipient(AppDatabase appDatabase, String recipient, SendAction action, String text){
+    public void insertMessageByTypeAndRecipient(AppDatabase appDatabase, String recipient, SendAction action, String text){
         appDatabase.chatDao().getByTypeAndRecipient(recipient, action.toString())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(new DisposableSingleObserver<Chat>() {
+                .subscribe(new DisposableSingleObserver<Chat>() {
                     @Override
                     public void onSuccess(Chat chat) {
                         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");

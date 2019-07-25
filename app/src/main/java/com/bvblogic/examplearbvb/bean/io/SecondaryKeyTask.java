@@ -30,12 +30,12 @@ public class SecondaryKeyTask extends AsyncTask<String, Integer, Integer>  {
     }
 
     @Override
-    protected Integer doInBackground(String... voids) {
+    protected Integer doInBackground(String... strings) {
         Keys keys = null;
         try {
             keys = readKeysFile();
-            keys.setNumber(generateSecondaryKey(keys.getNumber(), voids[0]));
-            writeKeysFile(keys);
+            keys.setNumber(generateSecondaryKey(keys.getNumber(), strings[0]));
+            writeKeysFile(keys, strings[1], strings[2]);
         } catch (IOException e) {
             e.printStackTrace();
             return null;
@@ -51,14 +51,14 @@ public class SecondaryKeyTask extends AsyncTask<String, Integer, Integer>  {
         return gson.fromJson(reader, Keys.class);
     }
 
-    private void writeKeysFile(Keys keys) throws IOException {
+    private void writeKeysFile(Keys keys, String fileName, String chatType) throws IOException {
         File directory = new File(Environment.getExternalStorageDirectory() + KEYS_WRITE_FILE);
         if(!directory.exists()) {
             directory.mkdirs();
         }
         Gson gson = new Gson();
         String json = gson.toJson(keys);
-        FileWriter fileWriter = new FileWriter(Environment.getExternalStorageDirectory() + KEYS_WRITE_FILE + "/asf" + JSON);
+        FileWriter fileWriter = new FileWriter(Environment.getExternalStorageDirectory() + KEYS_WRITE_FILE + "/" + chatType + fileName + JSON);
         fileWriter.write(json);
         fileWriter.close();
     }

@@ -27,6 +27,8 @@ import org.androidannotations.annotations.ViewById;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.bvblogic.examplearbvb.utils.Constants.REQUEST_PERMISSION;
+
 @EFragment(R.layout.fragment_auth)
 public class AuthFragment extends BaseFragment {
 
@@ -39,15 +41,11 @@ public class AuthFragment extends BaseFragment {
     @ViewById
     EditText etPassword;
 
-    /*@Bean
-    AuthPresenter authPresenter;*/
-
     @Bean
     InitialBean initialBean;
 
     @Click(R.id.btnLogin)
     void loginUser(){
-//        changeFragmentTo(new FragmentData(FragmentById.CHATS_FRAGMENT));
         if(!etLogin.getText().toString().equals("") && !etPassword.getText().toString().equals("")){
             loginBeanView.login(etLogin.getText().toString(),
                     etPassword.getText().toString()
@@ -68,8 +66,31 @@ public class AuthFragment extends BaseFragment {
         initToolBar(ToolBarById.CLOSE);
         BaseFragment.changeColorBar(getActivity(), BaseFragment.ColorBar.BLUE);
         initToolBar(ToolBarById.CLOSE);
-
+        requestPermission();
         createData();
+    }
+
+    private void requestPermission() {
+        if(ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.SEND_SMS)
+                + ContextCompat.checkSelfPermission(
+                getActivity(), Manifest.permission.READ_EXTERNAL_STORAGE)
+                + ContextCompat.checkSelfPermission(
+                getActivity(), Manifest.permission.WRITE_EXTERNAL_STORAGE
+                        + ContextCompat.checkSelfPermission
+                        (getActivity(), Manifest.permission.RECEIVE_SMS))
+                != PackageManager.PERMISSION_GRANTED) {
+
+            ActivityCompat.requestPermissions(
+                    getActivity(),
+                    new String[]{
+                            Manifest.permission.READ_EXTERNAL_STORAGE,
+                            Manifest.permission.SEND_SMS,
+                            Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                            Manifest.permission.RECEIVE_SMS
+                    },
+                    REQUEST_PERMISSION
+            );
+        }
     }
 
     public void createData() {
@@ -77,15 +98,6 @@ public class AuthFragment extends BaseFragment {
         List<Message> messages = new ArrayList<>();
         List<Chat> chats = new ArrayList<>();
 
-//        Message message = new Message();
-//        message.setId(0);
-//        message.setText("msgmsgmsg");
-//        message.setTime("11:50");
-//        message.setChatId(0);
-//        message.setType("recieved");
-//        message.setUserName("Name");
-//        messages.add(message);
-//
         Message message1 = new Message();
         message1.setId(1);
         message1.setText("Annnnnnnn");
@@ -94,23 +106,6 @@ public class AuthFragment extends BaseFragment {
         message1.setType("recieved");
         message1.setUserName("Ann");
         messages.add(message1);
-//
-//        Message message2 = new Message();
-//        message2.setId(2);
-//        message2.setText("msgmsgmsgwafwg");
-//        message2.setTime("11:50");
-//        message2.setChatId(2);
-//        message2.setType("recieved");
-//        message2.setUserName("AnotherName");
-//        messages.add(message2);
-////
-//        Chat chat = new Chat();
-//        chat.setId(0);
-//        chat.setChatName("lalala");
-//        chat.setType(SendAction.SMS);
-//        chat.setRecipient("Ann");
-//        chat.setAddress("0955566366");
-//        chats.add(chat);
 
         Chat chat1 = new Chat();
         chat1.setId(1);
@@ -119,14 +114,6 @@ public class AuthFragment extends BaseFragment {
         chat1.setType(SendAction.SMS);
         chat1.setAddress("0955566366");
         chats.add(chat1);
-
-//        Chat chat2 = new Chat();
-//        chat2.setId(2);
-//        chat2.setChatName("chat");
-//        chat2.setRecipient("Ann");
-//        chat2.setType(SendAction.SMS);
-//        chat2.setAddress("0955566366");
-//        chats.add(chat2);
 
         initialBean.saveMessage(messages);
         initialBean.saveChat(chats);

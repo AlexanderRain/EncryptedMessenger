@@ -28,10 +28,6 @@ public class Message {
     @ColumnInfo(name = "user")
     private String userName;
 
-    public Message(String text) {
-        this.text = text;
-    }
-
     public Message() {
 
     }

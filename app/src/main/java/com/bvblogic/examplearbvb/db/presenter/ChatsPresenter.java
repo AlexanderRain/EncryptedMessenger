@@ -39,18 +39,6 @@ public class ChatsPresenter extends Presenter<List<Chat>> {
         new ChatDataManager().addChat(appDatabase, chat);
     }
 
-    public void getChatByRecipientAndType(String recipient, SendAction type, String message){
-        new ChatDataManager().getByTypeAndRecipient(appDatabase, recipient, type, message);
-    }
-
-    public void getChatByRecipientAndType(Context context, String recipient, SendAction type, String message){
-        new ChatDataManager().getByTypeAndRecipient(getAppDatabaseWithCustomContext(context), recipient, type, message);
-    }
-
-    public void updateChat(Chat chat) {
-        new ChatDataManager().updateChat(appDatabase, chat);
-    }
-
     @Override
     public void onSuccess(List<Chat> chats) {
         providerBeanChat.initAdapter(recyclerView);
