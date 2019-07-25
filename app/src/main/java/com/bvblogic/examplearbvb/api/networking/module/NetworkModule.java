@@ -4,7 +4,9 @@ import android.annotation.SuppressLint;
 
 import com.bvblogic.examplearbvb.activity.core.BaseActivity;
 import com.bvblogic.examplearbvb.api.networking.LoginNetworking;
+import com.bvblogic.examplearbvb.api.networking.UserNetworking;
 import com.bvblogic.examplearbvb.api.service.LoginService;
+import com.bvblogic.examplearbvb.api.service.UserService;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
@@ -131,6 +133,18 @@ public class NetworkModule {
     @Singleton
     public LoginNetworking providesNetworkLogin(LoginService loginService) {
         return new LoginNetworking(loginService);
+    }
+
+    @Provides
+    @Singleton
+    public UserService providesUserService(Retrofit retrofit){
+        return retrofit.create(UserService.class);
+    }
+
+    @Provides
+    @Singleton
+    public UserNetworking providesUserNetworking(UserService userService){
+        return new UserNetworking(userService);
     }
 
 }

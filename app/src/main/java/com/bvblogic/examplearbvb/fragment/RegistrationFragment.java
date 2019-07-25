@@ -1,11 +1,14 @@
 package com.bvblogic.examplearbvb.fragment;
 
 import android.util.Log;
-import android.widget.Button;
+import android.util.LogPrinter;
 import android.widget.Toast;
 
 import com.bvblogic.examplearbvb.R;
-import com.bvblogic.examplearbvb.bean.login.LoginBeanView;
+import com.bvblogic.examplearbvb.api.model.User;
+import com.bvblogic.examplearbvb.api.presenter.RegisterPresenter;
+import com.bvblogic.examplearbvb.bean.register.RegisterBean;
+import com.bvblogic.examplearbvb.bean.register.RegisterBeanView;
 import com.bvblogic.examplearbvb.fragment.core.BaseFragment;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
@@ -18,27 +21,6 @@ import org.androidannotations.annotations.ViewById;
 public class RegistrationFragment extends BaseFragment {
 
     @Bean
-    LoginBeanView loginBeanView;
-
-    @ViewById(R.id.user_name)
-    MaterialEditText userName;
-
-    @ViewById(R.id.password)
-    MaterialEditText password;
-
-    @ViewById(R.id.email)
-    MaterialEditText email;
-
-    @ViewById(R.id.phone)
-    MaterialEditText phone;
-
-    @Click(R.id.sign_up)
-    public void validate() {
-      if(password.getText() != null && password.getText().length() >= 6) {
-          Log.e("a", "afssa");
-      } else {
-          Toast.makeText(getActivity(), "Too short password!", Toast.LENGTH_SHORT).show();
-      }
-    }
+    RegisterBeanView registerBeanView;
 
 }
