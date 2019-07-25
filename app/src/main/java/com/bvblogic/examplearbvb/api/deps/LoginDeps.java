@@ -1,7 +1,7 @@
 package com.bvblogic.examplearbvb.api.deps;
 
 import com.bvblogic.examplearbvb.api.networking.module.NetworkModule;
-import com.bvblogic.examplearbvb.bean.login.LoginBeanView;
+import com.bvblogic.examplearbvb.bean.auth.LoginBeanView;
 
 import javax.inject.Singleton;
 

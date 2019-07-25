@@ -1,17 +1,20 @@
-package com.bvblogic.examplearbvb.bean.register;
+package com.bvblogic.examplearbvb.bean.auth;
 
 import android.content.Context;
 import android.util.Log;
 import android.widget.Toast;
 
 import com.bvblogic.examplearbvb.R;
+import com.bvblogic.examplearbvb.api.core.BaseView;
 import com.bvblogic.examplearbvb.api.model.Error;
 import com.bvblogic.examplearbvb.api.model.User;
 import com.bvblogic.examplearbvb.api.presenter.RegisterPresenter;
+import com.bvblogic.examplearbvb.bean.preference.PreferenceBean;
 import com.bvblogic.examplearbvb.mvp.core.FragmentById;
 import com.bvblogic.examplearbvb.mvp.core.FragmentData;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
+import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EBean;
 import org.androidannotations.annotations.ViewById;
@@ -19,9 +22,12 @@ import org.androidannotations.annotations.ViewById;
 import okhttp3.ResponseBody;
 
 @EBean
-public class RegisterBeanView extends RegisterBean {
+public class RegisterBeanView extends UserBean implements BaseView<ResponseBody> {
 
     private Context context;
+
+    @Bean
+    PreferenceBean preferenceBean;
 
     @ViewById(R.id.user_name)
     MaterialEditText userName;
@@ -48,8 +54,7 @@ public class RegisterBeanView extends RegisterBean {
 
     @Click(R.id.sign_up)
     public void validate() {
-        if(password.getText() != null && password.getText().length() >= 6) {
-            Log.e("a", "afssa");
+        if(areFielsValid()) {
             User user = new User(
                     userName.getText().toString(),
                     password.getText().toString(),
@@ -57,13 +62,18 @@ public class RegisterBeanView extends RegisterBean {
                     phone.getText().toString(),
                     "USER"
             );
-
             this.register(user);
         } else {
-            Toast.makeText(context, "Too short password!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Fill all fields please!", Toast.LENGTH_SHORT).show();
         }
     }
 
+    public boolean areFielsValid(){
+        return userName.getText() !=null && userName.getText().length() >= 5 &&
+                password.getText() != null && password.getText().length() >= 6 &&
+                email.getText() != null && phone.getText() != null;
+
+    }
     public void clearAllFields(){
         userName.setText("");
         password.setText("");
@@ -87,5 +97,16 @@ public class RegisterBeanView extends RegisterBean {
 
     @Override
     public void onSuccess(ResponseBody responseBody) {
-        activity.changeFragmentTo(new FragmentData(FragmentById.CHATS_FRAGMENT)); }
+        activity.changeFragmentTo(new FragmentData(FragmentById.CHATS_FRAGMENT));
+    }
+
+
+    public void saveUsernameToPrefs(String username){
+        preferenceBean.saveUsername(username);
+    }
+    @Override
+    public void showWait() { }
+
+    @Override
+    public void hideWait() { }
 }

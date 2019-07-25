@@ -1,20 +1,22 @@
-package com.bvblogic.examplearbvb.bean.register;
+package com.bvblogic.examplearbvb.bean.auth;
 
 import com.bvblogic.examplearbvb.api.deps.DaggerUserDeps;
 import com.bvblogic.examplearbvb.api.deps.UserDeps;
 import com.bvblogic.examplearbvb.api.networking.UserNetworking;
 import com.bvblogic.examplearbvb.api.networking.module.NetworkModule;
-import com.bvblogic.examplearbvb.bean.core.BeanAPI;
+import com.bvblogic.examplearbvb.bean.core.Bean;
+import com.bvblogic.examplearbvb.bean.preference.PreferenceBean;
 
 import org.androidannotations.annotations.AfterInject;
 import org.androidannotations.annotations.EBean;
 
 import javax.inject.Inject;
 
-import okhttp3.ResponseBody;
-
 @EBean
-public abstract class RegisterBean extends BeanAPI<ResponseBody> {
+public abstract class UserBean extends Bean {
+
+    @org.androidannotations.annotations.Bean
+    protected PreferenceBean preferenceBean;
 
     private UserDeps userDeps;
 

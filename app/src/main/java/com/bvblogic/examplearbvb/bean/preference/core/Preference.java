@@ -12,7 +12,7 @@ import org.androidannotations.annotations.RootContext;
 @EBean
 public abstract class Preference {
 
-    private static final String MY_PREFERENCES = "TestToTestPreferences";
+    private static final String MY_PREFERENCES = "EncryptedMessager";
     private SharedPreferences sharedpreferences;
 
     @RootContext

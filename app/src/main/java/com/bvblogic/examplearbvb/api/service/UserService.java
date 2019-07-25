@@ -32,6 +32,6 @@ public interface UserService {
     Observable<User> deleteUser(@Header("Authorization") String token, @Path("username") String username);
 
     @POST("/auth")
-    Observable<List<User>> login(@Header("Authorization") String token);
+    Observable<User> login(@Header("Authorization") String token);
 
 }

@@ -1,7 +1,6 @@
 package com.bvblogic.examplearbvb.api.presenter;
 
 import android.util.Log;
-import android.widget.Toast;
 
 import com.bvblogic.examplearbvb.api.core.BaseView;
 import com.bvblogic.examplearbvb.api.model.User;
@@ -9,18 +8,13 @@ import com.bvblogic.examplearbvb.api.networking.UserNetworking;
 import com.bvblogic.examplearbvb.api.networking.core.Service;
 import com.bvblogic.examplearbvb.api.networking.error.NetworkError;
 import com.bvblogic.examplearbvb.api.presenter.core.Presenter;
-import com.bvblogic.examplearbvb.bean.preference.PreferenceBean;
-import com.bvblogic.examplearbvb.bean.register.RegisterBeanView;
-
-import org.androidannotations.annotations.Bean;
-import org.androidannotations.annotations.EBean;
+import com.bvblogic.examplearbvb.bean.auth.RegisterBeanView;
 
 import okhttp3.ResponseBody;
 
+
 public class RegisterPresenter extends Presenter<UserNetworking, ResponseBody> {
 
-    @Bean
-    PreferenceBean preferenceBean;
 
     public RegisterPresenter(UserNetworking service, BaseView<ResponseBody> responseBodyBaseView) {
         super(service, responseBodyBaseView);
@@ -33,7 +27,7 @@ public class RegisterPresenter extends Presenter<UserNetworking, ResponseBody> {
             public void onSuccess(ResponseBody responseBody) {
                 yBaseView.hideWait();
                 yBaseView.onSuccess(responseBody);
-                preferenceBean.saveUsername(user.getUsername());
+                ((RegisterBeanView) yBaseView).saveUsernameToPrefs(user.getUsername());
                 // TODO: add username to shared prefs
                 stop();
             }

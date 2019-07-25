@@ -1,10 +1,8 @@
 package com.bvblogic.examplearbvb.api.deps;
 
 import com.bvblogic.examplearbvb.api.networking.module.NetworkModule;
-import com.bvblogic.examplearbvb.api.presenter.RegisterPresenter;
-import com.bvblogic.examplearbvb.bean.register.RegisterBean;
-import com.bvblogic.examplearbvb.bean.register.RegisterBeanView;
-import com.bvblogic.examplearbvb.fragment.RegistrationFragment;
+import com.bvblogic.examplearbvb.bean.auth.LoginBeanView;
+import com.bvblogic.examplearbvb.bean.auth.RegisterBeanView;
 
 import javax.inject.Singleton;
 
@@ -14,4 +12,6 @@ import dagger.Component;
 @Singleton
 public interface UserDeps {
     void inject(RegisterBeanView view);
+    void inject(LoginBeanView view);
+
 }

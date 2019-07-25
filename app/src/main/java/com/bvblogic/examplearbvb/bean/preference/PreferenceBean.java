@@ -7,7 +7,7 @@ import org.androidannotations.annotations.EBean;
 @EBean
 public class PreferenceBean extends Preference {
 
-    private static final String USERNAME_KEY = "username";
+    private static final String USERNAME_KEY = "USERNAME";
 
     public void saveUsername(String username) {
         savePreferences(USERNAME_KEY, username);

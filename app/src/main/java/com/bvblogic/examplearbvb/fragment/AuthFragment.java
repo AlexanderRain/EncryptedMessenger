@@ -5,9 +5,11 @@ import android.content.pm.PackageManager;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.bvblogic.examplearbvb.R;
 import com.bvblogic.examplearbvb.bean.InitialBean;
+import com.bvblogic.examplearbvb.bean.auth.LoginBeanView;
 import com.bvblogic.examplearbvb.db.domain.Chat;
 import com.bvblogic.examplearbvb.db.domain.Message;
 import com.bvblogic.examplearbvb.db.domain.SendAction;
@@ -30,6 +32,9 @@ import static com.bvblogic.examplearbvb.utils.Constants.PERMISSION_REQUEST_SMS;
 @EFragment(R.layout.fragment_auth)
 public class AuthFragment extends BaseFragment {
 
+    @Bean
+    LoginBeanView loginBeanView;
+
     @ViewById
     EditText etLogin;
 
@@ -44,7 +49,15 @@ public class AuthFragment extends BaseFragment {
 
     @Click(R.id.btnLogin)
     void loginUser(){
-        changeFragmentTo(new FragmentData(FragmentById.CHATS_FRAGMENT));
+//        changeFragmentTo(new FragmentData(FragmentById.CHATS_FRAGMENT));
+        if(!etLogin.getText().toString().equals("") && !etPassword.getText().toString().equals("")){
+            loginBeanView.login(etLogin.getText().toString(),
+                    etPassword.getText().toString()
+            );
+        } else {
+            Toast.makeText(getActivity(), "Please fill all the fields!", Toast.LENGTH_SHORT).show();
+        }
+
     }
 
     @Click(R.id.btnSignUp)
