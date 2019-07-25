@@ -8,7 +8,7 @@ import io.reactivex.annotations.NonNull;
 
 @Entity(tableName = "message")
 public class Message {
-    @PrimaryKey()
+    @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
     @NonNull
     private int id;

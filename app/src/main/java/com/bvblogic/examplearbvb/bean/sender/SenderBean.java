@@ -5,28 +5,38 @@ import android.telephony.SmsManager;
 import android.widget.Toast;
 
 import com.bvblogic.examplearbvb.bean.core.Bean;
+import com.bvblogic.examplearbvb.bean.io.SecondaryKeyTask;
 import com.bvblogic.examplearbvb.db.domain.Chat;
 import com.bvblogic.examplearbvb.db.domain.SendAction;
 
 import org.androidannotations.annotations.EBean;
 
 @EBean
-public class SenderBean extends Bean {
+public class SenderBean extends Bean implements SecondaryKeyTask.Callback{
 
     private SendAction sendAction;
     private String address;
+    private String message;
+    private String password;
 
     public void init(Chat chat) {
         this.sendAction = chat.getType();
         this.address = chat.getAddress();
+        this.password = chat.getFilePassword();
     }
 
-    public void send(String message) {
+    public void encryptMessage(String message) {
+        SecondaryKeyTask task = new SecondaryKeyTask();
+        task.execute(this.password);
+        this.message = message;
+    }
+
+    public void send() {
         switch(sendAction){
             case SMS:
                 try {
                     SmsManager smsManager = SmsManager.getDefault();
-                    smsManager.sendTextMessage(address, null, message, null, null);
+                    smsManager.sendTextMessage(address, null, this.message, null, null);
                     Toast.makeText(activity.getApplicationContext(), "Message Sent",
                             Toast.LENGTH_LONG).show();
                 } catch (Exception ex) {
@@ -47,4 +57,8 @@ public class SenderBean extends Bean {
         }
     }
 
+    @Override
+    public void onComplete(Integer secondaryKey) {
+
+    }
 }

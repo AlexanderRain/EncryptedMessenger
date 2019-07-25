@@ -12,7 +12,7 @@ import io.reactivex.annotations.NonNull;
 @Entity(tableName = "chat")
 public class Chat {
 
-    @PrimaryKey()
+    @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
     @NonNull
     private int id;
@@ -73,12 +73,12 @@ public class Chat {
         this.address = address;
     }
 
-    public String getFilePassword() {
-        return filePassword;
-    }
-
     public void setFilePassword(String filePassword) {
         this.filePassword = filePassword;
+    }
+
+    public String getFilePassword() {
+        return filePassword;
     }
 
     public String getRecipient() {
