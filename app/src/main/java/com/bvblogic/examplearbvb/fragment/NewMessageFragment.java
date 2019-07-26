@@ -5,6 +5,7 @@ import android.widget.EditText;
 import com.bvblogic.examplearbvb.R;
 import com.bvblogic.examplearbvb.bean.coding.CodingPresenter;
 
+import com.bvblogic.examplearbvb.db.domain.Message;
 import com.bvblogic.examplearbvb.db.presenter.UserChatPresenter;
 import com.bvblogic.examplearbvb.fragment.core.BaseFragment;
 import com.bvblogic.examplearbvb.mvp.core.FragmentById;
@@ -50,7 +51,7 @@ public class NewMessageFragment extends BaseFragment {
 
     @Click(R.id.btnSend)
     public void send() {
-        //codingPresenter.send(new Message(editText.getText().toString()));
+        codingPresenter.send(new Message(editText.getText().toString()));
     }
 
     @AfterViews

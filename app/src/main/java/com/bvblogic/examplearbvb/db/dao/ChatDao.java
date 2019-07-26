@@ -7,6 +7,7 @@ import android.arch.persistence.room.Query;
 import android.arch.persistence.room.Update;
 
 import com.bvblogic.examplearbvb.db.domain.Chat;
+import com.bvblogic.examplearbvb.db.domain.SendAction;
 
 import java.util.List;
 
@@ -21,8 +22,8 @@ public abstract class ChatDao implements BaseDao<Chat> {
     @Query("SELECT * FROM chat WHERE id=:id")
     public abstract Single<Chat> getById(int id);
 
-    @Query("SELECT * FROM chat WHERE user_name=:recipient AND type=:sendAction")
-    public abstract Single<Chat> getByTypeAndRecipient(String recipient, String sendAction);
+    @Query("SELECT * FROM chat WHERE user_name=:recipient AND type=:type")
+    public abstract Single<Chat> getByTypeAndRecipient(String recipient, String type);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     public abstract void insertAll(List<Chat> chats);

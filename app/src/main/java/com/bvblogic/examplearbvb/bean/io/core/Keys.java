@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Keys {
-    private int number;
+    private long number;
     private List<Group> groups = new ArrayList<>();
 
     @Override
@@ -11,7 +11,7 @@ public class Keys {
         return number + groups.toString();
     }
 
-    public int getNumber() {
+    public long getNumber() {
         return number;
     }
 

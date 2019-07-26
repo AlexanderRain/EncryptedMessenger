@@ -9,6 +9,7 @@ import com.bvblogic.examplearbvb.db.datamanager.core.DataManager;
 import com.bvblogic.examplearbvb.db.domain.Chat;
 import com.bvblogic.examplearbvb.db.domain.Message;
 import com.bvblogic.examplearbvb.db.domain.SendAction;
+import com.bvblogic.examplearbvb.utils.Constants;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -43,7 +44,8 @@ public class ChatDataManager extends DataManager {
 
     @SuppressLint("CheckResult")
     public void insertMessageByTypeAndRecipient(AppDatabase appDatabase, String recipient, SendAction action, String text){
-        appDatabase.chatDao().getByTypeAndRecipient(recipient, action.toString())
+        String actionString = action.getActionName().equals("SMS") ? Constants.SMS_ACTION : Constants.EMAIL_ACTION;
+        appDatabase.chatDao().getByTypeAndRecipient(recipient, actionString)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new DisposableSingleObserver<Chat>() {
@@ -51,6 +53,7 @@ public class ChatDataManager extends DataManager {
                     public void onSuccess(Chat chat) {
                         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
 
+                        Log.d("TXTSMS", text);
                         Message temp = new Message();
                         temp.setText(text);
                         temp.setTime(formatter.format(new Date()));
@@ -63,6 +66,8 @@ public class ChatDataManager extends DataManager {
                     @Override
                     public void onError(Throwable e) {
 
+                        e.printStackTrace();
+                        Log.e("ERROR", e.getMessage());
                     }
                 });
     }
