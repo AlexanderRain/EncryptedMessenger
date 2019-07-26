@@ -15,6 +15,7 @@ import java.util.Date;
 import java.util.List;
 
 import io.reactivex.Completable;
+import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.observers.DisposableSingleObserver;
 import io.reactivex.schedulers.Schedulers;
@@ -94,6 +95,11 @@ public class ChatDataManager extends DataManager {
                     }
                 });
     }
+
+    public Single<Chat> getById(int id, AppDatabase database) {
+        return database.chatDao().getById(id);
+    }
+
 
     public Completable updatePassword(int id, String password, AppDatabase database) {
         return Completable.fromAction(
