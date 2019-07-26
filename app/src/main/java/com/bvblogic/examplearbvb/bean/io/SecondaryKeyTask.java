@@ -16,7 +16,7 @@ import static com.bvblogic.examplearbvb.utils.Constants.JSON;
 import static com.bvblogic.examplearbvb.utils.Constants.KEYS_FILE_PATH;
 import static com.bvblogic.examplearbvb.utils.Constants.KEYS_WRITE_FILE;
 
-public class SecondaryKeyTask extends AsyncTask<String, Integer, Integer>  {
+public class SecondaryKeyTask extends AsyncTask<String, Long, Long>  {
 
     private Callback callback;
 
@@ -29,8 +29,8 @@ public class SecondaryKeyTask extends AsyncTask<String, Integer, Integer>  {
     }
 
     @Override
-    protected Integer doInBackground(String... strings) {
-        File file = null;
+    protected Long doInBackground(String... strings) {
+        Keys keys = null;
         try {
             file = readKeysFile();
             file.setNumber(generateSecondaryKey(file.getNumber(), strings[0]));
@@ -62,7 +62,7 @@ public class SecondaryKeyTask extends AsyncTask<String, Integer, Integer>  {
         fileWriter.close();
     }
 
-    private int generateSecondaryKey(int primaryKey, String filePass){
+    private int generateSecondaryKey(long primaryKey, String filePass){
         int key = 1;
         for(int i = 0; i < filePass.length(); i++){
             key *= filePass.charAt(i);
@@ -74,7 +74,7 @@ public class SecondaryKeyTask extends AsyncTask<String, Integer, Integer>  {
     }
 
     @Override
-    protected void onPostExecute(Integer secondaryKey) {
+    protected void onPostExecute(Long secondaryKey) {
         super.onPostExecute(secondaryKey);
 //        callback.onComplete(secondaryKey);
     }

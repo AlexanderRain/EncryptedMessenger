@@ -7,6 +7,7 @@ import com.bvblogic.examplearbvb.api.model.User;
 import com.bvblogic.examplearbvb.api.networking.core.Service;
 import com.bvblogic.examplearbvb.api.networking.error.NetworkError;
 import com.bvblogic.examplearbvb.api.service.UserService;
+import com.bvblogic.examplearbvb.bean.io.PreliminaryKeyTask;
 import com.bvblogic.examplearbvb.utils.AuthHelper;
 
 import java.io.IOException;
@@ -30,8 +31,11 @@ public class UserNetworking extends Service<UserService> {
                     @Override
                     public void onNext(ResponseBody responseBody) {
                         // TODO: insert into file
+                        PreliminaryKeyTask keyTask = new PreliminaryKeyTask();
+                        keyTask.setCallback(callback);
+                        keyTask.execute(responseBody);
                         Log.e("HELLO", "newworking");
-                        callback.onSuccess(responseBody);
+//                        callback.onSuccess(responseBody);
                     }
                     @Override
                     public void onError(Throwable e) {
