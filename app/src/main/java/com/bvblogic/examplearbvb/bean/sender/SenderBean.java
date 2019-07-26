@@ -31,8 +31,6 @@ public class SenderBean extends Bean implements SecondaryKeyTask.Callback{
     }
 
     public void encryptMessage(String message) {
-        SecondaryKeyTask task = new SecondaryKeyTask();
-        task.execute(this.password, preferenceBean.getUsername(), sendAction.getActionName());
         //send(message);
     }
 

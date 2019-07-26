@@ -3,12 +3,11 @@ package com.bvblogic.examplearbvb.bean.io;
 import android.os.AsyncTask;
 import android.os.Environment;
 
-import com.bvblogic.examplearbvb.bean.io.core.Keys;
+import com.bvblogic.examplearbvb.bean.coding.core.File;
 import com.bvblogic.examplearbvb.utils.Constants;
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
 
-import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -33,31 +32,31 @@ public class SecondaryKeyTask extends AsyncTask<String, Long, Long>  {
     protected Long doInBackground(String... strings) {
         Keys keys = null;
         try {
-            keys = readKeysFile();
-            keys.setNumber(generateSecondaryKey(keys.getNumber(), strings[0]));
-            writeKeysFile(keys, strings[1], strings[2]);
+            file = readKeysFile();
+            file.setNumber(generateSecondaryKey(file.getNumber(), strings[0]));
+            writeKeysFile(file, strings[1], strings[2]);
         } catch (IOException e) {
             e.printStackTrace();
             return null;
         }
-        return keys.getNumber();
+        return file.getNumber();
     }
 
-    private Keys readKeysFile() throws IOException{
-        File directory = new File(Environment.getExternalStorageDirectory() + KEYS_FILE_PATH);
+    private File readKeysFile() throws IOException{
+        java.io.File directory = new java.io.File(Environment.getExternalStorageDirectory() + KEYS_FILE_PATH);
         Gson gson = new Gson();
         JsonReader reader = new JsonReader(new FileReader(directory));
 
-        return gson.fromJson(reader, Keys.class);
+        return gson.fromJson(reader, File.class);
     }
 
-    private void writeKeysFile(Keys keys, String fileName, String chatType) throws IOException {
-        File directory = new File(Environment.getExternalStorageDirectory() + KEYS_WRITE_FILE);
+    private void writeKeysFile(File file, String fileName, String chatType) throws IOException {
+        java.io.File directory = new java.io.File(Environment.getExternalStorageDirectory() + KEYS_WRITE_FILE);
         if(!directory.exists()) {
             directory.mkdirs();
         }
         Gson gson = new Gson();
-        String json = gson.toJson(keys);
+        String json = gson.toJson(file);
         FileWriter fileWriter = new FileWriter(Environment.getExternalStorageDirectory() + KEYS_WRITE_FILE + "/" + chatType + fileName + JSON);
         fileWriter.write(json);
         fileWriter.close();

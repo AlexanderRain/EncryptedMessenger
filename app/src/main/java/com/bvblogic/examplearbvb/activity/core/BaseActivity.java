@@ -54,6 +54,7 @@ public abstract class BaseActivity extends AppCompatActivity implements Fragment
                             editText.setError("Too short password!");
                         } else {
                             beanPassword.setChatPassword(editText.getText().toString(), id);
+                            beanPassword.saveFile(editText.getText().toString(), id);
                         }
                     })
                     .setNegativeButton(R.string.cancel, (dialog1, which) -> {

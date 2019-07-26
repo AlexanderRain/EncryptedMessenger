@@ -84,8 +84,4 @@ public class Message {
         this.userName = userName;
     }
 
-    public Chat getChat() {
-        // TODO: getting chat
-        return null;
-    }
 }

@@ -19,8 +19,7 @@ public class CodingPresenter {
     Instruments instruments;
 
     public void send(Message message) {
-        Chat chat = message.getChat();
-        File file = repository.getByChat(chat);
+        /*File file = repository.getByChat(chat);
 
         Coder coder = new Coder(file);
         String encoded = coder.encode(message.getText());
@@ -28,7 +27,7 @@ public class CodingPresenter {
         ChatMechanism mechanism = instruments.getInstrument(chat.getType().getActionName()).getChatMechanism();
 
         mechanism.send(encoded);
-        saveMessage(message);
+        saveMessage(message);*/
     }
 
     private void saveMessage(Message message) {
