@@ -2,6 +2,7 @@ package com.bvblogic.examplearbvb.bean.coding;
 
 import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.bvblogic.examplearbvb.bean.instruments.ChatMechanism;
 import com.bvblogic.examplearbvb.bean.instruments.Instruments;
@@ -66,6 +67,7 @@ public class CodingPresenter extends com.bvblogic.examplearbvb.bean.core.Bean {
         saveMessage(message);
         senderBean.init(chat);
         senderBean.send(code(message));
+        activity.runOnUiThread(() -> Toast.makeText(activity, "Message sent", Toast.LENGTH_SHORT).show());
     }
 
 

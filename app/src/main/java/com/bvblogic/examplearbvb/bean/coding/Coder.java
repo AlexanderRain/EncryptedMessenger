@@ -106,6 +106,7 @@ public class Coder {
         Log.e("KEYNUM ROW", String.valueOf(((Integer.parseInt(String.valueOf(date.getDate()) + String.valueOf(date.getYear()), 10)
                 * number) % group.getKeys().size())));
         keyNumber = (int)( (Integer.parseInt(String.valueOf(date.getDate()) + String.valueOf(date.getYear()), 10) * number) % group.getKeys().size());
+
 //        Log.e("KEYNUM", String.valueOf(keyNumber));
         return Integer.parseInt(group.getKeys().get(keyNumber), 2);
     }

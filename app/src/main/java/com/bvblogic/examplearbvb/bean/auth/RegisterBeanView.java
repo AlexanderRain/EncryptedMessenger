@@ -125,6 +125,6 @@ public class RegisterBeanView extends UserBean implements BaseView<ResponseBody>
 
     @Override
     public void hideWait() {
-        progressBar.setVisibility(ProgressBar.INVISIBLE);
+        activity.runOnUiThread(() -> progressBar.setVisibility(ProgressBar.INVISIBLE));
     }
 }
