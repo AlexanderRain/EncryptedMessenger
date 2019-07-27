@@ -5,6 +5,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.bvblogic.examplearbvb.R;
@@ -113,9 +114,17 @@ public class RegisterBeanView extends UserBean implements BaseView<ResponseBody>
         preferenceBean.saveUsername(username);
         Log.e("In PREFS", preferenceBean.getUsername());
     }
-    @Override
-    public void showWait() { }
+
+    @ViewById(R.id.progress)
+    ProgressBar progressBar;
 
     @Override
-    public void hideWait() { }
+    public void showWait() {
+        progressBar.setVisibility(ProgressBar.VISIBLE);
+    }
+
+    @Override
+    public void hideWait() {
+        progressBar.setVisibility(ProgressBar.INVISIBLE);
+    }
 }

@@ -2,6 +2,7 @@ package com.bvblogic.examplearbvb.db.presenter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.bvblogic.examplearbvb.R;

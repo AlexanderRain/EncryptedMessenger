@@ -1,8 +1,11 @@
 package com.bvblogic.examplearbvb.bean.auth;
 
+import android.view.View;
+import android.widget.ProgressBar;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.bvblogic.examplearbvb.R;
 import com.bvblogic.examplearbvb.api.core.BaseView;
 import com.bvblogic.examplearbvb.api.model.Error;
 import com.bvblogic.examplearbvb.api.model.User;
@@ -14,6 +17,8 @@ import com.bvblogic.examplearbvb.mvp.core.FragmentData;
 
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EBean;
+import org.androidannotations.annotations.ViewById;
+import org.androidannotations.annotations.ViewsById;
 
 @EBean
 public class LoginBeanView extends UserBean implements BaseView<User> {
@@ -50,12 +55,16 @@ public class LoginBeanView extends UserBean implements BaseView<User> {
 
 
 
-
-
-
-    @Override
-    public void showWait() { }
+    @ViewById(R.id.progress)
+    ProgressBar progressBar;
 
     @Override
-    public void hideWait() { }
+    public void showWait() {
+        progressBar.setVisibility(ProgressBar.VISIBLE);
+    }
+
+    @Override
+    public void hideWait() {
+        progressBar.setVisibility(ProgressBar.INVISIBLE);
+    }
 }

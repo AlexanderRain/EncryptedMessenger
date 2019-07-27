@@ -1,5 +1,8 @@
 package com.bvblogic.examplearbvb.api.presenter;
 
+import android.widget.ProgressBar;
+
+import com.bvblogic.examplearbvb.R;
 import android.util.Log;
 
 import com.bvblogic.examplearbvb.api.core.BaseView;
@@ -13,11 +16,12 @@ import com.bvblogic.examplearbvb.api.presenter.core.Presenter;
 import com.bvblogic.examplearbvb.bean.auth.LoginBeanView;
 import com.bvblogic.examplearbvb.bean.auth.RegisterBeanView;
 
+import org.androidannotations.annotations.ViewsById;
+
 public class LoginPresenter extends Presenter<UserNetworking, User> {
     public LoginPresenter(UserNetworking service, BaseView<User> baseView) {
-        super(service, baseView);
+            super(service, baseView);
     }
-
     public void login(String username, String password) {
         yBaseView.showWait();
         compositeDisposable.add(service.login(username, password, new Service.Callback<User>() {
@@ -36,6 +40,5 @@ public class LoginPresenter extends Presenter<UserNetworking, User> {
                 stop();
             }
         }));
-
     }
 }
