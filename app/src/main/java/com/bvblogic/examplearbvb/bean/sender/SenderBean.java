@@ -2,6 +2,7 @@ package com.bvblogic.examplearbvb.bean.sender;
 
 import android.content.Intent;
 import android.telephony.SmsManager;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.bvblogic.examplearbvb.bean.core.Bean;
@@ -30,22 +31,33 @@ public class SenderBean extends Bean implements SecondaryKeyTask.Callback{
         this.password = chat.getFilePassword();
     }
 
+
+    public void setSendAction(SendAction sendAction) {
+        this.sendAction = sendAction;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
     public void encryptMessage(String message) {
-        //send(message);
+        //code(message);
     }
 
     public void send(String message) {
         switch(sendAction){
             case SMS:
                 try {
+//                    Log.e("ADDDSYSTU", address);
                     SmsManager smsManager = SmsManager.getDefault();
                     smsManager.sendTextMessage(address, null,
                             preferenceBean.getUsername() + WHITE_SPACE + message, null, null);
-                    Toast.makeText(activity.getApplicationContext(), "Message Sent",
-                            Toast.LENGTH_LONG).show();
+                    Log.e("Message sent", "ysys");
+//                    Toast.makeText(activity, "Message Sent",
+//                            Toast.LENGTH_LONG).show();
                 } catch (Exception ex) {
-                    Toast.makeText(activity.getApplicationContext(),ex.getMessage(),
-                            Toast.LENGTH_LONG).show();
+//                    Toast.makeText(activity,ex.getMessage(),
+//                            Toast.LENGTH_LONG).show();
                     ex.printStackTrace();
                 }
                 break;

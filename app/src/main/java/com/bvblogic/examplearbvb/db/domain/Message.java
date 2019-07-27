@@ -4,6 +4,9 @@ import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 
+import com.bvblogic.examplearbvb.db.datamanager.ChatDataManager;
+import com.bvblogic.examplearbvb.db.datamanager.MessageDataManager;
+
 import io.reactivex.annotations.NonNull;
 
 @Entity(tableName = "message")
@@ -83,5 +86,6 @@ public class Message {
     public void setUserName(String userName) {
         this.userName = userName;
     }
+
 
 }

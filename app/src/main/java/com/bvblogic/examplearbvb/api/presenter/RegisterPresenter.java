@@ -26,8 +26,8 @@ public class RegisterPresenter extends Presenter<UserNetworking, ResponseBody> {
             @Override
             public void onSuccess(ResponseBody responseBody) {
                 yBaseView.hideWait();
-                yBaseView.onSuccess(responseBody);
                 ((RegisterBeanView) yBaseView).saveUsernameToPrefs(user.getUsername());
+                yBaseView.onSuccess(responseBody);
                 Log.e("FILE", "filewriter closed");
                 stop();
             }

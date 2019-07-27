@@ -33,6 +33,11 @@ public class EmailInstrument implements Instrument {
     }
 
     @Override
+    public String getAddress() {
+        return fragment.emailView.getText().toString();
+    }
+
+    @Override
     public ChatMechanism getChatMechanism() {
         return new EmailChatMechanism(fragment.getEmail());
     }

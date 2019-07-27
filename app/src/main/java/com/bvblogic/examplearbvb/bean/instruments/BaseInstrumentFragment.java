@@ -12,4 +12,5 @@ import org.androidannotations.annotations.ViewById;
 public abstract class BaseInstrumentFragment extends Fragment {
     @ViewById(R.id.name)
     public EditText nameView;
+
 }

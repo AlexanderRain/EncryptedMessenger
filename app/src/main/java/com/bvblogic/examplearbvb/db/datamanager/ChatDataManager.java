@@ -45,6 +45,7 @@ public class ChatDataManager extends DataManager {
 
     @SuppressLint("CheckResult")
     public void insertMessageByTypeAndRecipient(AppDatabase appDatabase, String recipient, SendAction action, String text){
+        Log.e("Hello", "insertMessageByTypeAndRecipient");
         String actionString = action.getActionName().equals("SMS") ? Constants.SMS_ACTION : Constants.EMAIL_ACTION;
         appDatabase.chatDao().getByTypeAndRecipient(recipient, actionString)
                 .subscribeOn(Schedulers.io())
@@ -79,6 +80,10 @@ public class ChatDataManager extends DataManager {
 
     public void updateChat(AppDatabase appDatabase, Chat chat) {
         appDatabase.chatDao().update(chat);
+    }
+
+    public Chat getByMessage(AppDatabase appDatabase, int chatId){
+        return appDatabase.chatDao().getByMessage(chatId);
     }
 
     public void getById(int id, AppDatabase database, DBView<Chat> listDBView) {

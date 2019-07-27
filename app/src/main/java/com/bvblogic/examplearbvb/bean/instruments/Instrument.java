@@ -12,5 +12,7 @@ public interface Instrument {
 
     SendAction getAction();
 
+    String getAddress();
+
     ChatMechanism getChatMechanism();
 }

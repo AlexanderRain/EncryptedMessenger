@@ -2,6 +2,7 @@ package com.bvblogic.examplearbvb.bean.auth;
 
 import android.view.View;
 import android.widget.ProgressBar;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.bvblogic.examplearbvb.R;
@@ -38,7 +39,12 @@ public class LoginBeanView extends UserBean implements BaseView<User> {
 
     @Override
     public void onSuccess(User user) {
-        userSavedToPrefs(user.getUsername());
+        if(preferenceBean.getUsername() != null){
+            Log.e("USER IN PREFS", preferenceBean.getUsername());
+            preferenceBean.removeUsername();
+        }
+        preferenceBean.saveUsername(user.getUsername());
+        Log.e("In PREFS", preferenceBean.getUsername());
         Toast.makeText(activity, preferenceBean.getUsername(), Toast.LENGTH_SHORT).show();
         activity.changeFragmentTo(new FragmentData(FragmentById.CHATS_FRAGMENT));
     }
@@ -47,13 +53,7 @@ public class LoginBeanView extends UserBean implements BaseView<User> {
         new LoginPresenter(userNetworking, this).login(username, password);
     }
 
-    private boolean userSavedToPrefs(String username){
-        if(preferenceBean.getUsername() == null){
-            preferenceBean.saveUsername(username);
-            return true;
-        }
-        return  false;
-    }
+
 
     @ViewById(R.id.progress)
     ProgressBar progressBar;

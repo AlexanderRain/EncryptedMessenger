@@ -2,6 +2,8 @@ package com.bvblogic.examplearbvb.utils;
 
 public class Constants {
     public static final String KEYS_FILE_PATH = "/EncryptedMessenger/keys.json";
+    public static final String TEMP_FOLDER = "/EncryptedMessenger/temp/";
+    public static final String ACCEPTED_FOLDER = "/EncryptedMessenger/accepted/";
     public static final String APPLICATION_DIR = "/EncryptedMessenger/";
     public static final String KEYS_WRITE_FILE = "/EncryptedMessenger/transfer/";
     public static final String SMS_ACTION = "android.provider.Telephony.SMS_RECEIVED";

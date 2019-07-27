@@ -35,13 +35,17 @@ public class ProviderBeanUserChat extends Bean {
     @ViewById(R.id.btnSend)
     Button btnSend;
 
-    @Click(R.id.btnSend)
-    public void sendMessage(){
-        senderBean.encryptMessage(messageField.getText().toString());
-    }
+//    @Click(R.id.btnSend)
+//    public void sendMessage(){
+//        senderBean.encryptMessage(messageField.getText().toString());
+//    }
 
     public void initSendBean(Chat chat) {
         senderBean.init(chat);
+    }
+
+    public String getChatType() {
+        return chatType.getText().toString();
     }
 
     public void setUserName(String chatName) {

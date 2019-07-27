@@ -1,6 +1,9 @@
 package com.bvblogic.examplearbvb.bean.auth;
 
 import android.content.Context;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.util.Log;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -93,6 +96,7 @@ public class RegisterBeanView extends UserBean implements BaseView<ResponseBody>
     public void onFailure(Error error) {
         Log.e("ER_CONTEXT", context.toString());
         Toast.makeText(context, "Such user exists!", Toast.LENGTH_SHORT).show();
+
         clearAllFields();
     }
 
@@ -103,7 +107,12 @@ public class RegisterBeanView extends UserBean implements BaseView<ResponseBody>
 
 
     public void saveUsernameToPrefs(String username){
+        if(preferenceBean.getUsername() != null){
+            Log.e("USER IN PREFS", preferenceBean.getUsername());
+            preferenceBean.removeUsername();
+        }
         preferenceBean.saveUsername(username);
+        Log.e("In PREFS", preferenceBean.getUsername());
     }
 
     @ViewById(R.id.progress)

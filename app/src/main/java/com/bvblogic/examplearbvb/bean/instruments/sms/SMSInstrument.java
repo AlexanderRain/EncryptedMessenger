@@ -33,6 +33,11 @@ public class SMSInstrument implements Instrument {
     }
 
     @Override
+    public String getAddress() {
+        return fragment.phoneView.getText().toString();
+    }
+
+    @Override
     public ChatMechanism getChatMechanism() {
         return new SMSChatMechanism(fragment.getPhone());
     }

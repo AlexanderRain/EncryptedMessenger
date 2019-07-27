@@ -30,7 +30,7 @@ public class Chat {
     private String address;
 
     @ColumnInfo(name = "file_password")
-    private String filePassword;
+    private String filePassword; // secondary number
 
     @ColumnInfo(name = "user_name")
     private String recipient;
@@ -38,8 +38,7 @@ public class Chat {
     @ColumnInfo(name = "photo")
     private String photo;
 
-    public Chat() {
-    }
+    public Chat() {}
 
     public int getId() {
         return id;
@@ -95,5 +94,18 @@ public class Chat {
 
     public void setPhoto(String photo) {
         this.photo = photo;
+    }
+
+    @Override
+    public String toString() {
+        return "Chat{" +
+                "id=" + id +
+                ", chatName='" + chatName + '\'' +
+                ", type=" + type +
+                ", address='" + address + '\'' +
+                ", filePassword='" + filePassword + '\'' +
+                ", recipient='" + recipient + '\'' +
+                ", photo='" + photo + '\'' +
+                '}';
     }
 }

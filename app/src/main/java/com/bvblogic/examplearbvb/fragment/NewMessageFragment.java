@@ -1,10 +1,13 @@
 package com.bvblogic.examplearbvb.fragment;
 
+import android.util.Log;
 import android.widget.EditText;
 
 import com.bvblogic.examplearbvb.R;
 import com.bvblogic.examplearbvb.bean.coding.CodingPresenter;
 
+import com.bvblogic.examplearbvb.bean.io.KeysTask;
+import com.bvblogic.examplearbvb.bean.io.core.Keys;
 import com.bvblogic.examplearbvb.db.domain.Message;
 import com.bvblogic.examplearbvb.db.presenter.UserChatPresenter;
 import com.bvblogic.examplearbvb.fragment.core.BaseFragment;
@@ -19,6 +22,10 @@ import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.FragmentArg;
 import org.androidannotations.annotations.ViewById;
 
+import java.security.Key;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 
 @EFragment(R.layout.fragment_new_message)
 public class NewMessageFragment extends BaseFragment {
@@ -30,8 +37,6 @@ public class NewMessageFragment extends BaseFragment {
     @Bean
     UserChatPresenter userPresenter;
 
-    @Bean
-    CodingPresenter codingPresenter;
 
     @ViewById(R.id.messageField)
     EditText editText;
@@ -51,7 +56,17 @@ public class NewMessageFragment extends BaseFragment {
 
     @Click(R.id.btnSend)
     public void send() {
-        codingPresenter.send(new Message(editText.getText().toString()));
+        Log.d("FRAG", "hello");
+//        codingPresenter.code(new Message(editText.getText().toString()));
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+
+        Message message = new Message();
+        message.setChatId(chatId);
+        message.setText(editText.getText().toString());
+        message.setTime(formatter.format(new Date()));
+        message.setType("sent");
+        userPresenter.sendMessage(message);
+
     }
 
     @AfterViews

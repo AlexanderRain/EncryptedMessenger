@@ -16,11 +16,11 @@ public abstract class Preference {
     private SharedPreferences sharedpreferences;
 
     @RootContext
-    protected Activity activity;
+    protected Context context;
 
     @AfterInject
     public void init() {
-        sharedpreferences = activity.getSharedPreferences(MY_PREFERENCES, Context.MODE_PRIVATE);
+        sharedpreferences = context.getSharedPreferences(MY_PREFERENCES, Context.MODE_PRIVATE);
     }
 
     protected void savePreferences(String key, String value) {
