@@ -3,7 +3,8 @@ package com.bvblogic.examplearbvb.bean.io;
 import android.os.AsyncTask;
 import android.os.Environment;
 
-import com.bvblogic.examplearbvb.bean.coding.core.File;
+import com.bvblogic.examplearbvb.bean.coding.CodingPresenter;
+import com.bvblogic.examplearbvb.bean.io.core.Keys;
 import com.bvblogic.examplearbvb.utils.Constants;
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
@@ -30,7 +31,7 @@ public class SecondaryKeyTask extends AsyncTask<String, Long, Long>  {
 
     @Override
     protected Long doInBackground(String... strings) {
-        Keys keys = null;
+        Keys file = null;
         try {
             file = readKeysFile();
             file.setNumber(generateSecondaryKey(file.getNumber(), strings[0]));
@@ -42,15 +43,15 @@ public class SecondaryKeyTask extends AsyncTask<String, Long, Long>  {
         return file.getNumber();
     }
 
-    private File readKeysFile() throws IOException{
+    private Keys readKeysFile() throws IOException{
         java.io.File directory = new java.io.File(Environment.getExternalStorageDirectory() + KEYS_FILE_PATH);
         Gson gson = new Gson();
         JsonReader reader = new JsonReader(new FileReader(directory));
 
-        return gson.fromJson(reader, File.class);
+        return gson.fromJson(reader, Keys.class);
     }
 
-    private void writeKeysFile(File file, String fileName, String chatType) throws IOException {
+    private void writeKeysFile(Keys file, String fileName, String chatType) throws IOException {
         java.io.File directory = new java.io.File(Environment.getExternalStorageDirectory() + KEYS_WRITE_FILE);
         if(!directory.exists()) {
             directory.mkdirs();

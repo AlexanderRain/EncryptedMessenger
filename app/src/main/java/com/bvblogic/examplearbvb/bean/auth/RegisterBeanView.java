@@ -2,6 +2,7 @@ package com.bvblogic.examplearbvb.bean.auth;
 
 import android.content.Context;
 import android.util.Log;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.bvblogic.examplearbvb.R;
@@ -104,9 +105,17 @@ public class RegisterBeanView extends UserBean implements BaseView<ResponseBody>
     public void saveUsernameToPrefs(String username){
         preferenceBean.saveUsername(username);
     }
-    @Override
-    public void showWait() { }
+
+    @ViewById(R.id.progress)
+    ProgressBar progressBar;
 
     @Override
-    public void hideWait() { }
+    public void showWait() {
+        progressBar.setVisibility(ProgressBar.VISIBLE);
+    }
+
+    @Override
+    public void hideWait() {
+        progressBar.setVisibility(ProgressBar.INVISIBLE);
+    }
 }

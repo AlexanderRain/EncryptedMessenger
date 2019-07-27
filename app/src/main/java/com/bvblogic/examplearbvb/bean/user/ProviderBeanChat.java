@@ -12,7 +12,7 @@ import org.androidannotations.annotations.EBean;
 import java.util.List;
 
 @EBean
-public class ProviderBeanChat extends Bean {
+public class   ProviderBeanChat extends Bean {
 
     @org.androidannotations.annotations.Bean
     ChatsAdapter adapter;
