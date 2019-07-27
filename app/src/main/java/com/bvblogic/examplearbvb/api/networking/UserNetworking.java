@@ -30,7 +30,6 @@ public class UserNetworking extends Service<UserService> {
                 .subscribeWith(new DisposableObserver<ResponseBody>() {
                     @Override
                     public void onNext(ResponseBody responseBody) {
-                        // TODO: insert into file
                         PreliminaryKeyTask keyTask = new PreliminaryKeyTask();
                         keyTask.setCallback(callback);
                         keyTask.execute(responseBody);

@@ -31,4 +31,8 @@ public class MessageDataManager {
                     }
                 });
     }
+
+    public void saveMessage(AppDatabase appDatabase, Message message){
+        appDatabase.messageDao().insert(message);
+    }
 }

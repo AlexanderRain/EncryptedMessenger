@@ -47,10 +47,12 @@ public class BeanPassword extends Bean {
 
     public void saveFile(String password, int id) {
         SecondaryKeyTask task = new SecondaryKeyTask();
+        Log.e("Heeloo there", "ys");
         new ChatDataManager().getById(id, AppDatabase.getAppDatabase(activity)).subscribe(new DisposableSingleObserver<Chat>() {
             @Override
             public void onSuccess(Chat chat) {
-                task.execute(password, preferenceBean.getUsername(), chat.getType().getActionName());
+                Log.e("Heeloo there", "ys2");
+                task.execute(password, preferenceBean.getUsername(), chat.getType().getActionName(), chat.getRecipient());
             }
 
             @Override

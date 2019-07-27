@@ -1,10 +1,12 @@
 package com.bvblogic.examplearbvb.db.presenter;
 
 
+import com.bvblogic.examplearbvb.bean.io.KeysTask;
 import com.bvblogic.examplearbvb.bean.user.ProviderBeanUserChat;
 import com.bvblogic.examplearbvb.db.datamanager.ChatDataManager;
 import com.bvblogic.examplearbvb.db.datamanager.core.DataManager;
 import com.bvblogic.examplearbvb.db.domain.Chat;
+import com.bvblogic.examplearbvb.db.domain.Message;
 import com.bvblogic.examplearbvb.db.presenter.core.Presenter;
 
 import org.androidannotations.annotations.Bean;
@@ -25,6 +27,9 @@ public class UserChatPresenter extends Presenter<Chat> {
     @Bean
     ProviderBeanUserChat view;
 
+    @Bean
+    KeysTask keysTask;
+
     public void getChat(int id) {
         new ChatDataManager().getById(id, appDatabase, this);
     }
@@ -34,5 +39,10 @@ public class UserChatPresenter extends Presenter<Chat> {
         view.setUserName(chat.getRecipient());
         view.setChatType(chat.getType().getActionName());
         view.initSendBean(chat);
+    }
+
+    public void sendMessage(Message message){
+        keysTask.setAppDatabase(appDatabase);
+        keysTask.execute(message);
     }
 }

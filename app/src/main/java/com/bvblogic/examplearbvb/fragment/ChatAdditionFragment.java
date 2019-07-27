@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.bvblogic.examplearbvb.R;
 import com.bvblogic.examplearbvb.adapter.instruments.Adapter;
+import com.bvblogic.examplearbvb.bean.instruments.BaseInstrumentFragment;
 import com.bvblogic.examplearbvb.bean.instruments.InstrumentsPresenter;
 import com.bvblogic.examplearbvb.fragment.core.BaseFragment;
 import com.bvblogic.examplearbvb.mvp.core.FragmentById;

@@ -16,11 +16,17 @@ import io.reactivex.Single;
 @Dao
 public abstract class ChatDao implements BaseDao<Chat> {
 
+    // TODO: CHAT BY SENDER
+
+
     @Query("SELECT * FROM chat")
     public abstract Single<List<Chat>> getAll();
 
     @Query("SELECT * FROM chat WHERE id=:id")
     public abstract Single<Chat> getById(int id);
+
+    @Query("SELECT * FROM chat WHERE id=:chatId") // TODO: WITH ROOMS!
+    public abstract Chat getByMessage(int chatId);
 
     @Query("SELECT * FROM chat WHERE user_name=:recipient AND type=:type")
     public abstract Single<Chat> getByTypeAndRecipient(String recipient, String type);

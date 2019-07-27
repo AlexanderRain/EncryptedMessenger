@@ -1,5 +1,7 @@
 package com.bvblogic.examplearbvb.api.presenter;
 
+import android.util.Log;
+
 import com.bvblogic.examplearbvb.api.core.BaseView;
 import com.bvblogic.examplearbvb.api.model.Token;
 import com.bvblogic.examplearbvb.api.model.User;
@@ -21,6 +23,7 @@ public class LoginPresenter extends Presenter<UserNetworking, User> {
         compositeDisposable.add(service.login(username, password, new Service.Callback<User>() {
             @Override
             public void onSuccess(User user) {
+                Log.e("User", user.toString());
                 yBaseView.hideWait();
                 yBaseView.onSuccess(user);
                 stop();

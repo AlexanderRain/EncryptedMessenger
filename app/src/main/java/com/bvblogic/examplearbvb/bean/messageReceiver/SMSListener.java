@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.telephony.SmsMessage;
 import android.util.Log;
 
+import com.bvblogic.examplearbvb.bean.coding.CodingPresenter;
+import com.bvblogic.examplearbvb.bean.io.AcceptMessageTask;
 import com.bvblogic.examplearbvb.db.core.AppDatabase;
 import com.bvblogic.examplearbvb.db.datamanager.ChatDataManager;
 import com.bvblogic.examplearbvb.db.domain.SendAction;
@@ -23,6 +25,12 @@ public class SMSListener extends BroadcastReceiver {
 
     @Bean
     ChatsPresenter chatsPresenter;
+
+//    @Bean
+//    CodingPresenter codingPresenter;
+
+    @Bean
+    AcceptMessageTask acceptMessageTask;
 
     @Override
     public void onReceive(Context context, Intent intent) {
@@ -45,7 +53,12 @@ public class SMSListener extends BroadcastReceiver {
                         String[] words = msgBody.split(" ", 2);
                         Log.d("USER", words[0]);
                         Log.d("TEXT", words[1]);
-                        new ChatDataManager().insertMessageByTypeAndRecipient(AppDatabase.getAppDatabase(context), words[0], SendAction.SMS, words[1]);
+                        // TODO: call receive from codeing presenter (number of sender)
+//                        new ChatDataManager().insertMessageByTypeAndRecipient(AppDatabase.getAppDatabase(context), words[0], SendAction.SMS, words[1]);
+//                        codingPresenter.receive(context, words[0], words[1], SendAction.SMS);
+                        acceptMessageTask.setContext(context);
+                        acceptMessageTask.setSendAction(SendAction.SMS);
+                        acceptMessageTask.execute(words[0], words[1]);
                     }
                 } catch (Exception e) {
                 }

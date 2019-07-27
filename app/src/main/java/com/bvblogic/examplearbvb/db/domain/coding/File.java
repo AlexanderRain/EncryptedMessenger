@@ -3,16 +3,16 @@ package com.bvblogic.examplearbvb.db.domain.coding;
 import java.util.List;
 
 public class File {
-    int number;
+    private long number;
 
-    List<Group> groups;
+    private List<Group> groups;
 
     public File(int number, List<Group> groups) {
         this.number = number;
         this.groups = groups;
     }
 
-    public int getNumber() {
+    public long getNumber() {
         return number;
     }
 
