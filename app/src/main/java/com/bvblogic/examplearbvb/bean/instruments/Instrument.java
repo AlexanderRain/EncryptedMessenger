@@ -1,10 +1,8 @@
 package com.bvblogic.examplearbvb.bean.instruments;
 
-import android.graphics.drawable.Icon;
 import android.support.annotation.DrawableRes;
-import android.support.v4.app.Fragment;
 
-import javax.annotation.Resource;
+import com.bvblogic.examplearbvb.db.domain.SendAction;
 
 public interface Instrument {
     BaseInstrumentFragment getFragment();
@@ -12,9 +10,9 @@ public interface Instrument {
     @DrawableRes
     int getIcon();
 
-    String getName();
+    SendAction getAction();
 
-    String getUserName();
+    String getAddress();
 
     ChatMechanism getChatMechanism();
 }

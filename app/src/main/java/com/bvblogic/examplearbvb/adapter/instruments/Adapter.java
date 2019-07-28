@@ -2,16 +2,14 @@ package com.bvblogic.examplearbvb.adapter.instruments;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.bvblogic.examplearbvb.adapter.core.ViewWrapper;
 import com.bvblogic.examplearbvb.bean.instruments.Instrument;
 import com.bvblogic.examplearbvb.bean.instruments.Instruments;
-import com.bvblogic.examplearbvb.fragment.instruments.ChatAdditionFragment;
+import com.bvblogic.examplearbvb.fragment.ChatAdditionFragment;
 
 import org.androidannotations.annotations.AfterInject;
 import org.androidannotations.annotations.Bean;
@@ -60,7 +58,7 @@ public class Adapter extends RecyclerView.Adapter {
 
         view.setOnClickListener(v -> {
             fragment.setFragment(instrument.getFragment());
-            fragment.setName(instrument.getName());
+            fragment.setName(instrument.getAction().getActionName());
 
             current = i;
         });

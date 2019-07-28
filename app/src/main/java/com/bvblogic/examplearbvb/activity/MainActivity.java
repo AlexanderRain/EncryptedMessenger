@@ -16,7 +16,7 @@ public class MainActivity extends BaseActivity {
 
     @AfterViews
     public void init() {
-        changeFragmentTo(new FragmentData(FragmentById.CHAT_ADDITION));
+      changeFragmentTo(new FragmentData(FragmentById.AUTH_FRAGMENT));
     }
 
 

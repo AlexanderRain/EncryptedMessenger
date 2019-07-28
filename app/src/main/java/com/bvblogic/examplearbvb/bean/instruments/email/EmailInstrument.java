@@ -5,8 +5,8 @@ import android.content.Context;
 import com.bvblogic.examplearbvb.R;
 import com.bvblogic.examplearbvb.bean.instruments.ChatMechanism;
 import com.bvblogic.examplearbvb.bean.instruments.Instrument;
+import com.bvblogic.examplearbvb.db.domain.SendAction;
 
-import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EBean;
 import org.androidannotations.annotations.RootContext;
 
@@ -28,13 +28,13 @@ public class EmailInstrument implements Instrument {
     }
 
     @Override
-    public String getName() {
-        return context.getString(R.string.email_instrument_name);
+    public SendAction getAction() {
+        return SendAction.EMAIL;
     }
 
     @Override
-    public String getUserName() {
-        return fragment.getName();
+    public String getAddress() {
+        return fragment.emailView.getText().toString();
     }
 
     @Override
