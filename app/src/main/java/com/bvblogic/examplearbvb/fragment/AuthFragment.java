@@ -8,11 +8,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.bvblogic.examplearbvb.R;
-import com.bvblogic.examplearbvb.bean.InitialBean;
 import com.bvblogic.examplearbvb.bean.auth.LoginBeanView;
-import com.bvblogic.examplearbvb.db.domain.Chat;
-import com.bvblogic.examplearbvb.db.domain.Message;
-import com.bvblogic.examplearbvb.db.domain.SendAction;
 import com.bvblogic.examplearbvb.fragment.core.BaseFragment;
 import com.bvblogic.examplearbvb.mvp.core.FragmentById;
 import com.bvblogic.examplearbvb.mvp.core.FragmentData;
@@ -23,9 +19,6 @@ import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.ViewById;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static com.bvblogic.examplearbvb.utils.Constants.REQUEST_PERMISSION;
 
@@ -41,8 +34,6 @@ public class AuthFragment extends BaseFragment {
     @ViewById
     EditText etPassword;
 
-    @Bean
-    InitialBean initialBean;
 
     @Click(R.id.btnLogin)
     void loginUser(){

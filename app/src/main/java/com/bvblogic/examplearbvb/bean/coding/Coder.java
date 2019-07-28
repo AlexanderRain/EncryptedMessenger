@@ -70,6 +70,9 @@ public class Coder {
             for (int j = 0; j < textLength; j++){
                 Log.e("Number of the symbol 2", String.valueOf(i));
                 parsedText[i] = encodeSymbol(parsedText[i]);
+                if((text.length() == 7 || text.length() == 8) && i == 1){
+                    parsedText[i] = encodeSymbol(parsedText[i]);
+                }
             }
         }
 

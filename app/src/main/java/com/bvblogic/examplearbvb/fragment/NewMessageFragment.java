@@ -2,12 +2,14 @@ package com.bvblogic.examplearbvb.fragment;
 
 import android.util.Log;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.bvblogic.examplearbvb.R;
 import com.bvblogic.examplearbvb.bean.coding.CodingPresenter;
 
 import com.bvblogic.examplearbvb.bean.io.KeysTask;
 import com.bvblogic.examplearbvb.bean.io.core.Keys;
+import com.bvblogic.examplearbvb.db.domain.Chat;
 import com.bvblogic.examplearbvb.db.domain.Message;
 import com.bvblogic.examplearbvb.db.presenter.UserChatPresenter;
 import com.bvblogic.examplearbvb.fragment.core.BaseFragment;
@@ -37,12 +39,17 @@ public class NewMessageFragment extends BaseFragment {
     @Bean
     UserChatPresenter userPresenter;
 
-
     @ViewById(R.id.messageField)
-    EditText editText;
+    EditText messageField;
 
     @ViewById(R.id.enter_file_password)
     MaterialEditText enter_pass;
+
+    @ViewById(R.id.user_name)
+    TextView chatName;
+
+    @ViewById(R.id.chat_type)
+    TextView chatType;
 
     @Click(R.id.btnBack)
     public void back(){
@@ -62,16 +69,31 @@ public class NewMessageFragment extends BaseFragment {
 
         Message message = new Message();
         message.setChatId(chatId);
-        message.setText(editText.getText().toString());
+        message.setText(messageField.getText().toString());
         message.setTime(formatter.format(new Date()));
         message.setType("sent");
         userPresenter.sendMessage(message);
+
+        popBackStack();
 
     }
 
     @AfterViews
     public void init(){
+        userPresenter.setFragment(this);
         userPresenter.getChat(chatId);
         // request permissions
+    }
+
+    public String getChatType() {
+        return chatType.getText().toString();
+    }
+
+    public void setUserName(String chatName) {
+        this.chatName.setText(chatName);
+    }
+
+    public void setChatType(String sendAction) {
+        this.chatType.setText(sendAction);
     }
 }
