@@ -15,6 +15,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 
+import static com.bvblogic.examplearbvb.utils.Constants.ACCEPTED_FOLDER;
 import static com.bvblogic.examplearbvb.utils.Constants.JSON;
 import static com.bvblogic.examplearbvb.utils.Constants.KEYS_WRITE_FILE;
 
@@ -25,7 +26,7 @@ public class SecondaryKeyParser {
     PreferenceBean preferenceBean;
 
     public Keys getByChat(Chat chat) {
-        File keysFile = new File(Environment.getExternalStorageDirectory() + KEYS_WRITE_FILE + "/" + chat.getType().getActionName() + preferenceBean.getUsername() + JSON);
+        File keysFile = new File(Environment.getExternalStorageDirectory() + KEYS_WRITE_FILE + "/" + chat.getType().getActionName() + chat.getRecipient() + JSON);
 
         Gson gson = new Gson();
         JsonReader reader = null;

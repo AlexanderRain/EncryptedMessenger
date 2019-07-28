@@ -52,6 +52,9 @@ public abstract class BaseActivity extends AppCompatActivity implements Fragment
                         if(editText.getText() == null || editText.getText().toString().length() < 6) {
                             Toast.makeText(this, "Too short password!", Toast.LENGTH_SHORT).show();
                             editText.setError("Too short password!");
+                        } if(editText.getText().toString().length() > 8) {
+                            Toast.makeText(this, "Password must be from 6 to 8 chars!", Toast.LENGTH_SHORT).show();
+                            editText.setError("Password must be from 6 to 8 chars!");
                         } else {
                             beanPassword.setChatPassword(editText.getText().toString(), id);
                             beanPassword.saveFile(editText.getText().toString(), id);

@@ -67,7 +67,6 @@ public class AuthFragment extends BaseFragment {
         BaseFragment.changeColorBar(getActivity(), BaseFragment.ColorBar.BLUE);
         initToolBar(ToolBarById.CLOSE);
         requestPermission();
-        createData();
     }
 
     private void requestPermission() {
@@ -93,30 +92,5 @@ public class AuthFragment extends BaseFragment {
         }
     }
 
-    public void createData() {
-        //testing data
-        List<Message> messages = new ArrayList<>();
-        List<Chat> chats = new ArrayList<>();
 
-        Message message1 = new Message();
-        message1.setId(1);
-        message1.setText("Annnnnnnn");
-        message1.setTime("00:00");
-        message1.setChatId(1);
-        message1.setType("recieved");
-        message1.setUserName("Ann");
-        messages.add(message1);
-
-        Chat chat1 = new Chat();
-        chat1.setId(1);
-        chat1.setChatName("Ann");
-        chat1.setRecipient("Ann");
-        chat1.setType(SendAction.SMS);
-        chat1.setAddress("0955566366");
-        chats.add(chat1);
-
-        initialBean.saveMessage(messages);
-        initialBean.saveChat(chats);
-
-    }
 }

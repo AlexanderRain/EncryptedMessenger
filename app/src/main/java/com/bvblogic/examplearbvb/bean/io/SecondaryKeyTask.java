@@ -16,6 +16,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.math.BigInteger;
 
 import static com.bvblogic.examplearbvb.utils.Constants.ACCEPTED_FOLDER;
 import static com.bvblogic.examplearbvb.utils.Constants.JSON;
@@ -41,7 +42,7 @@ public class SecondaryKeyTask extends AsyncTask<String, Long, Long>  {
         try {
 
             file = readKeysFile();
-            file.setNumber(generateSecondaryKey(file.getNumber(), strings[0]));
+            file.setNumber(generateSecondaryKey(file.getNumber(), strings[0]).longValue());
             String src = writeKeysFile(file, strings[3], strings[2]);
             cleanAllFilesInTemp();
             Files.copy(new File(src), new File(Environment.getExternalStorageDirectory() + TEMP_FOLDER + "/" + strings[2] +  strings[1] + JSON));
@@ -77,15 +78,26 @@ public class SecondaryKeyTask extends AsyncTask<String, Long, Long>  {
         return filename;
     }
 
-    private long generateSecondaryKey(long primaryKey, String filePass){
-        long key = 1;
+    private BigInteger generateSecondaryKey(long primaryKey, String filePass){
+//        long key = 1;
+//        for(int i = 0; i < filePass.length(); i++){
+//            key *= filePass.charAt(i);
+//            key %= Constants.PASSWORD_DIVIDER;
+//        }
+//
+//        key *= primaryKey;
+//        key %= Constants.PASSWORD_DIVIDER;
+//        return Math.abs(key);
+
+        BigInteger key = BigInteger.valueOf(1);
         for(int i = 0; i < filePass.length(); i++){
-            key *= filePass.charAt(i);
+            long ch = filePass.charAt(i);
+            key = key.multiply(BigInteger.valueOf(ch));
+//            key %= Constants.PASSWORD_DIVIDER;
         }
 
-        key %= Constants.PASSWORD_DIVIDER;
-        key *= primaryKey;
-        key %= Constants.PASSWORD_DIVIDER;
+        key = key.multiply(BigInteger.valueOf(primaryKey));
+        key = key.divide(BigInteger.valueOf(Constants.PASSWORD_DIVIDER));
         return key;
     }
 

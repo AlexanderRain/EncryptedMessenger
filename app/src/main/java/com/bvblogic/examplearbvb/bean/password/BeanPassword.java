@@ -51,7 +51,7 @@ public class BeanPassword extends Bean {
         new ChatDataManager().getById(id, AppDatabase.getAppDatabase(activity)).subscribe(new DisposableSingleObserver<Chat>() {
             @Override
             public void onSuccess(Chat chat) {
-                Log.e("Heeloo there", "ys2");
+                Log.e("Heeloo there", password);
                 task.execute(password, preferenceBean.getUsername(), chat.getType().getActionName(), chat.getRecipient());
             }
 

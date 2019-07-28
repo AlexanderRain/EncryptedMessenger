@@ -21,7 +21,6 @@ import static com.bvblogic.examplearbvb.utils.Constants.JSON;
 public class AcceptedKeysParser {
 
     public Keys getByRecipient(String from, String action) {
-        Log.e("acc",Environment.getExternalStorageDirectory() + ACCEPTED_FOLDER + "/" + action + from + JSON );
         File keysFile = new File(Environment.getExternalStorageDirectory() + ACCEPTED_FOLDER + "/" + action + from + JSON);
 
         Gson gson = new Gson();

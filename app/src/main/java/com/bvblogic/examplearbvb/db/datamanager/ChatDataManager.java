@@ -45,7 +45,6 @@ public class ChatDataManager extends DataManager {
 
     @SuppressLint("CheckResult")
     public void insertMessageByTypeAndRecipient(AppDatabase appDatabase, String recipient, SendAction action, String text){
-        Log.e("Hello", "insertMessageByTypeAndRecipient");
         String actionString = action.getActionName().equals("SMS") ? Constants.SMS_ACTION : Constants.EMAIL_ACTION;
         appDatabase.chatDao().getByTypeAndRecipient(recipient, actionString)
                 .subscribeOn(Schedulers.io())
@@ -55,7 +54,6 @@ public class ChatDataManager extends DataManager {
                     public void onSuccess(Chat chat) {
                         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
 
-                        Log.d("TXTSMS", text);
                         Message temp = new Message();
                         temp.setText(text);
                         temp.setTime(formatter.format(new Date()));
@@ -69,7 +67,6 @@ public class ChatDataManager extends DataManager {
                     public void onError(Throwable e) {
 
                         e.printStackTrace();
-                        Log.e("ERROR", e.getMessage());
                     }
                 });
     }

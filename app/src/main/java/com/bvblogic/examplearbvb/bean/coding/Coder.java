@@ -4,10 +4,9 @@ import android.util.Log;
 
 import com.bvblogic.examplearbvb.bean.io.core.Group;
 import com.bvblogic.examplearbvb.bean.io.core.Keys;
-import com.bvblogic.examplearbvb.db.domain.coding.File;
 
-import java.time.LocalDate;
-import java.util.Date;
+import java.util.Calendar;
+
 
 
 public class Coder {
@@ -35,9 +34,18 @@ public class Coder {
         this.keys = keys;
     }
 
+
+    private String binary(String text){
+        char[] messChar = text.toCharArray();
+        String res = "";
+        for (int i = 0; i < messChar.length; i++) {
+            res += Integer.toBinaryString(messChar[i]) + " ";
+        }
+        return res;
+    }
     public String encode(String text) {
         Log.e("TEXT Coder", text);
-        Log.e("KEYS", keys.toString());
+
         Group group = getGroup(34, text.length() * Character.SIZE);
         char[] parsedText = text.toCharArray();
         textLength = parsedText.length;
@@ -49,17 +57,20 @@ public class Coder {
         phase = getPhase(keys.getNumber());
         Log.e("PHASE", Integer.toBinaryString(phase));
         Log.e("KEYLENGTH", String.valueOf(keyLength));
-        for (int i = 0; i < textLength; i++)
+        for (int i = 0; i < textLength; i++) {
+            Log.e("Number of the symbol", String.valueOf(i));
             parsedText[i] = encodeSymbol(parsedText[i]);
-
+        }
 
         for (int i = 0; i <= 3; i++) { // other iterations
             group = getNextGroup(textLength);
             key = getKey(group, keys.getNumber());
             phase = (short) (phase << 1);
 
-            for (int j = 0; j < textLength; j++)
+            for (int j = 0; j < textLength; j++){
+                Log.e("Number of the symbol 2", String.valueOf(i));
                 parsedText[i] = encodeSymbol(parsedText[i]);
+            }
         }
 
         return new String(parsedText);
@@ -69,8 +80,9 @@ public class Coder {
         if (denominator <= 0)
             throw new IllegalArgumentException("Message too large.");
 
-        Date date = new Date();
-        int groupNumber = Integer.parseInt(String.valueOf(date.getDate()) + String.valueOf(date.getMonth()+1)) % denominator;
+//        Date date = new Date();
+        Calendar date = Calendar.getInstance();
+        int groupNumber = Integer.parseInt(String.valueOf(date.get(Calendar.DAY_OF_MONTH)) + String.valueOf(date.get(Calendar.MONTH)+1)) % denominator;
         if(groupNumber < MIN ) {
             return getGroup(denominator - 1, minimum);
         }
@@ -101,12 +113,9 @@ public class Coder {
             getNextGroup(textLength);
             getKey(group, number);
         }
-        Date date = new Date();
-        Log.e("NUMbER", String.valueOf(number));
-        Log.e("KEYNUM ROW", String.valueOf(((Integer.parseInt(String.valueOf(date.getDate()) + String.valueOf(date.getYear()), 10)
-                * number) % group.getKeys().size())));
-        keyNumber = (int)( (Integer.parseInt(String.valueOf(date.getDate()) + String.valueOf(date.getYear()), 10) * number) % group.getKeys().size());
-
+//        Date date = new Date();
+        Calendar date = Calendar.getInstance();
+        keyNumber = (int)( (Integer.parseInt(String.valueOf(date.get(Calendar.DAY_OF_MONTH)) + String.valueOf(date.get(Calendar.YEAR)), 10) * number) % group.getKeys().size());
 //        Log.e("KEYNUM", String.valueOf(keyNumber));
         return Integer.parseInt(group.getKeys().get(keyNumber), 2);
     }
@@ -124,11 +133,11 @@ public class Coder {
     }
 
     private short getPhase(long number) {
-        Log.e("NUMBER", Long.toString(number));
-        Date date = new Date();
+        Log.e("NUMBER", Long.toBinaryString(number));
+//        Date date = new Date();
+        Calendar date = Calendar.getInstance();
 
-
-        return (short) (Integer.parseInt(String.valueOf(date.getDate()) + (date.getMonth()+1) + date.getYear(), 10) * number % keyLength);
+        return (short) (Integer.parseInt(String.valueOf(date.get(Calendar.DAY_OF_MONTH)) + (date.get(Calendar.MONTH)+1) + date.get(Calendar.YEAR), 10) * number % keyLength);
     }
 
 //    private BigInteger getConsequence(int phase, int key, int length) {
@@ -136,7 +145,7 @@ public class Coder {
 //    }
 
     private char encodeSymbol(char symbol) {
-        Log.e("PHASE", String.valueOf(phase));
+        Log.e("PHASE", Integer.toBinaryString(phase));
         char encoded = (char) (symbol ^ phase);
 
         for (int i = 0; i < keyLength; i++)

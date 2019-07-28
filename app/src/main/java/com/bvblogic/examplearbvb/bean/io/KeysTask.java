@@ -32,9 +32,7 @@ public class KeysTask extends AsyncTask<Message, Keys, Keys> {
 
     @Override
     protected Keys doInBackground(Message... messages) {
-        Log.e("KEYTASK","yaa");
         Chat chat = new ChatDataManager().getByMessage(appDatabase, messages[0].getChatId());
-        Log.e("KEYTASK",chat.toString());
         Keys keys = secondaryKeyParser.getByChat(chat);
         codingPresenter.setKeys(keys);
         codingPresenter.send(messages[0]);

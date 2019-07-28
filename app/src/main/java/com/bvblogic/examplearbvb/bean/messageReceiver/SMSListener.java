@@ -49,7 +49,6 @@ public class SMSListener extends BroadcastReceiver {
                         msgBody = smsMessages[i].getMessageBody();
                     }
                     if(msgBody.length() > 1) {
-                        Log.e("LENG", "it's more!");
                         String[] words = msgBody.split(" ", 2);
                         Log.d("USER", words[0]);
                         Log.d("TEXT", words[1]);

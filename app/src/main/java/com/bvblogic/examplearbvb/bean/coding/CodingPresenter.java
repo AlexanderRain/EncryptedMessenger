@@ -43,10 +43,8 @@ public class CodingPresenter extends com.bvblogic.examplearbvb.bean.core.Bean {
     }
 
     public String code(Message message) {
-        Log.e("KEYS", String.valueOf(keys == null));
         Coder coder = new Coder(keys);
         String encoded = coder.encode(message.getText());
-        Log.e("ENCODED", encoded);
         return encoded;
         /*File file = repository.getByChat(chat);
 
@@ -63,7 +61,6 @@ public class CodingPresenter extends com.bvblogic.examplearbvb.bean.core.Bean {
 
     public void send(Message message){
         Chat chat = new ChatDataManager().getByMessage(AppDatabase.getAppDatabase(activity), message.getChatId());
-        Log.e("CHAT", chat.toString());
         saveMessage(message);
         senderBean.init(chat);
         senderBean.send(code(message));
