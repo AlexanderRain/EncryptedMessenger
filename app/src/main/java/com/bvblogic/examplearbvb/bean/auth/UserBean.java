@@ -31,5 +31,6 @@ public abstract class UserBean extends Bean {
     public void init(){
         userDeps = DaggerUserDeps.builder().networkModule
                 (new NetworkModule("https://sleepy-river-11136.herokuapp.com/", activity)).build();
+
     }
 }

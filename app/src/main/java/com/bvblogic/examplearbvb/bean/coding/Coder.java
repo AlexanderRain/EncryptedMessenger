@@ -54,6 +54,7 @@ public class Coder {
         key = getKey(group, keys.getNumber()); // 1st iteration
         keyLength = getKeyLength(key);
         Log.e("KEY", Long.toBinaryString(key));
+
         phase = getPhase(keys.getNumber());
         Log.e("PHASE", Integer.toBinaryString(phase));
         Log.e("KEYLENGTH", String.valueOf(keyLength));
@@ -112,6 +113,7 @@ public class Coder {
     }
 
     private long getKey(Group group, long number) {
+
         if(group.getKeys().size() == 0){
             getNextGroup(textLength);
             getKey(group, number);
@@ -121,6 +123,7 @@ public class Coder {
         keyNumber = (int)( (Integer.parseInt(String.valueOf(date.get(Calendar.DAY_OF_MONTH)) + String.valueOf(date.get(Calendar.YEAR)), 10) * number) % group.getKeys().size());
 //        Log.e("KEYNUM", String.valueOf(keyNumber));
         return Long.parseLong(group.getKeys().get(keyNumber), 2);
+
     }
 
     private int getNextKey(Group group) {
@@ -153,6 +156,7 @@ public class Coder {
 
         for (int i = 0; i < keyLength; i++)
             phase = (short)((phase << 1) + Long.bitCount(phase & key) % 2);
+
 
         return encoded;
     }
