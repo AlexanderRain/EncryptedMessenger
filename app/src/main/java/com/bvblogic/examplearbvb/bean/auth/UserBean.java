@@ -30,6 +30,7 @@ public abstract class UserBean extends Bean {
     @AfterInject
     public void init(){
         userDeps = DaggerUserDeps.builder().networkModule
-                (new NetworkModule("https://evening-ocean-71194.herokuapp.com/ ", activity)).build();
+                (new NetworkModule("https://sleepy-river-11136.herokuapp.com/", activity)).build();
+
     }
 }

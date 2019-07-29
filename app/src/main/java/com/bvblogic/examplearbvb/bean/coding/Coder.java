@@ -15,7 +15,7 @@ public class Coder {
 
     private Keys keys;
 
-    private int key;
+    private long key;
 
     private int textLength;
 
@@ -53,7 +53,8 @@ public class Coder {
 
         key = getKey(group, keys.getNumber()); // 1st iteration
         keyLength = getKeyLength(key);
-        Log.e("KEY", Integer.toBinaryString(key));
+        Log.e("KEY", Long.toBinaryString(key));
+
         phase = getPhase(keys.getNumber());
         Log.e("PHASE", Integer.toBinaryString(phase));
         Log.e("KEYLENGTH", String.valueOf(keyLength));
@@ -111,7 +112,8 @@ public class Coder {
         throw new IllegalArgumentException("Message too large.");
     }
 
-    private int getKey(Group group, long number) {
+    private long getKey(Group group, long number) {
+
         if(group.getKeys().size() == 0){
             getNextGroup(textLength);
             getKey(group, number);
@@ -120,7 +122,8 @@ public class Coder {
         Calendar date = Calendar.getInstance();
         keyNumber = (int)( (Integer.parseInt(String.valueOf(date.get(Calendar.DAY_OF_MONTH)) + String.valueOf(date.get(Calendar.YEAR)), 10) * number) % group.getKeys().size());
 //        Log.e("KEYNUM", String.valueOf(keyNumber));
-        return Integer.parseInt(group.getKeys().get(keyNumber), 2);
+        return Long.parseLong(group.getKeys().get(keyNumber), 2);
+
     }
 
     private int getNextKey(Group group) {
@@ -131,8 +134,8 @@ public class Coder {
         return Integer.parseInt(group.getKeys().get(keyNumber),2);
     }
 
-    private int getKeyLength(int key) {
-        return (int) Integer.toBinaryString(key).length();
+    private int getKeyLength(long key) {
+        return (int) Long.toBinaryString(key).length();
     }
 
     private short getPhase(long number) {
@@ -152,7 +155,8 @@ public class Coder {
         char encoded = (char) (symbol ^ phase);
 
         for (int i = 0; i < keyLength; i++)
-            phase = (short)((phase << 1) + Integer.bitCount(phase & key) % 2);
+            phase = (short)((phase << 1) + Long.bitCount(phase & key) % 2);
+
 
         return encoded;
     }
