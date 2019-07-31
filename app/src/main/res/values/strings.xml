@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">EncryptedMessenger</string>
+    <string name="sms_instrument_name">SMS</string>
+    <string name="phone_name">Phone</string>
+    <string name="username_name">Username</string>
+    <string name="email_name">Email</string>
+    <string name="email_instrument_name">Email</string>
+    <string name="enter_message_hint">Enter message…</string>
+    <string name="enter_password">Enter password…</string>
+    <string name="btn_journal">Journal</string>
+    <string name="btn_back">Back</string>
+    <string name="btn_enter">Enter</string>
+    <string name="btn_send">Send</string>
+    <string name="login">Login</string>
+    <string name="password">Password</string>
+    <string name="sign_up">Sign up</string>
+    <string name="chat_name">Chat Name</string>
+    <string name="mail">MAIL</string>
+    <string name="or">OR</string>
+
+    <string name="user_name_input">User name</string>
+    <string name="password_input">Password</string>
+    <string name="email_input">Email</string>
+    <string name="phone_input">Phone</string>
+
+    <string name="dialog_msg">Enter file password</string>
+    <string name="positive_button">Confirm</string>
+    <string name="cancel">Cancel</string>
+
+</resources>

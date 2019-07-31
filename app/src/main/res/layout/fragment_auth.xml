@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tvLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="111dp"
+        android:gravity="center"
+        android:text="@string/login" />
+
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:id="@+id/etLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/tvLogin"
+        android:layout_marginLeft="47dp"
+        android:layout_marginTop="-13dp"
+        android:layout_toRightOf="@id/tvLogin"
+        android:ems="10"
+        android:hint="@string/login"
+        android:inputType="textPersonName" />
+
+    <TextView
+        android:id="@+id/tvPass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvLogin"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32sp"
+        android:layout_marginTop="65dp"
+        android:text="@string/password" />
+
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:id="@+id/etPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etLogin"
+        android:layout_alignStart="@+id/etLogin"
+        android:layout_marginStart="0dp"
+        android:layout_marginLeft="19dp"
+        android:layout_marginTop="37dp"
+        android:layout_toRightOf="@id/tvPass"
+        android:ems="10"
+        android:hint="@string/password"
+        android:inputType="textPassword" />
+
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etPassword"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="84dp"
+        android:layout_marginEnd="84dp"
+        android:text="@string/login" />
+
+    <Button
+        android:id="@+id/btnSignUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etPassword"
+        android:layout_marginTop="84dp"
+        android:layout_marginEnd="32dp"
+        android:layout_toStartOf="@+id/btnLogin"
+        android:text="@string/sign_up" />
+
+    <ProgressBar
+        android:id="@+id/progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp" />
+</RelativeLayout>
